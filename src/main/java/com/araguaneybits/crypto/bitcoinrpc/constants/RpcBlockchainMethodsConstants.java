@@ -23,7 +23,7 @@ package com.araguaneybits.crypto.bitcoinrpc.constants;
 public final class RpcBlockchainMethodsConstants {
 
     /** The Constant BLOCKCHAIN_GET_BESTBLOCK_HASH. */
-    public static final String BLOCKCHAIN_GET_BESTBLOCK_HASH = "getbestblockhash";
+    public static final String BLOCKCHAIN_GET_BEST_BLOCK_HASH = "getbestblockhash";
 
     /** The Constant BLOCKCHAIN_GET_BLOCK. */
     public static final String BLOCKCHAIN_GET_BLOCK = "getblock";
