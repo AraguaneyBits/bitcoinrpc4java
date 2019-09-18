@@ -24,6 +24,39 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Jose Luis Estevez</name>
+            <email>jose.estevez.prieto@gmail.com</email>
+            <organization>AraguaneyBits</organization>
+            <organizationUrl>https://araguaneybits.com</organizationUrl>
+        </developer>
+    </developers>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <scm>
+        <connection>scm:git:git://github.com/AraguaneyBits/bitcoinrpc4java.git</connection>
+        <developerConnection>scm:git:ssh://github.com:AraguaneyBits/bitcoinrpc4java.git</developerConnection>
+        <url>https://github.com/AraguaneyBits/bitcoinrpc4java/tree/master</url>
+    </scm>
+    <issueManagement>
+        <system>Hackerone</system>
+        <url>https://hackerone.com/central-security-project/reports/new</url>
+    </issueManagement>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
