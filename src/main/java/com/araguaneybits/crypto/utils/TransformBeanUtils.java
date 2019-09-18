@@ -49,6 +49,7 @@ public final class TransformBeanUtils {
         try {
             OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             OBJECT_MAPPER.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
+            OBJECT_MAPPER.enable(DeserializationFeature.USE_BIG_INTEGER_FOR_INTS);
             return OBJECT_MAPPER.readValue(string, typeReference);
         } catch (IOException e) {
             LOGGER.error("could not get a valid object with the json {} exception {}", string, e);
@@ -68,7 +69,7 @@ public final class TransformBeanUtils {
         try {
             OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             OBJECT_MAPPER.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
-
+            OBJECT_MAPPER.enable(DeserializationFeature.USE_BIG_INTEGER_FOR_INTS);
             return OBJECT_MAPPER.readValue(string, toValueType);
         } catch (IOException e) {
             LOGGER.error("could not get a valid object with the json {} exception {}", string, e);
