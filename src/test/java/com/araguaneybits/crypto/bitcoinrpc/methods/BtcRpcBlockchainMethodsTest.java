@@ -1,6 +1,8 @@
 package com.araguaneybits.crypto.bitcoinrpc.methods;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -10,6 +12,8 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockHeader
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockWithTxResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainInfoResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTxStatsResponse;
 
 public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
     private BtcRpcBlockchainMethods undertest;
@@ -90,6 +94,30 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         BtcRpcGetBlockHeaderResponse btcRpcGetBlockHeaderResponse = undertest
                 .getBlockHeader("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206");
         Assert.assertNotNull("Is not null", btcRpcGetBlockHeaderResponse);
+    }
+
+    // @Test
+    public void testGetChainTips() throws Exception {
+        enqueueMockedResponse(200,
+                "{\"result\":[{\"height\":202,\"hash\":\"5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f\",\"branchlen\":0,\"status\":\"active\"}],\"error\":null,\"id\":null}");
+        List<BtcRpcGetChainTipsResponse> list = undertest.getChainTips();
+        Assert.assertNotNull("Is not null", list);
+    }
+
+    // @Test
+    public void testGetChainTxStats() throws Exception {
+        enqueueMockedResponse(200,
+                "{\"result\":{\"time\":1567715996,\"txcount\":203,\"window_final_block_hash\":\"5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f\",\"window_block_count\":201,\"window_tx_count\":201,\"window_interval\":4092,\"txrate\":0.04912023460410557},\"error\":null,\"id\":null}");
+        BtcRpcGetChainTxStatsResponse btcRpcGetChainTxStatsResponse = undertest.getChainTxStats(1L, "");
+        Assert.assertEquals("Expected equals", Long.valueOf(203), btcRpcGetChainTxStatsResponse.getTxcount());
+    }
+
+    // @Test
+    public void testGetDifficulty() throws Exception {
+        enqueueMockedResponse(200, "{\"result\":4.656542373906925e-10,\"error\":null,\"id\":null}");
+        BigDecimal difficulty = undertest.getDifficulty();
+        Assert.assertEquals("Expected equals", new BigDecimal("4.656542373906925e-10"), difficulty);
+
     }
 
 }

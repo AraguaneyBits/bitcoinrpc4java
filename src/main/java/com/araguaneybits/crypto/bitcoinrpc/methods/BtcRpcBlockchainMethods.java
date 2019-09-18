@@ -15,7 +15,10 @@
  */
 package com.araguaneybits.crypto.bitcoinrpc.methods;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.araguaneybits.crypto.bitcoinrpc.RpcOutputMessage;
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumBlockVerbosity;
@@ -24,11 +27,12 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockHeader
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockWithTxResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainInfoResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTxStatsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetInfoResponse;
 import com.araguaneybits.crypto.utils.TransformBeanUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BtcRpcBlockchainMethods.
  *
@@ -245,11 +249,9 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetBlockchainInfoResponse getBlockchainInfo() {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCKCHAIN_INFO);
-
         RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetBlockchainInfoResponse>>() {
                 });
-
         return (BtcRpcGetBlockchainInfoResponse) rpcOutputMessage.getResult();
     }
 
@@ -511,8 +513,12 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the chain tips
      */
-    public Object getChainTips() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_CHAIN_TIPS);
+    public List<BtcRpcGetChainTipsResponse> getChainTips() {
+        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_CHAIN_TIPS);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<ArrayList<BtcRpcGetChainTipsResponse>>>() {
+                });
+        return (ArrayList<BtcRpcGetChainTipsResponse>) rpcOutputMessage.getResult();
     }
 
     /**
@@ -553,8 +559,12 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the chain tx stats
      */
-    public Object getChainTxStats() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_CHAIN_TX_STATS);
+    public BtcRpcGetChainTxStatsResponse getChainTxStats(Long nblocks, String blockhash) {
+        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_CHAIN_TX_STATS, nblocks, blockhash);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcGetChainTxStatsResponse>>() {
+                });
+        return (BtcRpcGetChainTxStatsResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -583,8 +593,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the difficulty
      */
-    public Object getDifficulty() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_DIFFICULTY);
+    public BigDecimal getDifficulty() {
+        return (BigDecimal) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_DIFFICULTY);
     }
 
     /**

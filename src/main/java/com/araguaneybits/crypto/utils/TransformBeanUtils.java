@@ -24,6 +24,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class TransformBeanUtils.
  */
@@ -32,6 +33,7 @@ public final class TransformBeanUtils {
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(TransformBeanUtils.class);
 
+    /** The Constant OBJECT_MAPPER. */
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     /**
@@ -41,10 +43,22 @@ public final class TransformBeanUtils {
         super();
     }
 
+    /**
+     * Gets the object mapper.
+     *
+     * @return the object mapper
+     */
     public ObjectMapper getObjectMapper() {
         return OBJECT_MAPPER;
     }
 
+    /**
+     * Read value.
+     *
+     * @param string the string
+     * @param typeReference the type reference
+     * @return the object
+     */
     public static Object readValue(String string, TypeReference typeReference) {
         try {
             OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
