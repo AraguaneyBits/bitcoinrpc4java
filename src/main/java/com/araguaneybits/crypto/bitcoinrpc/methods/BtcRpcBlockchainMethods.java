@@ -18,7 +18,9 @@ package com.araguaneybits.crypto.bitcoinrpc.methods;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.araguaneybits.crypto.bitcoinrpc.RpcOutputMessage;
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumBlockVerbosity;
@@ -30,6 +32,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainI
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTxStatsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetInfoResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolAncestorsResponse;
 import com.araguaneybits.crypto.utils.TransformBeanUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -661,8 +664,19 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the mempool ancestors
      */
-    public Object getMempoolAncestors() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_ANCESTORS);
+    public BtcRpcGetMempoolAncestorsResponse getMempoolAncestors(String txid, Boolean verbose) {
+        LinkedHashMap<String, LinkedHashMap> map = (LinkedHashMap) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_ANCESTORS, txid,
+                verbose);
+
+        for (Map.Entry<String, LinkedHashMap> entry : map.entrySet()) {
+            String key = entry.getKey();
+            LinkedHashMap value = entry.getValue();
+            String json = TransformBeanUtils.writeValueAsString(value);
+            BtcRpcGetMempoolAncestorsResponse btcRpcGetMempoolAncestorsResponse = (BtcRpcGetMempoolAncestorsResponse) TransformBeanUtils
+                    .readValue(json, BtcRpcGetMempoolAncestorsResponse.class);
+            return btcRpcGetMempoolAncestorsResponse;
+        }
+        return null;
     }
 
     /**

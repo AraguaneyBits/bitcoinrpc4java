@@ -14,6 +14,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockWithTx
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTxStatsResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolAncestorsResponse;
 
 public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
     private BtcRpcBlockchainMethods undertest;
@@ -117,7 +118,16 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         enqueueMockedResponse(200, "{\"result\":4.656542373906925e-10,\"error\":null,\"id\":null}");
         BigDecimal difficulty = undertest.getDifficulty();
         Assert.assertEquals("Expected equals", new BigDecimal("4.656542373906925e-10"), difficulty);
+    }
 
+    // @Test
+    public void testGetMempoolAncestors() throws Exception {
+        enqueueMockedResponse(200,
+                "{\"result\":{\"c10bb22a91f59aeb7d81a19ead4a05a8c5c2c3bcda4ba09fb8194895f5ad8211\":{\"fees\":{\"base\":0.00003780,\"modified\":0.00003780,\"ancestor\":0.00003780,\"descendant\":0.00007980},\"size\":189,\"fee\":0.00003780,\"modifiedfee\":0.00003780,\"time\":1568918380,\"height\":202,\"descendantcount\":2,\"descendantsize\":357,\"descendantfees\":7980,\"ancestorcount\":1,\"ancestorsize\":189,\"ancestorfees\":3780,\"wtxid\":\"c10bb22a91f59aeb7d81a19ead4a05a8c5c2c3bcda4ba09fb8194895f5ad8211\",\"depends\":[],\"spentby\":[\"03146921f56264ac39bf1d49bc19f3a2827941c188e4c20c65cea3891359a614\"],\"bip125-replaceable\":true}},\"error\":null,\"id\":null}");
+        BtcRpcGetMempoolAncestorsResponse btcRpcGetMempoolAncestorsResponse = undertest
+                .getMempoolAncestors("03146921f56264ac39bf1d49bc19f3a2827941c188e4c20c65cea3891359a614", true);
+        Assert.assertNotNull("Is not null", btcRpcGetMempoolAncestorsResponse);
+        Assert.assertEquals("Expected equals", Long.valueOf(189), btcRpcGetMempoolAncestorsResponse.getSize());
     }
 
 }
