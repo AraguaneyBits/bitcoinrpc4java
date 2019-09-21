@@ -33,6 +33,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsRe
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTxStatsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolEntryResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolInfoResponse;
 import com.araguaneybits.crypto.utils.TransformBeanUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -848,8 +849,12 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the mempool info
      */
-    public Object getMempoolInfo() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_INFO);
+    public BtcRpcGetMempoolInfoResponse getMempoolInfo() {
+        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_INFO);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcGetMempoolInfoResponse>>() {
+                });
+        return (BtcRpcGetMempoolInfoResponse) rpcOutputMessage.getResult();
     }
 
     /**

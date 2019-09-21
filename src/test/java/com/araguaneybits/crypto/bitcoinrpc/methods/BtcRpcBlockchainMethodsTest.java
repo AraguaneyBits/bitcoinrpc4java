@@ -16,6 +16,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainI
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTxStatsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolEntryResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolInfoResponse;
 
 public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
     private BtcRpcBlockchainMethods undertest;
@@ -30,14 +31,14 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
-    // @Test
+    @Test
     public void testGetBestBlockHash() throws Exception {
         enqueueMockedResponse(200, "{\"result\":\"5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f\",\"error\":null,\"id\":null}");
         String hash = undertest.getBestBlockHash();
         Assert.assertEquals("Expected equals", "5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f", hash);
     }
 
-    // @Test
+    @Test
     public void testGetBlock() throws Exception {
         enqueueMockedResponse(200,
                 "{\"result\":\"01000030c5405c044dab3268a4e9699116046203e9df6e32104e791631df1e02ec32011b4fa538a3e5800a0d69037f91434575da3d66cf5d7a86227d2d609ab4ccf831989c72715dffff7f200000000001020000000001010000000000000000000000000000000000000000000000000000000000000000ffffffff0502ca000101ffffffff0200f90295000000002321030b4404f370b5a5873a2d7634b097eb32d8897f3e0bd495bf1a9b78347c9181a2ac0000000000000000266a24aa21a9ede2f61c3f71d1defd3fa999dfa36953755c690689799962b48bebd836974e8cf90120000000000000000000000000000000000000000000000000000000000000000000000000\",\"error\":null,\"id\":null}");
@@ -60,7 +61,7 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
-    // @Test
+    @Test
     public void testGetBlockchainInfo() throws Exception {
         enqueueMockedResponse(200,
                 "{\"result\":{\"chain\":\"regtest\",\"blocks\":202,\"headers\":202,\"bestblockhash\":\"5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f\",\"difficulty\":4.656542373906925e-10,\"mediantime\":1567715995,\"verificationprogress\":1,\"initialblockdownload\":true,\"chainwork\":\"0000000000000000000000000000000000000000000000000000000000000196\",\"size_on_disk\":63376,\"pruned\":false,\"softforks\":[{\"id\":\"bip34\",\"version\":2,\"reject\":{\"status\":false}},{\"id\":\"bip66\",\"version\":3,\"reject\":{\"status\":false}},{\"id\":\"bip65\",\"version\":4,\"reject\":{\"status\":false}}],\"bip9_softforks\":{\"csv\":{\"status\":\"started\",\"bit\":0,\"startTime\":0,\"timeout\":9223372036854775807,\"since\":144,\"statistics\":{\"period\":144,\"threshold\":108,\"elapsed\":59,\"count\":59,\"possible\":true}},\"segwit\":{\"status\":\"active\",\"startTime\":-1,\"timeout\":9223372036854775807,\"since\":0}},\"warnings\":\"\"},\"error\":null,\"id\":null}");
@@ -68,7 +69,7 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertNotNull("Is not null", btcRpcBlockchainInfoResponse);
     }
 
-    // @Test
+    @Test
     public void testGetBlockCount() throws Exception {
         enqueueMockedResponse(200, "{\"result\":202,\"error\":null,\"id\":null}");
         BigInteger blocks = undertest.getBlockCount();
@@ -76,7 +77,7 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
-    // @Test
+    @Test
     public void testGetBlockHash() throws Exception {
         enqueueMockedResponse(200, "{\"result\":\"0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206\",\"error\":null,\"id\":null}");
         String hash = undertest.getBlockHash(0L);
@@ -84,7 +85,7 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
-    // @Test
+    @Test
     public void testGetBlockHeader() throws Exception {
         enqueueMockedResponse(200,
                 "{\"result\":\"0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4adae5494dffff7f2002000000\",\"error\":null,\"id\":null}");
@@ -98,7 +99,13 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertNotNull("Is not null", btcRpcGetBlockHeaderResponse);
     }
 
-    // @Test
+    public void testGetBlockStats() throws Exception {
+        // TODO pending
+        // {"result":null,"error":{"code":-8,"message":"One or more of the selected stats requires -txindex enabled"},"id":null}
+        // undertest.getBlockStats("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206");
+    }
+
+    @Test
     public void testGetChainTips() throws Exception {
         enqueueMockedResponse(200,
                 "{\"result\":[{\"height\":202,\"hash\":\"5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f\",\"branchlen\":0,\"status\":\"active\"}],\"error\":null,\"id\":null}");
@@ -106,7 +113,7 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertNotNull("Is not null", list);
     }
 
-    // @Test
+    @Test
     public void testGetChainTxStats() throws Exception {
         enqueueMockedResponse(200,
                 "{\"result\":{\"time\":1567715996,\"txcount\":203,\"window_final_block_hash\":\"5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f\",\"window_block_count\":201,\"window_tx_count\":201,\"window_interval\":4092,\"txrate\":0.04912023460410557},\"error\":null,\"id\":null}");
@@ -114,7 +121,7 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Expected equals", Long.valueOf(203), btcRpcGetChainTxStatsResponse.getTxcount());
     }
 
-    // @Test
+    @Test
     public void testGetDifficulty() throws Exception {
         enqueueMockedResponse(200, "{\"result\":4.656542373906925e-10,\"error\":null,\"id\":null}");
         BigDecimal difficulty = undertest.getDifficulty();
@@ -150,6 +157,15 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         BtcRpcGetMempoolEntryResponse btcRpcGetMempoolEntryResponse = undertest
                 .getMempoolEntry("1fe082d18fabe42179b24a5cf6e4d7db67a8fcf3054270bf1cd4391ba3e05aba");
         Assert.assertEquals("Expected equals", Long.valueOf(210), btcRpcGetMempoolEntryResponse.getSize());
+    }
+
+    @Test
+    public void testGetMempoolInfo() throws Exception {
+        enqueueMockedResponse(200,
+                "{\"result\":{\"size\":240,\"bytes\":52253,\"usage\":234328,\"maxmempool\":300000000,\"mempoolminfee\":0.00001000,\"minrelaytxfee\":0.00001000},\"error\":null,\"id\":null}");
+
+        BtcRpcGetMempoolInfoResponse btcRpcGetMempoolInfoResponse = undertest.getMempoolInfo();
+        Assert.assertEquals("Expected equals", new BigInteger("240"), btcRpcGetMempoolInfoResponse.getSize());
     }
 
 }
