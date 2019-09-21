@@ -923,8 +923,12 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the raw mempool
      */
-    public Object getRawMempool() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_RAW_MEMPOOL);
+    public List<String> getRawMempool() {
+        return (List<String>) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_RAW_MEMPOOL, false);
+    }
+
+    public List<BtcRpcGetMempoolEntryResponse> getRawMempoolVerbose() {
+        return getMempoolTransactionId(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_RAW_MEMPOOL, true);
     }
 
     /**
