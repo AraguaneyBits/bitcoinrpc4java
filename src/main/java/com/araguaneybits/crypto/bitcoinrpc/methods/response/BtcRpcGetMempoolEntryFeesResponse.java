@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * @author jestevez
  */
-public class BtcRpcGetMempoolAncestorsFeesResponse implements Serializable {
+public class BtcRpcGetMempoolEntryFeesResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -428190165883622641L;
@@ -34,7 +34,7 @@ public class BtcRpcGetMempoolAncestorsFeesResponse implements Serializable {
     /**
      * Instantiates a new btc rpc get mempool ancestors fees response.
      */
-    public BtcRpcGetMempoolAncestorsFeesResponse() {
+    public BtcRpcGetMempoolEntryFeesResponse() {
         super();
     }
 

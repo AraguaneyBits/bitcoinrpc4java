@@ -7,18 +7,18 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The Class BtcRpcGetMempoolAncestorsResponse.
+ * The Class BtcRpcGetMempoolEntryResponse.
  *
  * @author jestevez
  */
-public class BtcRpcGetMempoolAncestorsResponse implements Serializable {
+public class BtcRpcGetMempoolEntryResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = -9153429797761306378L;
+    private static final long serialVersionUID = -4247293936687144242L;
 
     /** The fees. */
     @JsonProperty("fees")
-    private BtcRpcGetMempoolAncestorsFeesResponse fees;
+    private BtcRpcGetMempoolEntryFeesResponse fees;
 
     /** The size. */
     @JsonProperty("size")
@@ -83,7 +83,7 @@ public class BtcRpcGetMempoolAncestorsResponse implements Serializable {
     /**
      * Instantiates a new btc rpc get mempool ancestors response.
      */
-    public BtcRpcGetMempoolAncestorsResponse() {
+    public BtcRpcGetMempoolEntryResponse() {
         super();
     }
 
@@ -92,7 +92,7 @@ public class BtcRpcGetMempoolAncestorsResponse implements Serializable {
      *
      * @return the fees
      */
-    public BtcRpcGetMempoolAncestorsFeesResponse getFees() {
+    public BtcRpcGetMempoolEntryFeesResponse getFees() {
         return fees;
     }
 
@@ -101,7 +101,7 @@ public class BtcRpcGetMempoolAncestorsResponse implements Serializable {
      *
      * @param fees the new fees
      */
-    public void setFees(BtcRpcGetMempoolAncestorsFeesResponse fees) {
+    public void setFees(BtcRpcGetMempoolEntryFeesResponse fees) {
         this.fees = fees;
     }
 
@@ -374,5 +374,4 @@ public class BtcRpcGetMempoolAncestorsResponse implements Serializable {
     public void setBip125Replaceable(Boolean bip125Replaceable) {
         this.bip125Replaceable = bip125Replaceable;
     }
-
 }

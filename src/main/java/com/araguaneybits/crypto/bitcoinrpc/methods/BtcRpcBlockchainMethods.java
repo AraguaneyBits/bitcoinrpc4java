@@ -32,8 +32,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainI
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTxStatsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetInfoResponse;
-import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolAncestorsResponse;
-import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolDescendantsResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolEntryResponse;
 import com.araguaneybits.crypto.utils.TransformBeanUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -601,6 +600,22 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
         return (BigDecimal) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_DIFFICULTY);
     }
 
+    private List<BtcRpcGetMempoolEntryResponse> getMempoolTransactionId(String callMethod, Object... params) {
+
+        List<BtcRpcGetMempoolEntryResponse> list = new ArrayList<>();
+        LinkedHashMap<String, LinkedHashMap> map = (LinkedHashMap) callRpcMethod(callMethod, params);
+
+        for (Map.Entry<String, LinkedHashMap> entry : map.entrySet()) {
+            String key = entry.getKey();
+            LinkedHashMap value = entry.getValue();
+            String json = TransformBeanUtils.writeValueAsString(value);
+            BtcRpcGetMempoolEntryResponse btcRpcGetMempoolAncestorsResponse = (BtcRpcGetMempoolEntryResponse) TransformBeanUtils.readValue(json,
+                    BtcRpcGetMempoolEntryResponse.class);
+            list.add(btcRpcGetMempoolAncestorsResponse);
+        }
+        return list;
+    }
+
     /**
      * <p>
      * Call category: blockchain
@@ -665,19 +680,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the mempool ancestors
      */
-    public BtcRpcGetMempoolAncestorsResponse getMempoolAncestors(String txid, Boolean verbose) {
-        LinkedHashMap<String, LinkedHashMap> map = (LinkedHashMap) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_ANCESTORS, txid,
-                verbose);
-
-        for (Map.Entry<String, LinkedHashMap> entry : map.entrySet()) {
-            String key = entry.getKey();
-            LinkedHashMap value = entry.getValue();
-            String json = TransformBeanUtils.writeValueAsString(value);
-            BtcRpcGetMempoolAncestorsResponse btcRpcGetMempoolAncestorsResponse = (BtcRpcGetMempoolAncestorsResponse) TransformBeanUtils
-                    .readValue(json, BtcRpcGetMempoolAncestorsResponse.class);
-            return btcRpcGetMempoolAncestorsResponse;
-        }
-        return null;
+    public List<BtcRpcGetMempoolEntryResponse> getMempoolAncestors(String txid, Boolean verbose) {
+        return getMempoolTransactionId(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_ANCESTORS, txid, verbose);
     }
 
     /**
@@ -744,19 +748,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the mempool descendants
      */
-    public BtcRpcGetMempoolDescendantsResponse getMempoolDescendants(String txid, Boolean verbose) {
-        LinkedHashMap<String, LinkedHashMap> map = (LinkedHashMap) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_DESCENDANTS,
-                txid, verbose);
-        for (Map.Entry<String, LinkedHashMap> entry : map.entrySet()) {
-            String key = entry.getKey();
-            LinkedHashMap value = entry.getValue();
-            String json = TransformBeanUtils.writeValueAsString(value);
-            BtcRpcGetMempoolDescendantsResponse btcRpcGetMempoolAncestorsResponse = (BtcRpcGetMempoolDescendantsResponse) TransformBeanUtils
-                    .readValue(json, BtcRpcGetMempoolDescendantsResponse.class);
-            return btcRpcGetMempoolAncestorsResponse;
-        }
-        return null;
-
+    public List<BtcRpcGetMempoolEntryResponse> getMempoolDescendants(String txid, Boolean verbose) {
+        return getMempoolTransactionId(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_DESCENDANTS, txid, verbose);
     }
 
     /**
@@ -814,8 +807,12 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the mempool entry
      */
-    public Object getMempoolEntry() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_ENTRY);
+    public BtcRpcGetMempoolEntryResponse getMempoolEntry(String txid) {
+        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_ENTRY, txid);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcGetMempoolEntryResponse>>() {
+                });
+        return (BtcRpcGetMempoolEntryResponse) rpcOutputMessage.getResult();
     }
 
     /**
