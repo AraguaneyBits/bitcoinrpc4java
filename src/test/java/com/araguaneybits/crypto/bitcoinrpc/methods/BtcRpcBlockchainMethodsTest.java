@@ -15,6 +15,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainI
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTxStatsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolAncestorsResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolDescendantsResponse;
 
 public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
     private BtcRpcBlockchainMethods undertest;
@@ -128,6 +129,16 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
                 .getMempoolAncestors("03146921f56264ac39bf1d49bc19f3a2827941c188e4c20c65cea3891359a614", true);
         Assert.assertNotNull("Is not null", btcRpcGetMempoolAncestorsResponse);
         Assert.assertEquals("Expected equals", Long.valueOf(189), btcRpcGetMempoolAncestorsResponse.getSize());
+    }
+
+    // @Test
+    public void testGetMempoolDescendants() throws Exception {
+        enqueueMockedResponse(200,
+                "{\"result\":{\"c10bb22a91f59aeb7d81a19ead4a05a8c5c2c3bcda4ba09fb8194895f5ad8211\":{\"fees\":{\"base\":0.00003780,\"modified\":0.00003780,\"ancestor\":0.00003780,\"descendant\":0.00007980},\"size\":189,\"fee\":0.00003780,\"modifiedfee\":0.00003780,\"time\":1568918380,\"height\":202,\"descendantcount\":2,\"descendantsize\":357,\"descendantfees\":7980,\"ancestorcount\":1,\"ancestorsize\":189,\"ancestorfees\":3780,\"wtxid\":\"c10bb22a91f59aeb7d81a19ead4a05a8c5c2c3bcda4ba09fb8194895f5ad8211\",\"depends\":[],\"spentby\":[\"03146921f56264ac39bf1d49bc19f3a2827941c188e4c20c65cea3891359a614\"],\"bip125-replaceable\":true}},\"error\":null,\"id\":null}");
+
+        BtcRpcGetMempoolDescendantsResponse btcRpcGetMempoolDescendantsResponse = undertest
+                .getMempoolDescendants("39c08704d6f21557a67baaf345ab396a59871718e03870a3a6482166d3dd9893", true);
+        Assert.assertEquals("Expected equals", Long.valueOf(189), btcRpcGetMempoolDescendantsResponse.getSize());
     }
 
 }
