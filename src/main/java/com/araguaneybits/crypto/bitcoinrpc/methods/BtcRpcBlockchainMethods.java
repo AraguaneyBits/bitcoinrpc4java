@@ -561,6 +561,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintxstats", "params": [2016] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param nblocks the nblocks
+     * @param blockhash the blockhash
      * @return the chain tx stats
      */
     public BtcRpcGetChainTxStatsResponse getChainTxStats(Long nblocks, String blockhash) {
@@ -601,6 +603,13 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
         return (BigDecimal) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_DIFFICULTY);
     }
 
+    /**
+     * Gets the mempool transaction id.
+     *
+     * @param callMethod the call method
+     * @param params the params
+     * @return the mempool transaction id
+     */
     private List<BtcRpcGetMempoolEntryResponse> getMempoolTransactionId(String callMethod, Object... params) {
 
         List<BtcRpcGetMempoolEntryResponse> list = new ArrayList<>();
@@ -679,6 +688,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolancestors", "params": ["mytxid"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param txid the txid
+     * @param verbose the verbose
      * @return the mempool ancestors
      */
     public List<BtcRpcGetMempoolEntryResponse> getMempoolAncestors(String txid, Boolean verbose) {
@@ -747,6 +758,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempooldescendants", "params": ["mytxid"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param txid the txid
+     * @param verbose the verbose
      * @return the mempool descendants
      */
     public List<BtcRpcGetMempoolEntryResponse> getMempoolDescendants(String txid, Boolean verbose) {
@@ -806,6 +819,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolentry", "params": ["mytxid"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param txid the txid
      * @return the mempool entry
      */
     public BtcRpcGetMempoolEntryResponse getMempoolEntry(String txid) {
@@ -927,6 +941,11 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
         return (List<String>) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_RAW_MEMPOOL, false);
     }
 
+    /**
+     * Gets the raw mempool verbose.
+     *
+     * @return the raw mempool verbose
+     */
     public List<BtcRpcGetMempoolEntryResponse> getRawMempoolVerbose() {
         return getMempoolTransactionId(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_RAW_MEMPOOL, true);
     }
@@ -982,10 +1001,13 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param txid the txid
+     * @param voutNumber the vout number
+     * @param includeMempool the include mempool
      * @return the tx out
      */
-    public Object getTxOut() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_TXOUT);
+    public Object getTxOut(String txid, Long voutNumber, Boolean includeMempool) {
+        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_TXOUT, txid, voutNumber, includeMempool);
     }
 
     /**
@@ -1023,8 +1045,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the tx out proof
      */
-    public Object getTxOutProof() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_TX_OUT_PROOF);
+    public String getTxOutProof(String[] txids, String blockhash) {
+        return (String) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_TX_OUT_PROOF, txids, blockhash);
     }
 
     /**
@@ -1286,9 +1308,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @return the info
      */
     public BtcRpcGetInfoResponse getInfo() {
-
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.LEGACY_GET_INFO);
-
         RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetInfoResponse>>() {
                 });
