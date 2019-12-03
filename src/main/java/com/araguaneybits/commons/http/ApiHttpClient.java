@@ -93,18 +93,13 @@ public class ApiHttpClient {
      * Inits the ApiHttpClient.
      */
     private void init() {
+        client = null;
         if (proxyConfiguration.isEnabled()) {
-
+            LOGGER.debug("proxyConfiguration {}", proxyConfiguration);
             // Connect proxy OKHTTP
             Authenticator proxyAuthenticator = new Authenticator() {
                 @Override
                 public Request authenticate(Route route, Response response) throws IOException {
-                    if (response.request().header("Proxy-Authorization") != null) {
-                        return null;
-                    }
-                    if (response.code() == EnumHttpStatusCode.HTTP_PROXY_AUTHENTICATION_REQUIRED.getCode()) {
-                        return null;
-                    }
                     LOGGER.debug("Authenticating for response: {} ", response);
                     LOGGER.debug("Challenges: {}", response.challenges());
                     String credential = Credentials.basic(proxyConfiguration.getUser(), proxyConfiguration.getPassword());
@@ -118,7 +113,6 @@ public class ApiHttpClient {
             LOGGER.debug("OkHttpClient with proxy: {}", proxy);
             client = new OkHttpClient.Builder().connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                     .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).proxy(proxy).proxyAuthenticator(proxyAuthenticator).build();
-
         } else {
             client = new OkHttpClient.Builder().connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                     .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).proxy(Proxy.NO_PROXY).build();
@@ -149,8 +143,6 @@ public class ApiHttpClient {
 
         Request.Builder builder = new Request.Builder();
 
-        builder = builder.url(httpUrl);
-        LOGGER.debug("Endpoint {}", httpUrl);
         if (null == httpType) {
             builder = builder.get();
         } else {
@@ -177,17 +169,15 @@ public class ApiHttpClient {
             String key = entry.getKey();
             String value = entry.getValue();
             if (key != null && value != null) {
-                LOGGER.debug("Send Header key [{}]  value [{}] ", key, value);
+                LOGGER.debug("Send Header key [{}] value [{}] ", key, value);
                 builder = builder.addHeader(key, value);
             }
-
         }
 
-        Request request = builder.build();
-        Response response;
+        LOGGER.debug("Endpoint {}", httpUrl);
+        Request request = builder.url(httpUrl).build();
         ApiHttpResponse apiResponse = new ApiHttpResponse();
-        try {
-            response = client.newCall(request).execute();
+        try (Response response = client.newCall(request).execute()) {
             int status = response.code();
             String body = "";
             ResponseBody responseBody = response.body();
