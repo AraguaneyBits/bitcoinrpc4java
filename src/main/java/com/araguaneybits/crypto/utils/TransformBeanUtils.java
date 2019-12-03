@@ -58,7 +58,7 @@ public final class TransformBeanUtils {
      * @param typeReference the type reference
      * @return the object
      */
-    public static Object readValue(String string, TypeReference typeReference) {
+    public static Object readValue(String string, TypeReference<?> typeReference) {
         try {
             OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             OBJECT_MAPPER.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
