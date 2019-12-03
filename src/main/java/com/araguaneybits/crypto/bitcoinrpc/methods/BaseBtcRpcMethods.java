@@ -15,6 +15,7 @@
  */
 package com.araguaneybits.crypto.bitcoinrpc.methods;
 
+import java.math.BigInteger;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -65,14 +66,14 @@ public class BaseBtcRpcMethods {
         if (response.get(RpcConstants.RPC_ERROR) != null) {
             LinkedHashMap<Object, Object> errorJson = (LinkedHashMap) response.get(RpcConstants.RPC_ERROR);
             String message = (String) errorJson.get(RpcConstants.RPC_MESSAGE);
-            Integer code = (Integer) errorJson.get(RpcConstants.RPC_CODE);
+            BigInteger code = (BigInteger) errorJson.get(RpcConstants.RPC_CODE);
 
             if (EnumRpcErrorCode.RPC_WALLET_INSUFFICIENT_FUNDS.getCode().equals(code)) {
                 throw new InsufficientFundsException(message);
             } else if (EnumRpcErrorCode.RPC_METHOD_NOT_FOUND.getCode().equals(code)) {
                 throw new RpcMethodNotFoundException(message);
             } else {
-                throw new BtcRpcBaseException(message, code);
+                throw new BtcRpcBaseException(message, code.intValue());
             }
 
         }

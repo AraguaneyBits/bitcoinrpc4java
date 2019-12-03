@@ -52,6 +52,9 @@ public class BtcRpcGateway {
     /** The credential. */
     private String credential;
 
+    /** The Constant DEFAULT_PROTOCOL. */
+    private static final String DEFAULT_PROTOCOL = "http";
+
     /**
      * Instantiates a new btc rpc gateway.
      *
@@ -85,7 +88,55 @@ public class BtcRpcGateway {
      * @param rpcPort the rpc port
      */
     public BtcRpcGateway(String rpcUser, String rpcPassword, String rpcHost, String rpcPort) {
-        this(HttpUrl.parse("http://" + rpcHost + ":" + rpcPort + "/"), rpcUser, rpcPassword, new ProxyConfiguration());
+        this(rpcUser, rpcPassword, rpcHost, rpcPort, DEFAULT_PROTOCOL);
+    }
+
+    /**
+     * Instantiates a new btc rpc gateway.
+     *
+     * @param rpcUser the rpc user
+     * @param rpcPassword the rpc password
+     * @param rpcHost the rpc host
+     * @param rpcPort the rpc port
+     * @param protocol the protocol
+     */
+    public BtcRpcGateway(String rpcUser, String rpcPassword, String rpcHost, String rpcPort, String protocol) {
+        this(buidUrl(rpcHost, rpcPort, protocol), rpcUser, rpcPassword, new ProxyConfiguration());
+    }
+
+    /**
+     * Instantiates a new btc rpc gateway.
+     *
+     * @param rpcUser the rpc user
+     * @param rpcPassword the rpc password
+     * @param rpcHost the rpc host
+     * @param rpcPort the rpc port
+     * @param protocol the protocol
+     * @param proxyConfiguration the proxy configuration
+     */
+    public BtcRpcGateway(String rpcUser, String rpcPassword, String rpcHost, String rpcPort, String protocol, ProxyConfiguration proxyConfiguration) {
+        this(buidUrl(rpcHost, rpcPort, protocol), rpcUser, rpcPassword, proxyConfiguration);
+    }
+
+    /**
+     * Buid url.
+     *
+     * @param rpcHost the rpc host
+     * @param rpcPort the rpc port
+     * @param protocol the protocol
+     * @return the http url
+     */
+    private static HttpUrl buidUrl(String rpcHost, String rpcPort, String protocol) {
+        String url = "";
+        if (protocol == null) {
+            protocol = DEFAULT_PROTOCOL;
+        }
+
+        url = protocol + "://" + rpcHost;
+        if (rpcPort != null && rpcPort.length() > 0) {
+            url = url + ":" + rpcPort;
+        }
+        return HttpUrl.parse(url);
     }
 
     /**
@@ -121,7 +172,7 @@ public class BtcRpcGateway {
             String data = buildRpcParam(callMethod, params);
             HashMap<String, String> headers = new HashMap<>();
             headers.put(HttpConstants.AUTHORIZATION, String.format(credential));
-            ApiHttpResponse apiResponse = apiHttpClient.send(ApiHttpType.POST, headers, data, ApiHttpMediaType.APPLICATION_FORM_URLENCODED);
+            ApiHttpResponse apiResponse = apiHttpClient.send(ApiHttpType.POST, headers, data, ApiHttpMediaType.APPLICATION_JSON);
             if (apiResponse.getCode() == EnumHttpStatusCode.HTTP_UNAUTHORIZED.getCode()) {
                 throw new AuthenticationException("http unauthorized");
             }

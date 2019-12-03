@@ -17,56 +17,70 @@ package com.araguaneybits.crypto.bitcoinrpc.methods.response;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * The Class BtcRpcBlockchainInfoResponse.
  *
  * @author jestevez
  */
-public class BtcRpcBlockchainInfoResponse implements Serializable {
+public class BtcRpcGetBlockchainInfoResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8256008445080805952L;
 
     /** The chain. */
+    @JsonProperty("chain")
     private String chain;
 
     /** The blocks. */
+    @JsonProperty("blocks")
     private Long blocks;
 
     /** The headers. */
+    @JsonProperty("headers")
     private Long headers;
 
     /** The bestblockhash. */
+    @JsonProperty("bestblockhash")
     private String bestblockhash;
 
     /** The difficulty. */
+    @JsonProperty("difficulty")
     private Double difficulty;
 
     /** The mediantime. */
+    @JsonProperty("mediantime")
     private Long mediantime;
 
     /** The verificationprogress. */
-    private Double verificationprogress;
+    @JsonProperty("verificationprogress")
+    private Long verificationprogress;
 
     /** The initialblockdownload. */
+    @JsonProperty("initialblockdownload")
     private Boolean initialblockdownload;
 
     /** The chainwork. */
+    @JsonProperty("chainwork")
     private String chainwork;
 
     /** The size on disk. */
+    @JsonProperty("size_on_disk")
     private Long sizeOnDisk;
 
     /** The pruned. */
+    @JsonProperty("pruned")
     private Boolean pruned;
 
     /** The warnings. */
+    @JsonProperty("warnings")
     private String warnings;
 
     /**
      * Instantiates a new btc rpc blockchain info response.
      */
-    public BtcRpcBlockchainInfoResponse() {
+    public BtcRpcGetBlockchainInfoResponse() {
         super();
     }
 
@@ -183,7 +197,7 @@ public class BtcRpcBlockchainInfoResponse implements Serializable {
      *
      * @return the verificationprogress
      */
-    public Double getVerificationprogress() {
+    public Long getVerificationprogress() {
         return verificationprogress;
     }
 
@@ -192,7 +206,7 @@ public class BtcRpcBlockchainInfoResponse implements Serializable {
      *
      * @param verificationprogress the new verificationprogress
      */
-    public void setVerificationprogress(Double verificationprogress) {
+    public void setVerificationprogress(Long verificationprogress) {
         this.verificationprogress = verificationprogress;
     }
 
