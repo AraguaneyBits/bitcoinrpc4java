@@ -99,6 +99,7 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertNotNull("Is not null", btcRpcGetBlockHeaderResponse);
     }
 
+    // @Test
     public void testGetBlockStats() throws Exception {
         // TODO pending
         // {"result":null,"error":{"code":-8,"message":"One or more of the selected stats requires -txindex enabled"},"id":null}

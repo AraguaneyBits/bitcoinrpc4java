@@ -764,6 +764,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      */
     public List<BtcRpcGetMempoolEntryResponse> getMempoolDescendants(String txid, Boolean verbose) {
         return getMempoolTransactionId(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_DESCENDANTS, txid, verbose);
+
     }
 
     /**
