@@ -42,6 +42,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
  *
  * @author jestevez
  */
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
 
     /**
@@ -469,8 +470,9 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @param block the block
      * @return the block stats
      */
-    public Object getBlockStats(String block) {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK_STATS, block);
+    public Object getBlockStats(Long height, String[] stats) {
+        // TODO Develop this method
+        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK_STATS, height, stats);
     }
 
     /**
@@ -565,12 +567,21 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @param blockhash the blockhash
      * @return the chain tx stats
      */
-    public BtcRpcGetChainTxStatsResponse getChainTxStats(Long nblocks, String blockhash) {
-        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_CHAIN_TX_STATS, nblocks, blockhash);
+    public BtcRpcGetChainTxStatsResponse getChainTxStats() {
+        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_CHAIN_TX_STATS);
+        return getBtcRpcGetChainTxStatsResponse(json);
+    }
+
+    private BtcRpcGetChainTxStatsResponse getBtcRpcGetChainTxStatsResponse(String json) {
         RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetChainTxStatsResponse>>() {
                 });
         return (BtcRpcGetChainTxStatsResponse) rpcOutputMessage.getResult();
+    }
+
+    public BtcRpcGetChainTxStatsResponse getChainTxStatsByBlockAndBlockHash(Long nblocks, String blockhash) {
+        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_CHAIN_TX_STATS, nblocks, blockhash);
+        return getBtcRpcGetChainTxStatsResponse(json);
     }
 
     /**
@@ -619,8 +630,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
             String key = entry.getKey();
             LinkedHashMap value = entry.getValue();
             String json = TransformBeanUtils.writeValueAsString(value);
-            BtcRpcGetMempoolEntryResponse btcRpcGetMempoolAncestorsResponse = (BtcRpcGetMempoolEntryResponse) TransformBeanUtils.readValue(json,
-                    BtcRpcGetMempoolEntryResponse.class);
+            BtcRpcGetMempoolEntryResponse btcRpcGetMempoolAncestorsResponse = TransformBeanUtils.readValue(json, BtcRpcGetMempoolEntryResponse.class);
             list.add(btcRpcGetMempoolAncestorsResponse);
         }
         return list;
@@ -764,7 +774,6 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      */
     public List<BtcRpcGetMempoolEntryResponse> getMempoolDescendants(String txid, Boolean verbose) {
         return getMempoolTransactionId(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_DESCENDANTS, txid, verbose);
-
     }
 
     /**
@@ -1008,6 +1017,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @return the tx out
      */
     public Object getTxOut(String txid, Long voutNumber, Boolean includeMempool) {
+        // TODO Develop this method
         return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_TXOUT, txid, voutNumber, includeMempool);
     }
 
@@ -1047,6 +1057,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @return the tx out proof
      */
     public String getTxOutProof(String[] txids, String blockhash) {
+        // https://bitcoin.org/en/developer-reference#gettxoutproof
         return (String) callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_TX_OUT_PROOF, txids, blockhash);
     }
 
@@ -1088,6 +1099,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @return the tx out set info
      */
     public Object getTxOutSetInfo() {
+        // TODO Develop this method
         return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_TX_OUT_SET_INFO);
     }
 
@@ -1123,8 +1135,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the object
      */
-    public Object preciousBlock() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_PRECIOUS_BLOCK);
+    public Object preciousBlock(String blockhash) {
+        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_PRECIOUS_BLOCK, blockhash);
     }
 
     /**
@@ -1155,8 +1167,9 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the object
      */
-    public Object pruneBlockchain() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_PRUNE_BLOCKCHAIN);
+    public Object pruneBlockchain(Long height) {
+        // TODO Develop this method
+        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_PRUNE_BLOCKCHAIN, height);
     }
 
     /**
@@ -1182,8 +1195,9 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the object
      */
-    public Object saveMempool() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_SAVE_MEMPOOL);
+    public Boolean saveMempool() {
+        callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_SAVE_MEMPOOL);
+        return Boolean.TRUE;
     }
 
     /**
@@ -1203,6 +1217,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object scanTxOutSet() {
+        // TODO Develop this method
         return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_SCANTXOUTSET);
     }
 
@@ -1236,8 +1251,9 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the object
      */
-    public Object verifyChain() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_VERIFYCHAIN);
+    public Object verifyChain(Integer checklevel, Integer nblocks) {
+        // TODO Develop this method
+        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_VERIFYCHAIN, checklevel, nblocks);
     }
 
     /**
@@ -1267,8 +1283,9 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *
      * @return the object
      */
-    public Object verifyTxOutProof() {
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_VERIFYTXOUTPROOF);
+    public Object verifyTxOutProof(String proof) {
+        // TODO Develop this method
+        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_VERIFYTXOUTPROOF, proof);
     }
 
     /**
