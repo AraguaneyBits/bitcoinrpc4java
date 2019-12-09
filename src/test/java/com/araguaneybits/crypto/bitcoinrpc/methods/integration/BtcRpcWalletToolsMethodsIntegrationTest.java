@@ -29,6 +29,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcWalletToolsMethods;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetWalletInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListSinceBlockResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListSinceBlockTransactionResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcLoadWalletResponse;
 
 /**
  * @author jestevez
@@ -75,10 +76,12 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         String walletName = "junit_wallet";
         Boolean disablePrivateKeys = false;
         Boolean blank = true;
-        BtcRpcCreateWalletResponse btcRpcCreateWalletResponse = undertest.createWallet(walletName, disablePrivateKeys, blank);
+        BtcRpcCreateWalletResponse btcRpcCreateWalletResponse = undertest.createWallet(walletName, disablePrivateKeys,
+                blank);
         Assert.assertEquals("Expected walletName", walletName, btcRpcCreateWalletResponse.getName());
         // multi-wallet is required argument in btcRpcGateway
-        // btcRpcGateway = new BtcRpcGateway(BITCOIN_RPC_USER, BITCOIN_RPC_PASS, BITCOIN_RPC_HOST, BITCOIN_RPC_PORT, BITCOIN_RPC_PROTOCOL,
+        // btcRpcGateway = new BtcRpcGateway(BITCOIN_RPC_USER, BITCOIN_RPC_PASS,
+        // BITCOIN_RPC_HOST, BITCOIN_RPC_PORT, BITCOIN_RPC_PROTOCOL,
         // "/wallet/junit_wallet", proxyConfiguration);
     }
 
@@ -86,7 +89,8 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
     public void testDumpWallet() throws Exception {
         Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
         Assert.assertTrue("Ok", condition);
-        // String filename = System.getProperty("java.io.tmpdir") + "new_wallet_" + System.currentTimeMillis() + ".dat";
+        // String filename = System.getProperty("java.io.tmpdir") + "new_wallet_" +
+        // System.currentTimeMillis() + ".dat";
         String filename = "/tmp/dumpwallet.dat";
         String fileNameConfirm = undertest.dumpWallet(filename);
         Assert.assertEquals("Expected equals", filename, fileNameConfirm);
@@ -99,7 +103,8 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
             Boolean success = undertest.encryptWallet(passphrase);
             Assert.assertTrue("Expected true", success);
         } catch (BtcRpcBaseException e) {
-            Assert.assertEquals("Expected code -15", EnumRpcErrorCode.RPC_WALLET_WRONG_ENC_STATE.getCode(), e.getCode());
+            Assert.assertEquals("Expected code -15", EnumRpcErrorCode.RPC_WALLET_WRONG_ENC_STATE.getCode(),
+                    e.getCode());
         }
     }
 
@@ -118,13 +123,23 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertTrue("Expected true", success);
     }
 
-    @Test
+//    @Test
+    public void testKeypoolRefill() throws Exception {
+        Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
+        Assert.assertTrue("Ok", condition);
+        Long newsize = 2L;
+        Boolean success = undertest.keypoolRefill(newsize);
+        Assert.assertTrue("Expected true", success);
+    }
+
+//    @Test
     public void testListSinceBlock() throws Exception {
         // String blockhash = null;
         // Long targetConfirmations = null;
         // Boolean includeWatchonly = null;
         // Boolean includeRemoved = null;
-        // undertest.listSinceBlock(blockhash, targetConfirmations, includeWatchonly, includeRemoved);
+        // undertest.listSinceBlock(blockhash, targetConfirmations, includeWatchonly,
+        // includeRemoved);
         // Assert.fail("Test method not implemented");
 
         BtcRpcListSinceBlockResponse btcRpcListSinceBlockResponse = undertest.listSinceBlock();
@@ -148,9 +163,9 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
 
     // @Test
     public void testLoadWallet() throws Exception {
-        String walletName = "junit_wallet";
-        undertest.loadWallet(walletName);
-        Assert.fail("Test method not implemented");
+        String name = "junit_wallet";
+        BtcRpcLoadWalletResponse btcRpcLoadWalletResponse = undertest.loadWallet(name);
+        Assert.assertEquals("Expected equals", name, btcRpcLoadWalletResponse.getName());
     }
 
     // @Test
@@ -171,7 +186,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.fail("Test method not implemented");
     }
 
-    // @Test
+    @Test
     public void testUnloadWallet() throws Exception {
         String walletName = "junit_wallet";
         undertest.unloadWallet(walletName);

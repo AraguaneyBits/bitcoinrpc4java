@@ -24,6 +24,7 @@ import com.araguaneybits.crypto.bitcoinrpc.bean.BtcRpcCreateWalletResponse;
 import com.araguaneybits.crypto.bitcoinrpc.constants.RpcWalletMethodsConstants;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetWalletInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListSinceBlockResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcLoadWalletResponse;
 import com.araguaneybits.crypto.utils.TransformBeanUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -34,7 +35,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
 
     public BtcRpcWalletToolsMethods(BtcRpcGateway btcRpcGateway) {
-        super(btcRpcGateway);
+	super(btcRpcGateway);
     }
 
     /**
@@ -45,7 +46,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.15.0
      * </p>
      * <p>
-     * The abortrescan RPC stops current wallet rescan triggered by an RPC call, e.g. by an importprivkey call.
+     * The abortrescan RPC stops current wallet rescan triggered by an RPC call,
+     * e.g. by an importprivkey call.
      * </p>
      * 
      * <pre>
@@ -66,7 +68,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public Boolean abortRescan() {
-        return (Boolean) callRpcMethod(RpcWalletMethodsConstants.WALLET_ABORTRESCAN);
+	return (Boolean) callRpcMethod(RpcWalletMethodsConstants.WALLET_ABORTRESCAN);
     }
 
     /**
@@ -77,7 +79,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.3.12
      * </p>
      * <p>
-     * The backupwallet RPC safely copies `wallet.dat` to the specified file, which can be a directory or a path with filename.
+     * The backupwallet RPC safely copies `wallet.dat` to the specified file, which
+     * can be a directory or a path with filename.
      * </p>
      * 
      * <pre>
@@ -94,8 +97,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public Boolean backupWallet(String destination) {
-        callRpcMethod(RpcWalletMethodsConstants.WALLET_BACKUP_WALLET, destination);
-        return Boolean.TRUE;
+	callRpcMethod(RpcWalletMethodsConstants.WALLET_BACKUP_WALLET, destination);
+	return Boolean.TRUE;
     }
 
     /**
@@ -132,11 +135,12 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public BtcRpcCreateWalletResponse createWallet(String walletName, Boolean disablePrivateKeys, Boolean blank) {
-        String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_CREATE_WALLET, walletName, disablePrivateKeys, blank);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
-                new TypeReference<RpcOutputMessage<BtcRpcCreateWalletResponse>>() {
-                });
-        return (BtcRpcCreateWalletResponse) rpcOutputMessage.getResult();
+	String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_CREATE_WALLET, walletName,
+	        disablePrivateKeys, blank);
+	RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+	        new TypeReference<RpcOutputMessage<BtcRpcCreateWalletResponse>>() {
+	        });
+	return (BtcRpcCreateWalletResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -147,7 +151,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.9.0
      * </p>
      * <p>
-     * The dumpwallet RPC creates or overwrites a file with all wallet keys in a human-readable format.
+     * The dumpwallet RPC creates or overwrites a file with all wallet keys in a
+     * human-readable format.
      * </p>
      * 
      * <pre>
@@ -172,8 +177,9 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public String dumpWallet(String filename) {
-        Map<String, String> response = (Map<String, String>) callRpcMethod(RpcWalletMethodsConstants.WALLET_DUMP_WALLET, filename);
-        return response.get("filename");
+	Map<String, String> response = (Map<String, String>) callRpcMethod(RpcWalletMethodsConstants.WALLET_DUMP_WALLET,
+	        filename);
+	return response.get("filename");
     }
 
     /**
@@ -184,8 +190,9 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.4.0
      * </p>
      * <p>
-     * The encryptwallet RPC encrypts the wallet with a passphrase. This is only to enable encryption for the first time. After encryption is enabled,
-     * you will need to enter the passphrase to use private keys.
+     * The encryptwallet RPC encrypts the wallet with a passphrase. This is only to
+     * enable encryption for the first time. After encryption is enabled, you will
+     * need to enter the passphrase to use private keys.
      * </p>
      * 
      * <pre>
@@ -220,8 +227,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public Boolean encryptWallet(String passphrase) {
-        callRpcMethod(RpcWalletMethodsConstants.WALLET_ENCRYPT_WALLET, passphrase);
-        return Boolean.TRUE;
+	callRpcMethod(RpcWalletMethodsConstants.WALLET_ENCRYPT_WALLET, passphrase);
+	return Boolean.TRUE;
     }
 
     /**
@@ -263,11 +270,11 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public BtcRpcGetWalletInfoResponse getWalletInfo() {
-        String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_GET_WALLET_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
-                new TypeReference<RpcOutputMessage<BtcRpcGetWalletInfoResponse>>() {
-                });
-        return (BtcRpcGetWalletInfoResponse) rpcOutputMessage.getResult();
+	String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_GET_WALLET_INFO);
+	RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+	        new TypeReference<RpcOutputMessage<BtcRpcGetWalletInfoResponse>>() {
+	        });
+	return (BtcRpcGetWalletInfoResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -278,12 +285,15 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.9.0
      * </p>
      * <p>
-     * The importwallet RPC imports private keys from a file in wallet dump file format (see the `dumpwallet` RPC). These keys will be added to the
-     * keys currently in the wallet. This call may need to rescan all or parts of the block chain for transactions affecting the newly-added keys,
-     * which may take several minutes.
+     * The importwallet RPC imports private keys from a file in wallet dump file
+     * format (see the `dumpwallet` RPC). These keys will be added to the keys
+     * currently in the wallet. This call may need to rescan all or parts of the
+     * block chain for transactions affecting the newly-added keys, which may take
+     * several minutes.
      * </p>
      * <p>
-     * Imports keys from a wallet dump file (see dumpwallet). Requires a new wallet backup to include imported keys.
+     * Imports keys from a wallet dump file (see dumpwallet). Requires a new wallet
+     * backup to include imported keys.
      * </p>
      * <p>
      * Arguments:
@@ -293,8 +303,31 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </p>
      */
     public Boolean importWallet(String filename) {
-        callRpcMethod(RpcWalletMethodsConstants.WALLET_IMPORT_WALLET, filename);
-        return Boolean.TRUE;
+	callRpcMethod(RpcWalletMethodsConstants.WALLET_IMPORT_WALLET, filename);
+	return Boolean.TRUE;
+    }
+
+    /**
+     * <p>
+     * Call category: wallet
+     * </p>
+     * <p>
+     * Available since: < 0.9.0
+     * </p>
+     * <p>
+     * Fills the keypool. The keypoolrefill RPC fills the cache of unused
+     * pre-generated keys (the keypool). *
+     * </p>
+     * <p>
+     * Arguments:
+     * </p>
+     * <p>
+     * 1. newsize (numeric, optional, default=100) The new keypool size
+     * </p>
+     */
+    public Boolean keypoolRefill(Long newsize) {
+	callRpcMethod(RpcWalletMethodsConstants.WALLET_KEYPOOL_REFILL, newsize);
+	return Boolean.TRUE;
     }
 
     /**
@@ -305,13 +338,16 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.5.0
      * </p>
      * <p>
-     * The listsinceblock RPC gets all transactions affecting the wallet which have occurred since a particular block, plus the header hash of a block
-     * at a particular depth.
+     * The listsinceblock RPC gets all transactions affecting the wallet which have
+     * occurred since a particular block, plus the header hash of a block at a
+     * particular depth.
      * </p>
      * <p>
-     * Get all transactions in blocks since block [blockhash], or all transactions if omitted. If "blockhash" is no longer a part of the main chain,
-     * transactions from the fork point onward are included. Additionally, if include_removed is set, transactions affecting the wallet which were
-     * removed are returned in the "removed" array.
+     * Get all transactions in blocks since block [blockhash], or all transactions
+     * if omitted. If "blockhash" is no longer a part of the main chain,
+     * transactions from the fork point onward are included. Additionally, if
+     * include_removed is set, transactions affecting the wallet which were removed
+     * are returned in the "removed" array.
      * </p>
      * <p>
      * Arguments:
@@ -320,14 +356,17 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * 1. "blockhash" (string, optional) The block hash to list transactions since
      * </p>
      * <p>
-     * 2. target_confirmations: (numeric, optional, default=1) Return the nth block hash from the main chain. e.g. 1 would mean the best block hash.
-     * Note: this is not used as a filter, but only affects [lastblock] in the return value
+     * 2. target_confirmations: (numeric, optional, default=1) Return the nth block
+     * hash from the main chain. e.g. 1 would mean the best block hash. Note: this
+     * is not used as a filter, but only affects [lastblock] in the return value
      * </p>
      * <p>
-     * 3. include_watchonly: (bool, optional, default=false) Include transactions to watch-only addresses (see 'importaddress')
+     * 3. include_watchonly: (bool, optional, default=false) Include transactions to
+     * watch-only addresses (see 'importaddress')
      * </p>
      * <p>
-     * 4. include_removed: (bool, optional, default=true) Show transactions that were removed due to a reorg in the "removed" array
+     * 4. include_removed: (bool, optional, default=true) Show transactions that
+     * were removed due to a reorg in the "removed" array
      * </p>
      * 
      * <pre>
@@ -364,22 +403,23 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
     }
      * </pre>
      */
-    public BtcRpcListSinceBlockResponse listSinceBlock(String blockhash, Long targetConfirmations, Boolean includeWatchonly, Boolean includeRemoved) {
-        String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_SINCE_BLOCK, blockhash, targetConfirmations, includeWatchonly,
-                includeRemoved);
-        return getBtcRpcListSinceBlockResponse(json);
+    public BtcRpcListSinceBlockResponse listSinceBlock(String blockhash, Long targetConfirmations,
+            Boolean includeWatchonly, Boolean includeRemoved) {
+	String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_SINCE_BLOCK, blockhash,
+	        targetConfirmations, includeWatchonly, includeRemoved);
+	return getBtcRpcListSinceBlockResponse(json);
     }
 
     public BtcRpcListSinceBlockResponse listSinceBlock() {
-        String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_SINCE_BLOCK);
-        return getBtcRpcListSinceBlockResponse(json);
+	String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_SINCE_BLOCK);
+	return getBtcRpcListSinceBlockResponse(json);
     }
 
     private BtcRpcListSinceBlockResponse getBtcRpcListSinceBlockResponse(String json) {
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
-                new TypeReference<RpcOutputMessage<BtcRpcListSinceBlockResponse>>() {
-                });
-        return (BtcRpcListSinceBlockResponse) rpcOutputMessage.getResult();
+	RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+	        new TypeReference<RpcOutputMessage<BtcRpcListSinceBlockResponse>>() {
+	        });
+	return (BtcRpcListSinceBlockResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -393,7 +433,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * The listwallets RPC returns a list of currently loaded wallets.
      * </p>
      * <p>
-     * Returns a list of currently loaded wallets. For full information on the wallet, use "getwalletinfo"
+     * Returns a list of currently loaded wallets. For full information on the
+     * wallet, use "getwalletinfo"
      * </p>
      * 
      * <pre>
@@ -405,11 +446,11 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public List<String> listWallets() {
-        String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_WALLETS);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
-                new TypeReference<RpcOutputMessage<ArrayList<String>>>() {
-                });
-        return (ArrayList<String>) rpcOutputMessage.getResult();
+	String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_WALLETS);
+	RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+	        new TypeReference<RpcOutputMessage<ArrayList<String>>>() {
+	        });
+	return (ArrayList<String>) rpcOutputMessage.getResult();
     }
 
     /**
@@ -420,7 +461,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.18.0
      * </p>
      * <p>
-     * The listwalletdir RPC returns a list of wallets in the wallet directory (either the default wallet directory or the directory configured by the
+     * The listwalletdir RPC returns a list of wallets in the wallet directory
+     * (either the default wallet directory or the directory configured by the
      * -walletdir parameter).
      * </p>
      * <p>
@@ -440,15 +482,15 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public List<String> listWalletDir() {
-        List<String> list = new ArrayList<>();
-        Map<String, Map> response = (Map<String, Map>) callRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_WALLET_DIR);
-        List<Map> names = ((List) response.get("wallets"));
-        for (Map<String, String> map : names) {
-            for (Map.Entry<String, String> entry : map.entrySet()) {
-                list.add(entry.getValue());
-            }
-        }
-        return list;
+	List<String> list = new ArrayList<>();
+	Map<String, Map> response = (Map<String, Map>) callRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_WALLET_DIR);
+	List<Map> names = ((List) response.get("wallets"));
+	for (Map<String, String> map : names) {
+	    for (Map.Entry<String, String> entry : map.entrySet()) {
+		list.add(entry.getValue());
+	    }
+	}
+	return list;
     }
 
     /**
@@ -462,8 +504,9 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * The loadwallet RPC loads a wallet from a wallet file or directory.
      * </p>
      * <p>
-     * Loads a wallet from a wallet file or directory. Note that all wallet command-line options used when starting bitcoind will be applied to the
-     * new wallet (eg -zapwallettxes, upgradewallet, rescan, etc).
+     * Loads a wallet from a wallet file or directory. Note that all wallet
+     * command-line options used when starting bitcoind will be applied to the new
+     * wallet (eg -zapwallettxes, upgradewallet, rescan, etc).
      * </p>
      * <p>
      * Arguments:
@@ -480,9 +523,13 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
     }
      * </pre>
      */
-    public Object loadWallet(String name) {
-        // TODO to do
-        return callRpcMethod(RpcWalletMethodsConstants.WALLET_LOAD_WALLET, name);
+    public BtcRpcLoadWalletResponse loadWallet(String name) {
+
+	String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LOAD_WALLET, name);
+	RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+	        new TypeReference<RpcOutputMessage<BtcRpcLoadWalletResponse>>() {
+	        });
+	return (BtcRpcLoadWalletResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -493,7 +540,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.16.0
      * </p>
      * <p>
-     * The rescanblockchain RPC rescan the local blockchain for wallet related transactions.
+     * The rescanblockchain RPC rescan the local blockchain for wallet related
+     * transactions.
      * </p>
      * <p>
      * Rescan the local blockchain for wallet related transactions.
@@ -502,10 +550,12 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Arguments:
      * </p>
      * <p>
-     * 1. "start_height" (numeric, optional) block height where the rescan should start
+     * 1. "start_height" (numeric, optional) block height where the rescan should
+     * start
      * </p>
      * <p>
-     * 2. "stop_height" (numeric, optional) the last block height that should be scanned
+     * 2. "stop_height" (numeric, optional) the last block height that should be
+     * scanned
      * </p>
      * 
      * <pre>
@@ -517,8 +567,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public Boolean rescanBlockchain(Long startHeight, Long stopHeight) {
-        callRpcMethod(RpcWalletMethodsConstants.WALLET_RESCAN_BLOCKCHAIN, startHeight, stopHeight);
-        return Boolean.TRUE;
+	callRpcMethod(RpcWalletMethodsConstants.WALLET_RESCAN_BLOCKCHAIN, startHeight, stopHeight);
+	return Boolean.TRUE;
     }
 
     /**
@@ -529,31 +579,37 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.17.0
      * </p>
      * <p>
-     * The sethdseed RPC allows users to set a new HD seed or set their own HD seed. This allows for a new HD seed to be used. A new backup must be
-     * made when a new HD seed is set.
+     * The sethdseed RPC allows users to set a new HD seed or set their own HD seed.
+     * This allows for a new HD seed to be used. A new backup must be made when a
+     * new HD seed is set.
      * </p>
      * <p>
-     * Set or generate a new HD wallet seed. Non-HD wallets will not be upgraded to being a HD wallet. Wallets that are already HD will have a new HD
-     * seed set so that new keys added to the keypool will be derived from this new seed. Note that you will need to MAKE A NEW BACKUP of your wallet
-     * after setting the HD wallet seed.
+     * Set or generate a new HD wallet seed. Non-HD wallets will not be upgraded to
+     * being a HD wallet. Wallets that are already HD will have a new HD seed set so
+     * that new keys added to the keypool will be derived from this new seed. Note
+     * that you will need to MAKE A NEW BACKUP of your wallet after setting the HD
+     * wallet seed.
      * </p>
      * <p>
      * Arguments:
      * </p>
      * <p>
-     * 1. "newkeypool" (boolean, optional, default=true) Whether to flush old unused addresses, including change addresses, from the keypool and
-     * regenerate it. If true, the next address from getnewaddress and change address from getrawchangeaddress will be from this new seed. If false,
-     * addresses (including change addresses if the wallet already had HD Chain Split enabled) from the existing keypool will be used until it has
-     * been depleted.
+     * 1. "newkeypool" (boolean, optional, default=true) Whether to flush old unused
+     * addresses, including change addresses, from the keypool and regenerate it. If
+     * true, the next address from getnewaddress and change address from
+     * getrawchangeaddress will be from this new seed. If false, addresses
+     * (including change addresses if the wallet already had HD Chain Split enabled)
+     * from the existing keypool will be used until it has been depleted.
      * </p>
      * <p>
-     * 2. "seed" (string, optional) The WIF private key to use as the new HD seed; if not provided a random seed will be used. The seed value can be
-     * retrieved using the dumpwallet command. It is the private key marked hdseed=1
+     * 2. "seed" (string, optional) The WIF private key to use as the new HD seed;
+     * if not provided a random seed will be used. The seed value can be retrieved
+     * using the dumpwallet command. It is the private key marked hdseed=1
      * </p>
      * <p>
      */
     public Object setHdSeed(Boolean newkeypool, String seed) {
-        return callRpcMethod(RpcWalletMethodsConstants.WALLET_SET_HD_SEED, newkeypool, seed);
+	return callRpcMethod(RpcWalletMethodsConstants.WALLET_SET_HD_SEED, newkeypool, seed);
     }
 
     /**
@@ -564,11 +620,13 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.17.0
      * </p>
      * <p>
-     * The unloadwallet RPC unloads the wallet referenced by the request endpoint otherwise unloads the wallet specified in the argument.
+     * The unloadwallet RPC unloads the wallet referenced by the request endpoint
+     * otherwise unloads the wallet specified in the argument.
      * </p>
      * <p>
-     * Unloads the wallet referenced by the request endpoint otherwise unloads the wallet specified in the argument. Specifying the wallet name on a
-     * wallet endpoint is invalid. Arguments:
+     * Unloads the wallet referenced by the request endpoint otherwise unloads the
+     * wallet specified in the argument. Specifying the wallet name on a wallet
+     * endpoint is invalid. Arguments:
      * </p>
      * <p>
      * Arguments:
@@ -582,7 +640,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </pre>
      */
     public Object unloadWallet(String walletName) {
-        return callRpcMethod(RpcWalletMethodsConstants.WALLET_UNLOAD_WALLET, walletName);
+	return callRpcMethod(RpcWalletMethodsConstants.WALLET_UNLOAD_WALLET, walletName);
     }
 
     /**
@@ -593,23 +651,27 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.4.0
      * </p>
      * <p>
-     * The walletlock RPC removes the wallet encryption key from memory, locking the wallet. After calling this method, you will need to call
-     * `walletpassphrase` again before being able to call any methods which require the wallet to be unlocked.
+     * The walletlock RPC removes the wallet encryption key from memory, locking the
+     * wallet. After calling this method, you will need to call `walletpassphrase`
+     * again before being able to call any methods which require the wallet to be
+     * unlocked.
      * </p>
      * <p>
-     * Removes the wallet encryption key from memory, locking the wallet. After calling this method, you will need to call walletpassphrase again
-     * before being able to call any methods which require the wallet to be unlocked.
+     * Removes the wallet encryption key from memory, locking the wallet. After
+     * calling this method, you will need to call walletpassphrase again before
+     * being able to call any methods which require the wallet to be unlocked.
      * </p>
      * <p>
      * Arguments:
      * </p>
      * <p>
-     * 1. "passphrase" (string) The pass phrase to encrypt the wallet with. It must be at least 1 character, but should be long.
+     * 1. "passphrase" (string) The pass phrase to encrypt the wallet with. It must
+     * be at least 1 character, but should be long.
      * </p>
      */
     public Boolean walletLock() {
-        callRpcMethod(RpcWalletMethodsConstants.WALLET_WALLET_LOCK);
-        return Boolean.TRUE;
+	callRpcMethod(RpcWalletMethodsConstants.WALLET_WALLET_LOCK);
+	return Boolean.TRUE;
     }
 
     /**
@@ -620,15 +682,19 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.4.0
      * </p>
      * <p>
-     * The walletpassphrase RPC stores the wallet decryption key in memory for the indicated number of seconds. Issuing the `walletpassphrase` command
-     * while the wallet is already unlocked will set a new unlock time that overrides the old one.
+     * The walletpassphrase RPC stores the wallet decryption key in memory for the
+     * indicated number of seconds. Issuing the `walletpassphrase` command while the
+     * wallet is already unlocked will set a new unlock time that overrides the old
+     * one.
      * </p>
      * <p>
-     * Stores the wallet decryption key in memory for 'timeout' seconds. This is needed prior to performing transactions related to private keys such
-     * as sending bitcoins
+     * Stores the wallet decryption key in memory for 'timeout' seconds. This is
+     * needed prior to performing transactions related to private keys such as
+     * sending bitcoins
      * </p>
      * <p>
-     * Note: Issuing the walletpassphrase command while the wallet is already unlocked will set a new unlock time that overrides the old one.
+     * Note: Issuing the walletpassphrase command while the wallet is already
+     * unlocked will set a new unlock time that overrides the old one.
      * </p>
      * <p>
      * Arguments:
@@ -637,12 +703,13 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * 1. "passphrase" (string, required) The wallet passphrase
      * </p>
      * <p>
-     * 2. timeout (numeric, required) The time to keep the decryption key in seconds; capped at 100000000 (~3 years).
+     * 2. timeout (numeric, required) The time to keep the decryption key in
+     * seconds; capped at 100000000 (~3 years).
      * </p>
      */
     public Boolean walletPassphrase(String passphrase, Long timeout) {
-        callRpcMethod(RpcWalletMethodsConstants.WALLET_WALLET_PASSPHRASE, passphrase, timeout);
-        return Boolean.TRUE;
+	callRpcMethod(RpcWalletMethodsConstants.WALLET_WALLET_PASSPHRASE, passphrase, timeout);
+	return Boolean.TRUE;
     }
 
     /**
@@ -653,7 +720,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Available since: 0.4.0
      * </p>
      * <p>
-     * The walletpassphrasechange RPC changes the wallet passphrase from 'old passphrase' to 'new passphrase'.
+     * The walletpassphrasechange RPC changes the wallet passphrase from 'old
+     * passphrase' to 'new passphrase'.
      * </p>
      * <p>
      * Changes the wallet passphrase from 'oldpassphrase' to 'newpassphrase'.
@@ -669,8 +737,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * </p>
      */
     public Boolean walletPassphraseChange(String oldpassphrase, String newpassphrase) {
-        callRpcMethod(RpcWalletMethodsConstants.WALLET_WALLET_PASSPHRASE_CHANGE, oldpassphrase, newpassphrase);
-        return Boolean.TRUE;
+	callRpcMethod(RpcWalletMethodsConstants.WALLET_WALLET_PASSPHRASE_CHANGE, oldpassphrase, newpassphrase);
+	return Boolean.TRUE;
     }
 
 }

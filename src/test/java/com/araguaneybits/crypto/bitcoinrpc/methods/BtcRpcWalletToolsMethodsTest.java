@@ -26,6 +26,7 @@ import com.araguaneybits.crypto.bitcoinrpc.bean.BtcRpcCreateWalletResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetWalletInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListSinceBlockResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListSinceBlockTransactionResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcLoadWalletResponse;
 
 /**
  * @author jestevez
@@ -60,11 +61,13 @@ public class BtcRpcWalletToolsMethodsTest extends AbstractBtcRpcMethodsTest {
 
     @Test
     public void testCreateWallet() throws Exception {
-        enqueueMockedResponse(200, "{\"result\":{\"name\":\"junit_wallet\",\"warning\":\"\"},\"error\":null,\"id\":null}");
+        enqueueMockedResponse(200,
+                "{\"result\":{\"name\":\"junit_wallet\",\"warning\":\"\"},\"error\":null,\"id\":null}");
         String walletName = "junit_wallet";
         Boolean disablePrivateKeys = false;
         Boolean blank = true;
-        BtcRpcCreateWalletResponse btcRpcCreateWalletResponse = undertest.createWallet(walletName, disablePrivateKeys, blank);
+        BtcRpcCreateWalletResponse btcRpcCreateWalletResponse = undertest.createWallet(walletName, disablePrivateKeys,
+                blank);
         Assert.assertNotNull("Is not null", btcRpcCreateWalletResponse);
         Assert.assertEquals("Expected equals", "junit_wallet", btcRpcCreateWalletResponse.getName());
     }
@@ -102,6 +105,15 @@ public class BtcRpcWalletToolsMethodsTest extends AbstractBtcRpcMethodsTest {
     }
 
     @Test
+    public void testKeypoolRefill() throws Exception {
+        enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
+
+        Long newsize = 2L;
+        Boolean success = undertest.keypoolRefill(newsize);
+        Assert.assertTrue("Expected true", success);
+    }
+
+    @Test
     public void testListWallets() throws Exception {
         enqueueMockedResponse(200, "{\"result\":[\"\",\"junit_wallet\"],\"error\":null,\"id\":null}");
         List<String> list = undertest.listWallets();
@@ -127,7 +139,8 @@ public class BtcRpcWalletToolsMethodsTest extends AbstractBtcRpcMethodsTest {
 
     @Test
     public void testListWalletDir() throws Exception {
-        enqueueMockedResponse(200, "{\"result\":{\"wallets\":[{\"name\":\"junit_wallet\"},{\"name\":\"\"}]},\"error\":null,\"id\":null}");
+        enqueueMockedResponse(200,
+                "{\"result\":{\"wallets\":[{\"name\":\"junit_wallet\"},{\"name\":\"\"}]},\"error\":null,\"id\":null}");
         List<String> list = undertest.listWalletDir();
         Assert.assertNotNull("Is not null", list);
         Assert.assertEquals("Expected two", 2, list.size());
@@ -135,16 +148,19 @@ public class BtcRpcWalletToolsMethodsTest extends AbstractBtcRpcMethodsTest {
 
     @Test
     public void testLoadWallet() throws Exception {
-        enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
+        enqueueMockedResponse(200,
+                "{\"result\":{\"name\":\"junit_wallet\",\"warning\":\"\"},\"error\":null,\"id\":null}");
 
-        String filename = null;
-        undertest.loadWallet(filename);
-        Assert.fail("Test method not implemented");
+        String filename = "junit_wallet";
+        BtcRpcLoadWalletResponse btcRpcLoadWalletResponse = undertest.loadWallet(filename);
+        Assert.assertEquals("Expected equals", filename, btcRpcLoadWalletResponse.getName());
+
     }
 
     @Test
     public void testRescanBlockchain() throws Exception {
-        enqueueMockedResponse(200, "{\"result\":{\"start_height\":1200000,\"stop_height\":1200001},\"error\":null,\"id\":null}");
+        enqueueMockedResponse(200,
+                "{\"result\":{\"start_height\":1200000,\"stop_height\":1200001},\"error\":null,\"id\":null}");
         Long startHeight = 1_200_000L;
         Long stopHeight = 1_200_001L;
         Boolean success = undertest.rescanBlockchain(startHeight, stopHeight);
