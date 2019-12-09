@@ -20,7 +20,6 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.bean.BtcRpcCreateWalletResponse;
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumRpcErrorCode;
@@ -73,11 +72,10 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
 
     // @Test
     public void testCreateWallet() throws Exception {
-        String walletName = "junit_wallet";
+        String walletName = "junit_wallet_2";
         Boolean disablePrivateKeys = false;
         Boolean blank = true;
-        BtcRpcCreateWalletResponse btcRpcCreateWalletResponse = undertest.createWallet(walletName, disablePrivateKeys,
-                blank);
+        BtcRpcCreateWalletResponse btcRpcCreateWalletResponse = undertest.createWallet(walletName, disablePrivateKeys, blank);
         Assert.assertEquals("Expected walletName", walletName, btcRpcCreateWalletResponse.getName());
         // multi-wallet is required argument in btcRpcGateway
         // btcRpcGateway = new BtcRpcGateway(BITCOIN_RPC_USER, BITCOIN_RPC_PASS,
@@ -103,8 +101,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
             Boolean success = undertest.encryptWallet(passphrase);
             Assert.assertTrue("Expected true", success);
         } catch (BtcRpcBaseException e) {
-            Assert.assertEquals("Expected code -15", EnumRpcErrorCode.RPC_WALLET_WRONG_ENC_STATE.getCode(),
-                    e.getCode());
+            Assert.assertEquals("Expected code -15", EnumRpcErrorCode.RPC_WALLET_WRONG_ENC_STATE.getCode(), e.getCode());
         }
     }
 
@@ -123,7 +120,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertTrue("Expected true", success);
     }
 
-//    @Test
+    // @Test
     public void testKeypoolRefill() throws Exception {
         Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
         Assert.assertTrue("Ok", condition);
@@ -132,7 +129,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertTrue("Expected true", success);
     }
 
-//    @Test
+    // @Test
     public void testListSinceBlock() throws Exception {
         // String blockhash = null;
         // Long targetConfirmations = null;
@@ -178,15 +175,15 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
 
     // @Test
     public void testSetHdSeed() throws Exception {
-        Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
-        Assert.assertTrue("Ok", condition);
+        // Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
+        // Assert.assertTrue("Ok", condition);
         Boolean newkeypool = true;
-        String seed = "";
+        String seed = "5KU3mLycXnrzqG97JzKdjeSQSQMgfJSWZCKoF5TPM2UY8E7c34u";
         undertest.setHdSeed(newkeypool, seed);
         Assert.fail("Test method not implemented");
     }
 
-    @Test
+    // @Test
     public void testUnloadWallet() throws Exception {
         String walletName = "junit_wallet";
         undertest.unloadWallet(walletName);
