@@ -17,13 +17,7 @@ package com.araguaneybits.commons.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import com.araguaneybits.commons.constants.CommonsConstants;
 
 import okhttp3.Credentials;
 
@@ -67,53 +61,16 @@ public final class HttpUtils {
             if (sb.length() > 0) {
                 sb.append("&");
             }
-            sb.append(String.format("%s=%s", urlEncodeUTF8(entry.getKey().toString()), urlEncodeUTF8(entry.getValue().toString())));
+            sb.append(String.format("%s=%s", urlEncodeUTF8(entry.getKey().toString()),
+                    urlEncodeUTF8(entry.getValue().toString())));
         }
         return sb.toString();
     }
 
     /**
-     * Gets the request headers in map.
-     *
-     * @param request the request
-     * @return the request headers in map
-     */
-    public static Map<String, String> getRequestHeadersInMap(HttpServletRequest request) {
-
-        Map<String, String> result = new HashMap<>();
-
-        Enumeration<String> headerNames = request.getHeaderNames();
-        while (headerNames.hasMoreElements()) {
-            String key = headerNames.nextElement();
-            String value = request.getHeader(key);
-            result.put(key, value);
-        }
-
-        return result;
-    }
-
-    /**
-     * Gets the client ip.
-     *
-     * @param request the request
-     * @return the client ip
-     */
-    public static String getClientIp(HttpServletRequest request) {
-        if (request == null) {
-            return null;
-        }
-        String remoteAddr = request.getHeader("X-FORWARDED-FOR");
-        if (remoteAddr == null || CommonsConstants.EMPTY_STRING.equals(remoteAddr)) {
-            remoteAddr = request.getRemoteAddr();
-        }
-
-        return remoteAddr;
-    }
-
-    /**
      * To basic authorization.
      *
-     * @param user the user
+     * @param user     the user
      * @param password the password
      * @return the string
      */
