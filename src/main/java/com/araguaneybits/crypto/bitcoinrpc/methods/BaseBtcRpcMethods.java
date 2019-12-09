@@ -63,6 +63,9 @@ public class BaseBtcRpcMethods {
      */
     protected void checkException(String json) {
         Map<Object, Object> response = readGenericValues(json);
+        if (response == null) {
+            throw new BtcRpcBaseException("Invalid response", EnumRpcErrorCode.RPC_INTERNAL_ERROR.getCode());
+        }
         if (response.get(RpcConstants.RPC_ERROR) != null) {
             LinkedHashMap<Object, Object> errorJson = (LinkedHashMap) response.get(RpcConstants.RPC_ERROR);
             String message = (String) errorJson.get(RpcConstants.RPC_MESSAGE);
