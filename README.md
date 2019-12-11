@@ -1,8 +1,7 @@
-<img src="resources/bitcoinrpc4java.png" alt="bitcoinrpc4java text" width="400" />
+<img src="resources/bitcoinrpc4java.png" alt="bitcoinrpc4java text" width="800" />
 
-# bitcoinrpc4java
 
-java client to connect to the bitcoin core with jsonrpc
+bitcoinrpc4java is a java client to connect to the bitcoin core with jsonrpc
 
 
 It is a library that seeks to be a well-typed rpc client with full implementation. This is a basic example of its use:
