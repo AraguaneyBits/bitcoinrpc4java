@@ -172,4 +172,15 @@ public class BtcRpcReceivedByAddressResponse implements Serializable {
         this.txids = txids;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "BtcRpcReceivedByAddressResponse [address=" + address + ", amount=" + amount + ", confirmations=" + confirmations + ", label=" + label
+                + ", txids=" + txids + ", account=" + account + "]";
+    }
+
 }

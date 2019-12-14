@@ -83,6 +83,34 @@ public class BtcRpcGetTransactionResponse implements Serializable {
     @JsonProperty("replaces_txid")
     private String replacesTxid;
 
+    /** The address. */
+    @JsonProperty("address")
+    private String address;
+
+    /** The category. */
+    @JsonProperty("category")
+    private String category;
+
+    /** The label. */
+    @JsonProperty("label")
+    private String label;
+
+    /** The vout. */
+    @JsonProperty("vout")
+    private Long vout;
+
+    /** The blockhash. */
+    @JsonProperty("blockhash")
+    private String blockhash;
+
+    /** The blockindex. */
+    @JsonProperty("blockindex")
+    private Long blockindex;
+
+    /** The blocktime. */
+    @JsonProperty("blocktime")
+    private Long blocktime;
+
     /**
      * Instantiates a new btc rpc get transaction response.
      */
@@ -322,6 +350,132 @@ public class BtcRpcGetTransactionResponse implements Serializable {
      */
     public void setHex(String hex) {
         this.hex = hex;
+    }
+
+    /**
+     * Gets the address.
+     *
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * Sets the address.
+     *
+     * @param address the new address
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * Gets the category.
+     *
+     * @return the category
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * Sets the category.
+     *
+     * @param category the new category
+     */
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /**
+     * Gets the label.
+     *
+     * @return the label
+     */
+    public String getLabel() {
+        return label;
+    }
+
+    /**
+     * Sets the label.
+     *
+     * @param label the new label
+     */
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    /**
+     * Gets the vout.
+     *
+     * @return the vout
+     */
+    public Long getVout() {
+        return vout;
+    }
+
+    /**
+     * Sets the vout.
+     *
+     * @param vout the new vout
+     */
+    public void setVout(Long vout) {
+        this.vout = vout;
+    }
+
+    /**
+     * Gets the blockhash.
+     *
+     * @return the blockhash
+     */
+    public String getBlockhash() {
+        return blockhash;
+    }
+
+    /**
+     * Sets the blockhash.
+     *
+     * @param blockhash the new blockhash
+     */
+    public void setBlockhash(String blockhash) {
+        this.blockhash = blockhash;
+    }
+
+    /**
+     * Gets the blockindex.
+     *
+     * @return the blockindex
+     */
+    public Long getBlockindex() {
+        return blockindex;
+    }
+
+    /**
+     * Sets the blockindex.
+     *
+     * @param blockindex the new blockindex
+     */
+    public void setBlockindex(Long blockindex) {
+        this.blockindex = blockindex;
+    }
+
+    /**
+     * Gets the blocktime.
+     *
+     * @return the blocktime
+     */
+    public Long getBlocktime() {
+        return blocktime;
+    }
+
+    /**
+     * Sets the blocktime.
+     *
+     * @param blocktime the new blocktime
+     */
+    public void setBlocktime(Long blocktime) {
+        this.blocktime = blocktime;
     }
 
     /*
