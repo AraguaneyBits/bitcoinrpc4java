@@ -22,7 +22,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.RpcOutputMessage;
-import com.araguaneybits.crypto.bitcoinrpc.bean.BtcRpcGetTransactionResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetTransactionResponse;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 /**

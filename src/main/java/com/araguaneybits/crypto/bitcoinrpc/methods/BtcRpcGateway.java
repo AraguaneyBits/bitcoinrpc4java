@@ -55,6 +55,9 @@ public class BtcRpcGateway {
     /** The Constant DEFAULT_PROTOCOL. */
     private static final String DEFAULT_PROTOCOL = "http";
 
+    /** The Constant DEFAULT_WALLET. */
+    private static final String DEFAULT_WALLET = "/wallet/";
+
     /**
      * Instantiates a new btc rpc gateway.
      *
@@ -101,7 +104,7 @@ public class BtcRpcGateway {
      * @param protocol the protocol
      */
     public BtcRpcGateway(String rpcUser, String rpcPassword, String rpcHost, String rpcPort, String protocol) {
-        this(buidUrl(rpcHost, rpcPort, protocol), rpcUser, rpcPassword, new ProxyConfiguration());
+        this(buidUrl(rpcHost, rpcPort, protocol, DEFAULT_WALLET), rpcUser, rpcPassword, new ProxyConfiguration());
     }
 
     /**
@@ -115,7 +118,23 @@ public class BtcRpcGateway {
      * @param proxyConfiguration the proxy configuration
      */
     public BtcRpcGateway(String rpcUser, String rpcPassword, String rpcHost, String rpcPort, String protocol, ProxyConfiguration proxyConfiguration) {
-        this(buidUrl(rpcHost, rpcPort, protocol), rpcUser, rpcPassword, proxyConfiguration);
+        this(buidUrl(rpcHost, rpcPort, protocol, DEFAULT_WALLET), rpcUser, rpcPassword, proxyConfiguration);
+    }
+
+    /**
+     * Instantiates a new btc rpc gateway.
+     *
+     * @param rpcUser the rpc user
+     * @param rpcPassword the rpc password
+     * @param rpcHost the rpc host
+     * @param rpcPort the rpc port
+     * @param protocol the protocol
+     * @param walletName the wallet name
+     * @param proxyConfiguration the proxy configuration
+     */
+    public BtcRpcGateway(String rpcUser, String rpcPassword, String rpcHost, String rpcPort, String protocol, String walletName,
+            ProxyConfiguration proxyConfiguration) {
+        this(buidUrl(rpcHost, rpcPort, protocol, walletName), rpcUser, rpcPassword, proxyConfiguration);
     }
 
     /**
@@ -124,9 +143,10 @@ public class BtcRpcGateway {
      * @param rpcHost the rpc host
      * @param rpcPort the rpc port
      * @param protocol the protocol
+     * @param wallet the wallet
      * @return the http url
      */
-    private static HttpUrl buidUrl(String rpcHost, String rpcPort, String protocol) {
+    private static HttpUrl buidUrl(String rpcHost, String rpcPort, String protocol, String wallet) {
         String url = "";
         if (protocol == null) {
             protocol = DEFAULT_PROTOCOL;
@@ -135,6 +155,10 @@ public class BtcRpcGateway {
         url = protocol + "://" + rpcHost;
         if (rpcPort != null && rpcPort.length() > 0) {
             url = url + ":" + rpcPort;
+        }
+
+        if (wallet != null) {
+            url = url + wallet;
         }
         return HttpUrl.parse(url);
     }

@@ -118,7 +118,7 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
     public void testGetChainTxStats() throws Exception {
         enqueueMockedResponse(200,
                 "{\"result\":{\"time\":1567715996,\"txcount\":203,\"window_final_block_hash\":\"5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f\",\"window_block_count\":201,\"window_tx_count\":201,\"window_interval\":4092,\"txrate\":0.04912023460410557},\"error\":null,\"id\":null}");
-        BtcRpcGetChainTxStatsResponse btcRpcGetChainTxStatsResponse = undertest.getChainTxStats(1L, "");
+        BtcRpcGetChainTxStatsResponse btcRpcGetChainTxStatsResponse = undertest.getChainTxStats();
         Assert.assertEquals("Expected equals", Long.valueOf(203), btcRpcGetChainTxStatsResponse.getTxcount());
     }
 
