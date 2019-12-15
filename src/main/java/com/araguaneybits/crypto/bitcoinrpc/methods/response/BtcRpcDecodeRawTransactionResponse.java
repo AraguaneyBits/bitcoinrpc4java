@@ -66,6 +66,10 @@ public class BtcRpcDecodeRawTransactionResponse implements Serializable {
     @JsonProperty("vout")
     private List<BtcRpcDecodePsbtVoutResponse> vout;
 
+    /** The hex. */
+    @JsonProperty("hex")
+    private String hex;
+
     /**
      * Instantiates a new btc rpc decode raw transaction response.
      */
@@ -233,6 +237,24 @@ public class BtcRpcDecodeRawTransactionResponse implements Serializable {
      */
     public void setVout(List<BtcRpcDecodePsbtVoutResponse> vout) {
         this.vout = vout;
+    }
+
+    /**
+     * Gets the hex.
+     *
+     * @return the hex
+     */
+    public String getHex() {
+        return hex;
+    }
+
+    /**
+     * Sets the hex.
+     *
+     * @param hex the new hex
+     */
+    public void setHex(String hex) {
+        this.hex = hex;
     }
 
     /*

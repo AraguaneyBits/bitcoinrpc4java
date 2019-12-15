@@ -16,6 +16,7 @@
 package com.araguaneybits.crypto.bitcoinrpc.methods.response;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -44,6 +45,10 @@ public class BtcRpcDecodePsbtVinResponse implements Serializable {
     /** The sequence. */
     @JsonProperty("sequence")
     private Long sequence;
+
+    /** The txinwitness. */
+    @JsonProperty("txinwitness")
+    private List<String> txinwitness;
 
     /**
      * Instantiates a new btc rpc decode psbt vin response.
@@ -122,6 +127,24 @@ public class BtcRpcDecodePsbtVinResponse implements Serializable {
      */
     public void setSequence(Long sequence) {
         this.sequence = sequence;
+    }
+
+    /**
+     * Gets the txinwitness.
+     *
+     * @return the txinwitness
+     */
+    public List<String> getTxinwitness() {
+        return txinwitness;
+    }
+
+    /**
+     * Sets the txinwitness.
+     *
+     * @param txinwitness the new txinwitness
+     */
+    public void setTxinwitness(List<String> txinwitness) {
+        this.txinwitness = txinwitness;
     }
 
     /*
