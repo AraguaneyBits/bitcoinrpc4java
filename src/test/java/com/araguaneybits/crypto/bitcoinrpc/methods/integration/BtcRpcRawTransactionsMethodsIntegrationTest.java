@@ -30,6 +30,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcRawTransactionsMethods;
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcWalletMethods;
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcWalletToolsMethods;
 import com.araguaneybits.crypto.bitcoinrpc.methods.request.BtcRpcCreateRawTransactionInputRequest;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcAnalyzePsbtResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodePsbtResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodeRawTransactionResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodeScriptResponse;
@@ -58,9 +59,9 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
 
     // @Test
     public void testAnalyzePsbt() throws Exception {
-        String psbt = null;
-        undertest.analyzePsbt(psbt);
-        Assert.fail("Test method not implemented");
+        String psbt = createRawTransactionTool(0, 2, 2, new BigDecimal("0.002"), true);
+        BtcRpcAnalyzePsbtResponse btcRpcAnalyzePsbtResponse = undertest.analyzePsbt(psbt);
+        Assert.assertNotNull("Expected not null", btcRpcAnalyzePsbtResponse);
     }
 
     // @Test

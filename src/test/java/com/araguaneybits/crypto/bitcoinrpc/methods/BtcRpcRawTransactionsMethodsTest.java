@@ -27,6 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.methods.request.BtcRpcCreateRawTransactionInputRequest;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcAnalyzePsbtResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodePsbtResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodeRawTransactionResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodeScriptResponse;
@@ -48,12 +49,13 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
 
     }
 
-    // @Test
+    @Test
     public void testAnalyzePsbt() throws Exception {
-        enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
-        String psbt = null;
-        undertest.analyzePsbt(psbt);
-        Assert.fail("Test method not implemented");
+        enqueueMockedResponse(200,
+                "{\"result\":{\"inputs\":[{\"has_utxo\":false,\"is_final\":false,\"next\":\"updater\"},{\"has_utxo\":false,\"is_final\":false,\"next\":\"updater\"},{\"has_utxo\":false,\"is_final\":false,\"next\":\"updater\"}],\"next\":\"updater\"},\"error\":null,\"id\":null}");
+        String psbt = "cHNidP8BAMUCAAAAAwDqEy7KDCfn2yaLj/Mdj7JUZiNE3a9utaLvmfhtqJTRAQAAAAD9////DgCV8ewPvX2V4vVXiRgUHznDmgLPTOoAXG2yjDqGkQwBAAAAAP3///8bytvcd5nZNAQ1xG5EQKfGWEin/8cjy3ZhiFNmXvFSZQEAAAAA/f///wJADQMAAAAAABepFGvKTBiI9z8JaZ77Ob43v/h1N2x1h0ANAwAAAAAAF6kUo3sxFf4BBmGTuiGNFRS120DVRAiHAAAAAAAAAAAAAA==";
+        BtcRpcAnalyzePsbtResponse btcRpcAnalyzePsbtResponse = undertest.analyzePsbt(psbt);
+        Assert.assertEquals("expected equals", "updater", btcRpcAnalyzePsbtResponse.getNext());
     }
 
     // @Test

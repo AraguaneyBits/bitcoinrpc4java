@@ -21,6 +21,7 @@ import java.util.Map;
 import com.araguaneybits.crypto.bitcoinrpc.RpcOutputMessage;
 import com.araguaneybits.crypto.bitcoinrpc.constants.RpcRawTransactionsMethodsConstants;
 import com.araguaneybits.crypto.bitcoinrpc.methods.request.BtcRpcCreateRawTransactionInputRequest;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcAnalyzePsbtResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodePsbtResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodeRawTransactionResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodeScriptResponse;
@@ -91,8 +92,12 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
     }
      * </pre>
      */
-    public Object analyzePsbt(String psbt) {
-        return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_ANALYZE_PSBT, psbt);
+    public BtcRpcAnalyzePsbtResponse analyzePsbt(String psbt) {
+        String json = callSimpleRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_ANALYZE_PSBT, psbt);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcAnalyzePsbtResponse>>() {
+                });
+        return (BtcRpcAnalyzePsbtResponse) rpcOutputMessage.getResult();
     }
 
     /**
