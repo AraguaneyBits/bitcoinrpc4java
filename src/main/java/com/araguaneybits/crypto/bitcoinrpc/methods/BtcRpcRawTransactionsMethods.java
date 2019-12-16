@@ -15,12 +15,14 @@
  */
 package com.araguaneybits.crypto.bitcoinrpc.methods;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
 import com.araguaneybits.crypto.bitcoinrpc.RpcOutputMessage;
 import com.araguaneybits.crypto.bitcoinrpc.constants.RpcRawTransactionsMethodsConstants;
 import com.araguaneybits.crypto.bitcoinrpc.methods.request.BtcRpcCreateRawTransactionInputRequest;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcAnalyzePsbtResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodePsbtResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodeRawTransactionResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodeScriptResponse;
@@ -91,8 +93,12 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
     }
      * </pre>
      */
-    public Object analyzePsbt(String psbt) {
-        return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_ANALYZE_PSBT, psbt);
+    public BtcRpcAnalyzePsbtResponse analyzePsbt(String psbt) {
+        String json = callSimpleRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_ANALYZE_PSBT, psbt);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcAnalyzePsbtResponse>>() {
+                });
+        return (BtcRpcAnalyzePsbtResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -792,8 +798,8 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
     > bitcoin-cli joinpsbts "psbt"
      * </pre>
      */
-    public Object joinpsbts() {
-        return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_JOIN_PSBTS);
+    public Object joinPsbts(String[] txs) {
+        return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_JOIN_PSBTS, txs);
     }
 
     /**
@@ -835,8 +841,8 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["signedhex"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      */
-    public Object sendrawtransaction() {
-        return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_SEND_RAW_TRANSACTION);
+    public String sendRawTransaction(String hex, BigDecimal maxFeeRate) {
+        return (String) callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_SEND_RAW_TRANSACTION, hex);
     }
 
     /**

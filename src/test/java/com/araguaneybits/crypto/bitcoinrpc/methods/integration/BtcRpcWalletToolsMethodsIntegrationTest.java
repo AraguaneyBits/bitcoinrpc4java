@@ -21,10 +21,10 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 
-import com.araguaneybits.crypto.bitcoinrpc.bean.BtcRpcCreateWalletResponse;
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumRpcErrorCode;
 import com.araguaneybits.crypto.bitcoinrpc.exception.BtcRpcBaseException;
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcWalletToolsMethods;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcCreateWalletResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetWalletInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListSinceBlockResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListSinceBlockTransactionResponse;
