@@ -24,7 +24,6 @@ import java.util.Map;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumEstimateMode;
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcRawTransactionsMethods;
@@ -228,7 +227,7 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.fail("Test method not implemented");
     }
 
-    @Test
+    // @Test
     public void testSendRawTransaction() throws Exception {
         String rawTx = createRawTransactionTool(0, 2, 2, new BigDecimal("0.001"), false);
 
