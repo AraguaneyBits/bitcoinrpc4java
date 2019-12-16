@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.araguaneybits.crypto.bitcoinrpc.RpcOutputMessage;
-import com.araguaneybits.crypto.bitcoinrpc.bean.BtcRpcCreateWalletResponse;
 import com.araguaneybits.crypto.bitcoinrpc.constants.RpcWalletMethodsConstants;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcCreateWalletResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetWalletInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListSinceBlockResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcLoadWalletResponse;

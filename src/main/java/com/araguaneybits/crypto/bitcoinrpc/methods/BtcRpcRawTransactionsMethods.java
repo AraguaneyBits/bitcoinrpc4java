@@ -15,6 +15,7 @@
  */
 package com.araguaneybits.crypto.bitcoinrpc.methods;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -797,8 +798,8 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
     > bitcoin-cli joinpsbts "psbt"
      * </pre>
      */
-    public Object joinpsbts() {
-        return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_JOIN_PSBTS);
+    public Object joinPsbts(String[] txs) {
+        return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_JOIN_PSBTS, txs);
     }
 
     /**
@@ -840,8 +841,8 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["signedhex"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      */
-    public Object sendrawtransaction() {
-        return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_SEND_RAW_TRANSACTION);
+    public String sendRawTransaction(String hex, BigDecimal maxFeeRate) {
+        return (String) callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_SEND_RAW_TRANSACTION, hex);
     }
 
     /**

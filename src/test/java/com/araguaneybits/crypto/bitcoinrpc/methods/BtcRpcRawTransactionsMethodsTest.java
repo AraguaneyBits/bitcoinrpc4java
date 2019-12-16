@@ -227,17 +227,19 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
     }
 
     // @Test
-    public void testJoinpsbts() throws Exception {
+    public void testJoinPsbts() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
-        undertest.joinpsbts();
+
+        String[] txs = new String[] { "", "" };
+        undertest.joinPsbts(txs);
         Assert.fail("Test method not implemented");
     }
 
-    // @Test
-    public void testSendrawtransaction() throws Exception {
+    @Test
+    public void testSendRawTransaction() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
-        undertest.sendrawtransaction();
-        Assert.fail("Test method not implemented");
+        String tx = undertest.sendRawTransaction("", new BigDecimal(""));
+        Assert.assertEquals("Expected equals", "", tx);
     }
 
     // @Test

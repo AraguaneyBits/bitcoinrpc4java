@@ -24,6 +24,7 @@ import java.util.Map;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumEstimateMode;
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcRawTransactionsMethods;
@@ -107,12 +108,16 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
 
         List<BtcRpcCreateRawTransactionInputRequest> inputs = new ArrayList<>();
 
+        BigDecimal sending = BigDecimal.ZERO;
+        BigDecimal value = BigDecimal.ZERO;
         int i = 0;
         for (int index = startInputs; index < list.size(); index++) {
             BtcRpcListUnspentResponse btcRpcListUnspentResponse = list.get(index);
             BtcRpcCreateRawTransactionInputRequest btcRpcCreateRawTransactionInputRequest = new BtcRpcCreateRawTransactionInputRequest();
             btcRpcCreateRawTransactionInputRequest.setTxid(btcRpcListUnspentResponse.getTxid());
             btcRpcCreateRawTransactionInputRequest.setVout(btcRpcListUnspentResponse.getVout());
+
+            value = value.add(btcRpcListUnspentResponse.getAmount());
             inputs.add(btcRpcCreateRawTransactionInputRequest);
             if (i == maxInputs) {
                 break;
@@ -123,12 +128,17 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Map<String, String> outputs = new HashMap<>();
         for (int j = 0; j < maxOutputs; j++) {
             outputs.put(btcRpcWalletMethods.getNewAddress(), amount.toString());
+            sending = sending.add(amount);
         }
+
+        BigDecimal fee = new BigDecimal("0.00000500");
+        BigDecimal change = value.subtract(sending).subtract(fee);
+        outputs.put(btcRpcWalletMethods.getNewAddress(), change.toString());
 
         btcRpcWalletToolsMethods.walletPassphrase(PASSPHRASE, 30L);
 
-        Long locktime = 0L;
-        Boolean replaceable = true;
+        Long locktime = 1000L;
+        Boolean replaceable = false;
         String rawTx = null;
 
         if (isPsbt) {
@@ -209,14 +219,21 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
 
     // @Test
     public void testJoinpsbts() throws Exception {
-        undertest.joinpsbts();
+        String hex1 = "";
+
+        String hex2 = "";
+
+        String[] txs = new String[] { hex1, hex2 };
+        undertest.joinPsbts(txs);
         Assert.fail("Test method not implemented");
     }
 
-    // @Test
-    public void testSendrawtransaction() throws Exception {
-        undertest.sendrawtransaction();
-        Assert.fail("Test method not implemented");
+    @Test
+    public void testSendRawTransaction() throws Exception {
+        String rawTx = createRawTransactionTool(0, 2, 2, new BigDecimal("0.001"), false);
+
+        String tx = undertest.sendRawTransaction(rawTx, new BigDecimal("0.00003000"));
+        Assert.assertNotNull("Is not null", tx);
     }
 
     // @Test
