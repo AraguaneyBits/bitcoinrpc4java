@@ -69,8 +69,8 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     "..."
      *     
      *     Examples:
-     *     > bitcoin-cli getmemoryinfo 
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmemoryinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli getmemoryinfo 
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmemoryinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the memoryinfo
@@ -109,8 +109,8 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli getrpcinfo 
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrpcinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli getrpcinfo 
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrpcinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the rpcinfo
@@ -193,8 +193,8 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli logging "[\"all\"]" "[\"http\"]"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "logging", "params": [["all"], "[libevent]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli logging "[\"all\"]" "[\"http\"]"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "logging", "params": [["all"], "[libevent]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
@@ -248,8 +248,8 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     ttt        (numeric) The number of seconds that the server has been running
      *     
      *     Examples:
-     *     > bitcoin-cli uptime 
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "uptime", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli uptime 
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "uptime", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
@@ -285,8 +285,8 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     ]
      *     
      *     Examples:
-     *     > bitcoin-cli getzmqnotifications 
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getzmqnotifications", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli getzmqnotifications 
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getzmqnotifications", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the zmqnotifications

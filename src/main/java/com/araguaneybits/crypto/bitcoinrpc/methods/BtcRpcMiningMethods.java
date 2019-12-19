@@ -119,8 +119,8 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli getblocktemplate {"rules": ["segwit"]}
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [{"rules": ["segwit"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli getblocktemplate {"rules": ["segwit"]}
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [{"rules": ["segwit"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the blocktemplate
@@ -159,8 +159,8 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli getmininginfo 
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli getmininginfo 
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the mininginfo
@@ -196,8 +196,8 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     x             (numeric) Hashes per second estimated
      *     
      *     Examples:
-     *     > bitcoin-cli getnetworkhashps 
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli getnetworkhashps 
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param nblocks the nblocks
@@ -238,8 +238,8 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     true              (boolean) Returns true
      *     
      *     Examples:
-     *     > bitcoin-cli prioritisetransaction "txid" 0.0 10000
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli prioritisetransaction "txid" 0.0 10000
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param txid the txid
@@ -275,8 +275,8 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     Result:
      *     
      *     Examples:
-     *     > bitcoin-cli submitblock "mydata"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli submitblock "mydata"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param hexdata the hexdata
@@ -310,8 +310,8 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     Result:
      *     None
      *     Examples:
-     *     > bitcoin-cli submitheader "aabbcc"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitheader", "params": ["aabbcc"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli submitheader "aabbcc"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitheader", "params": ["aabbcc"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
@@ -348,7 +348,7 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Generate 11 blocks to myaddress
-     *     > bitcoin-cli generatetoaddress 11 "myaddress"
+*       bitcoin-cli generatetoaddress 11 "myaddress"
      * </pre>
      *
      * @return the object

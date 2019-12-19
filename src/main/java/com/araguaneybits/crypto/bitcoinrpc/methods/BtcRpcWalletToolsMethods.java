@@ -63,13 +63,13 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Import a private key
-     *     > bitcoin-cli importprivkey "mykey"
+*       bitcoin-cli importprivkey "mykey"
      *     
      *     Abort the running wallet rescan
-     *     > bitcoin-cli abortrescan 
+*       bitcoin-cli abortrescan 
      *     
      *     As a JSON-RPC call
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "abortrescan", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "abortrescan", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the boolean
@@ -98,8 +98,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     1. "destination"   (string) The destination directory or file
      *     
      *     Examples:
-     *     > bitcoin-cli backupwallet "backup.dat"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "backupwallet", "params": ["backup.dat"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli backupwallet "backup.dat"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "backupwallet", "params": ["backup.dat"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param destination the destination
@@ -139,8 +139,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli createwallet "testwallet"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createwallet", "params": ["testwallet"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli createwallet "testwallet"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createwallet", "params": ["testwallet"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param walletName the wallet name
@@ -184,8 +184,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli dumpwallet "test"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli dumpwallet "test"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param filename the filename
@@ -224,19 +224,19 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Encrypt your wallet
-     *     > bitcoin-cli encryptwallet "my pass phrase"
+*       bitcoin-cli encryptwallet "my pass phrase"
      *     
      *     Now set the passphrase to use the wallet, such as for signing or sending bitcoin
-     *     > bitcoin-cli walletpassphrase "my pass phrase"
+*       bitcoin-cli walletpassphrase "my pass phrase"
      *     
      *     Now we can do something like sign
-     *     > bitcoin-cli signmessage "address" "test message"
+*       bitcoin-cli signmessage "address" "test message"
      *     
      *     Now lock the wallet again by removing the passphrase
-     *     > bitcoin-cli walletlock 
+*       bitcoin-cli walletlock 
      *     
      *     As a json rpc call
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "encryptwallet", "params": ["my pass phrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "encryptwallet", "params": ["my pass phrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param passphrase the passphrase
@@ -281,8 +281,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli getwalletinfo 
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli getwalletinfo 
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the wallet info

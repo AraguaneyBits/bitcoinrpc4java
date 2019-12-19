@@ -19,8 +19,6 @@ package com.araguaneybits.crypto.bitcoinrpc;
  * The Class InputRpcMessage.
  *
  * @author Jose Luis Estevez jose.estevez.prieto@gmail.com
- * @version 1.0.0
- * @date 31-oct-2017
  */
 public class RpcInputMessage {
 

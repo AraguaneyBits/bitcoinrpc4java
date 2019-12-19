@@ -326,10 +326,10 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      *     "transaction"              (string) hex string of the transaction
      *     
      *     Examples:
-     *     > bitcoin-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"address\":0.01}]"
-     *     > bitcoin-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"data\":\"00010203\"}]"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"address\":0.01}]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"data\":\"00010203\"}]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"address\":0.01}]"
+*       bitcoin-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"data\":\"00010203\"}]"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"address\":0.01}]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"data\":\"00010203\"}]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param inputs the inputs
@@ -801,11 +801,11 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli getrawtransaction "mytxid"
-     *     > bitcoin-cli getrawtransaction "mytxid" true
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawtransaction", "params": ["mytxid", true] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-     *     > bitcoin-cli getrawtransaction "mytxid" false "myblockhash"
-     *     > bitcoin-cli getrawtransaction "mytxid" true "myblockhash"
+*       bitcoin-cli getrawtransaction "mytxid"
+*       bitcoin-cli getrawtransaction "mytxid" true
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawtransaction", "params": ["mytxid", true] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli getrawtransaction "mytxid" false "myblockhash"
+*       bitcoin-cli getrawtransaction "mytxid" true "myblockhash"
      * </pre>
      *
      * @param txid the txid
@@ -850,7 +850,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      *     "psbt"          (string) The base64-encoded partially signed transaction
      *     
      *     Examples:
-     *     > bitcoin-cli joinpsbts "psbt"
+*       bitcoin-cli joinpsbts "psbt"
      * </pre>
      *
      * @param txs the txs
@@ -888,15 +888,15 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Create a transaction
-     *     > bitcoin-cli createrawtransaction "[{\"txid\" : \"mytxid\",\"vout\":0}]" "{\"myaddress\":0.01}"
+*       bitcoin-cli createrawtransaction "[{\"txid\" : \"mytxid\",\"vout\":0}]" "{\"myaddress\":0.01}"
      *     Sign the transaction, and get back the hex
-     *     > bitcoin-cli signrawtransaction "myhex"
+*       bitcoin-cli signrawtransaction "myhex"
      *     
      *     Send the transaction (signed hex)
-     *     > bitcoin-cli sendrawtransaction "signedhex"
+*       bitcoin-cli sendrawtransaction "signedhex"
      *     
      *     As a json rpc call
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["signedhex"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["signedhex"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param hex the hex
@@ -972,8 +972,8 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli signrawtransactionwithkey "myhex"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signrawtransactionwithkey", "params": ["myhex"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli signrawtransactionwithkey "myhex"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signrawtransactionwithkey", "params": ["myhex"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
@@ -1021,15 +1021,15 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Create a transaction
-     *     > bitcoin-cli createrawtransaction "[{\"txid\" : \"mytxid\",\"vout\":0}]" "{\"myaddress\":0.01}"
+*       bitcoin-cli createrawtransaction "[{\"txid\" : \"mytxid\",\"vout\":0}]" "{\"myaddress\":0.01}"
      *     Sign the transaction, and get back the hex
-     *     > bitcoin-cli signrawtransaction "myhex"
+*       bitcoin-cli signrawtransaction "myhex"
      *     
      *     Test acceptance of the transaction (signed hex)
-     *     > bitcoin-cli testmempoolaccept "signedhex"
+*       bitcoin-cli testmempoolaccept "signedhex"
      *     
      *     As a json rpc call
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "testmempoolaccept", "params": [["signedhex"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "testmempoolaccept", "params": [["signedhex"]] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
@@ -1065,7 +1065,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      *     "psbt"          (string) The base64-encoded partially signed transaction with inputs updated
      *     
      *     Examples:
-     *     > bitcoin-cli utxoupdatepsbt "psbt"
+*       bitcoin-cli utxoupdatepsbt "psbt"
      * </pre>
      *
      * @return the object

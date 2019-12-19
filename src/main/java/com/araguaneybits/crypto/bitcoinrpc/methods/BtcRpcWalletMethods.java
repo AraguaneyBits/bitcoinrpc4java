@@ -78,8 +78,8 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     Result:
      *     
      *     Examples:
-     *     > bitcoin-cli abandontransaction "1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "abandontransaction", "params": ["1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli abandontransaction "1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "abandontransaction", "params": ["1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param txid the transaction id
@@ -128,10 +128,10 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Add a multisig address from 2 addresses
-     *     > bitcoin-cli addmultisigaddress 2 "[\"16sSauSf5pF2UkUwvKGq4qjNRzBZYqgEL5\",\"171sgjn4YtPu27adkKGrdDwzRTxnRkBfKV\"]"
+*       bitcoin-cli addmultisigaddress 2 "[\"16sSauSf5pF2UkUwvKGq4qjNRzBZYqgEL5\",\"171sgjn4YtPu27adkKGrdDwzRTxnRkBfKV\"]"
      *     
      *     As json rpc call
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addmultisigaddress", "params": [2, "[\"16sSauSf5pF2UkUwvKGq4qjNRzBZYqgEL5\",\"171sgjn4YtPu27adkKGrdDwzRTxnRkBfKV\"]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addmultisigaddress", "params": [2, "[\"16sSauSf5pF2UkUwvKGq4qjNRzBZYqgEL5\",\"171sgjn4YtPu27adkKGrdDwzRTxnRkBfKV\"]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param nrequired the nrequired
@@ -207,7 +207,7 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Bump the fee, get the new transaction's txid
-     *     > bitcoin-cli bumpfee
+*       bitcoin-cli bumpfee
      * </pre>
      *
      * @param txid the txid
@@ -245,9 +245,9 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     "key"                (string) The private key
      *     
      *     Examples:
-     *     > bitcoin-cli dumpprivkey "myaddress"
-     *     > bitcoin-cli importprivkey "mykey"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpprivkey", "params": ["myaddress"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli dumpprivkey "myaddress"
+*       bitcoin-cli importprivkey "mykey"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpprivkey", "params": ["myaddress"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param address the address
@@ -284,8 +284,8 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli getaddressesbylabel "tabby"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressesbylabel", "params": ["tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli getaddressesbylabel "tabby"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressesbylabel", "params": ["tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param label the label
@@ -699,13 +699,13 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Import an address with rescan
-     *     > bitcoin-cli importaddress "myaddress"
+*       bitcoin-cli importaddress "myaddress"
      *     
      *     Import using a label without rescan
-     *     > bitcoin-cli importaddress "myaddress" "testing" false
+*       bitcoin-cli importaddress "myaddress" "testing" false
      *     
      *     As a JSON-RPC call
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importaddress", "params": ["myaddress", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importaddress", "params": ["myaddress", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param address the address
@@ -781,8 +781,8 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     may report that the imported keys, addresses or scripts exists but related transactions are still missing.
      *     
      *     Examples:
-     *     > bitcoin-cli importmulti '[{ "scriptPubKey": { "address": "<my address>" }, "timestamp":1455191478 }, { "scriptPubKey": { "address": "<my 2nd address>" }, "label": "example 2", "timestamp": 1455191480 }]'
-     *     > bitcoin-cli importmulti '[{ "scriptPubKey": { "address": "<my address>" }, "timestamp":1455191478 }]' '{ "rescan": false}'
+*       bitcoin-cli importmulti '[{ "scriptPubKey": { "address": "<my address>" }, "timestamp":1455191478 }, { "scriptPubKey": { "address": "<my 2nd address>" }, "label": "example 2", "timestamp": 1455191480 }]'
+*       bitcoin-cli importmulti '[{ "scriptPubKey": { "address": "<my address>" }, "timestamp":1455191478 }]' '{ "rescan": false}'
      *     
      *     Response is an array with the same size as the input that has the execution result :
      *     [{"success": true}, {"success": true, "warnings": ["Ignoring irrelevant private key"]}, {"success": false, "error": {"code": -1, "message": "Internal Server Error"}}, ...]
@@ -824,19 +824,19 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Dump a private key
-     *     > bitcoin-cli dumpprivkey "myaddress"
+*       bitcoin-cli dumpprivkey "myaddress"
      *     
      *     Import the private key with rescan
-     *     > bitcoin-cli importprivkey "mykey"
+*       bitcoin-cli importprivkey "mykey"
      *     
      *     Import using a label and without rescan
-     *     > bitcoin-cli importprivkey "mykey" "testing" false
+*       bitcoin-cli importprivkey "mykey" "testing" false
      *     
      *     Import using default blank label and without rescan
-     *     > bitcoin-cli importprivkey "mykey" "" false
+*       bitcoin-cli importprivkey "mykey" "" false
      *     
      *     As a JSON-RPC call
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importprivkey", "params": ["mykey", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importprivkey", "params": ["mykey", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param privkey the privkey
@@ -1048,19 +1048,19 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     List the unspent transactions
-     *     > bitcoin-cli listunspent 
+*       bitcoin-cli listunspent 
      *     
      *     Lock an unspent transaction
-     *     > bitcoin-cli lockunspent false "[{\"txid\":\"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\",\"vout\":1}]"
+*       bitcoin-cli lockunspent false "[{\"txid\":\"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\",\"vout\":1}]"
      *     
      *     List the locked transactions
-     *     > bitcoin-cli listlockunspent 
+*       bitcoin-cli listlockunspent 
      *     
      *     Unlock the transaction again
-     *     > bitcoin-cli lockunspent true "[{\"txid\":\"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\",\"vout\":1}]"
+*       bitcoin-cli lockunspent true "[{\"txid\":\"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0\",\"vout\":1}]"
      *     
      *     As a json rpc call
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listlockunspent", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listlockunspent", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
@@ -1612,16 +1612,16 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Unlock the wallet for 30 seconds
-     *     > bitcoin-cli walletpassphrase "mypassphrase" 30
+*       bitcoin-cli walletpassphrase "mypassphrase" 30
      *     
      *     Create the signature
-     *     > bitcoin-cli signmessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "my message"
+*       bitcoin-cli signmessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "my message"
      *     
      *     Verify the signature
-     *     > bitcoin-cli verifymessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "signature" "my message"
+*       bitcoin-cli verifymessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "signature" "my message"
      *     
      *     As json rpc
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signmessage", "params": ["1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/     *
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signmessage", "params": ["1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/     *
      * </pre>
      *
      * @param address the address

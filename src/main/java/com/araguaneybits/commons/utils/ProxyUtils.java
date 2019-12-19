@@ -40,10 +40,9 @@ public final class ProxyUtils {
     }
 
     /**
-     * Connect internet.
+     * Connect internet. https://docs.oracle.com/javase/6/docs/technotes/guides/net/proxies.html
      *
      * @param proxyConfiguration the proxy configuration
-     * @see https://docs.oracle.com/javase/6/docs/technotes/guides/net/proxies.html
      */
     public static void connectInternet(ProxyConfiguration proxyConfiguration) {
         if (proxyConfiguration != null && proxyConfiguration.isEnabled()) {

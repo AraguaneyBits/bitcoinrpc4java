@@ -79,10 +79,10 @@ public class BtcRpcUtilMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Create a multisig address from 2 public keys
-     *     > bitcoin-cli createmultisig 2 "[\"03789ed0bb717d88f7d321a368d905e7430207ebbd82bd342cf11ae157a7ace5fd\",\"03dbc6764b8884a92e871274b87583e6d5c2a58819473e17e107ef3f6aa5a61626\"]"
+*       bitcoin-cli createmultisig 2 "[\"03789ed0bb717d88f7d321a368d905e7430207ebbd82bd342cf11ae157a7ace5fd\",\"03dbc6764b8884a92e871274b87583e6d5c2a58819473e17e107ef3f6aa5a61626\"]"
      *     
      *     As a json rpc call
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createmultisig", "params": [2, "[\"03789ed0bb717d88f7d321a368d905e7430207ebbd82bd342cf11ae157a7ace5fd\",\"03dbc6764b8884a92e871274b87583e6d5c2a58819473e17e107ef3f6aa5a61626\"]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createmultisig", "params": [2, "[\"03789ed0bb717d88f7d321a368d905e7430207ebbd82bd342cf11ae157a7ace5fd\",\"03dbc6764b8884a92e871274b87583e6d5c2a58819473e17e107ef3f6aa5a61626\"]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param nrequired the nrequired
@@ -133,7 +133,7 @@ public class BtcRpcUtilMethods extends BaseBtcRpcMethods {
      *     
      *     Examples:
      *     First three native segwit receive addresses
-     *     > bitcoin-cli deriveaddresses "wpkh([d34db33f/84h/0h/0h]xpub6DJ2dNUysrn5Vt36jH2KLBT2i1auw1tTSSomg8PhqNiUtx8QX2SvC9nrHu81fT41fvDUnhMjEzQgXnQjKEu3oaqMSzhSrHMxyyoEAmUHQbY/0/*)#trd0mf0l" "[0,2]"
+*       bitcoin-cli deriveaddresses "wpkh([d34db33f/84h/0h/0h]xpub6DJ2dNUysrn5Vt36jH2KLBT2i1auw1tTSSomg8PhqNiUtx8QX2SvC9nrHu81fT41fvDUnhMjEzQgXnQjKEu3oaqMSzhSrHMxyyoEAmUHQbY/0/*)#trd0mf0l" "[0,2]"
      * </pre>
      *
      * @param descriptor the descriptor
@@ -202,7 +202,7 @@ public class BtcRpcUtilMethods extends BaseBtcRpcMethods {
      *     Results are returned for any horizon which tracks blocks up to the confirmation target.
      *     
      *     Example:
-     *     > bitcoin-cli estimaterawfee 6 0.9
+*       bitcoin-cli estimaterawfee 6 0.9
      * </pre>
      *
      * @param confTarget the conf target
@@ -259,7 +259,7 @@ public class BtcRpcUtilMethods extends BaseBtcRpcMethods {
      *     have been observed to make an estimate for any number of blocks.
      *     
      *     Example:
-     *     > bitcoin-cli estimatesmartfee 6
+*       bitcoin-cli estimatesmartfee 6
      * </pre>
      *
      * @param confTarget the conf target
@@ -303,7 +303,7 @@ public class BtcRpcUtilMethods extends BaseBtcRpcMethods {
      *     
      *     Examples:
      *     Analyse a descriptor
-     *     > bitcoin-cli getdescriptorinfo "wpkh([d34db33f/84h/0h/0h]0279be667ef9dcbbac55a06295Ce870b07029Bfcdb2dce28d959f2815b16f81798)"
+*       bitcoin-cli getdescriptorinfo "wpkh([d34db33f/84h/0h/0h]0279be667ef9dcbbac55a06295Ce870b07029Bfcdb2dce28d959f2815b16f81798)"
      * </pre>
      *
      * @param descriptor the descriptor
@@ -344,13 +344,13 @@ public class BtcRpcUtilMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Create the signature
-     *     > bitcoin-cli signmessagewithprivkey "privkey" "my message"
+*       bitcoin-cli signmessagewithprivkey "privkey" "my message"
      *     
      *     Verify the signature
-     *     > bitcoin-cli verifymessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "signature" "my message"
+*       bitcoin-cli verifymessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "signature" "my message"
      *     
      *     As json rpc
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signmessagewithprivkey", "params": ["privkey", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signmessagewithprivkey", "params": ["privkey", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param privkey the privkey
@@ -396,8 +396,8 @@ public class BtcRpcUtilMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-     *     > bitcoin-cli validateaddress "1PSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc"
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "validateaddress", "params": ["1PSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       bitcoin-cli validateaddress "1PSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc"
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "validateaddress", "params": ["1PSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param address the address
@@ -435,16 +435,16 @@ public class BtcRpcUtilMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Unlock the wallet for 30 seconds
-     *     > bitcoin-cli walletpassphrase "mypassphrase" 30
+*       bitcoin-cli walletpassphrase "mypassphrase" 30
      *     
      *     Create the signature
-     *     > bitcoin-cli signmessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "my message"
+*       bitcoin-cli signmessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "my message"
      *     
      *     Verify the signature
-     *     > bitcoin-cli verifymessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "signature" "my message"
+*       bitcoin-cli verifymessage "1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX" "signature" "my message"
      *     
      *     As json rpc
-     *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifymessage", "params": ["1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX", "signature", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifymessage", "params": ["1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XX", "signature", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param address the address
