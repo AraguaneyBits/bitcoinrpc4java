@@ -32,23 +32,37 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListBannedResp
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcNetworkInfoResponse;
 
 /**
+ * The Class BtcRpcNetworkMethodsTest.
+ *
  * @author jestevez
  */
 // @Ignore
 public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
 
+    /** The undertest. */
     private BtcRpcNetworkMethods undertest;
 
+    /**
+     * Sets the up.
+     */
     @Before
     public void setUp() {
         undertest = new BtcRpcNetworkMethods(btcRpcGateway);
     }
 
+    /**
+     * Tear down.
+     */
     @After
     public void tearDown() {
 
     }
 
+    /**
+     * Test add node.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testAddNode() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -56,6 +70,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertTrue("Expected true", success);
     }
 
+    /**
+     * Test clear banned.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testClearBanned() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -63,6 +82,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertTrue("Expected true", success);
     }
 
+    /**
+     * Test disconnect node.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testDisconnectNode() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -70,6 +94,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertTrue("Expected true", success);
     }
 
+    /**
+     * Test get added node info.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetAddedNodeInfo() throws Exception {
         enqueueMockedResponse(200,
@@ -81,6 +110,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Is not equals", "2.113.15.154:18333", btcRpcGetPeerInfoResponse.getAddednode());
     }
 
+    /**
+     * Test get connection count.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetConnectionCount() throws Exception {
         enqueueMockedResponse(200, "{\"result\":9,\"error\":null,\"id\":null}");
@@ -89,6 +123,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Is not equals", new BigInteger("9"), count);
     }
 
+    /**
+     * Test get net totals.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetNetTotals() throws Exception {
         enqueueMockedResponse(200,
@@ -98,6 +137,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Is not equals", new BigInteger("26963394"), btcRpcGetNetTotalsResponse.getTotalbytessent());
     }
 
+    /**
+     * Test get network info.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetNetworkInfo() throws Exception {
         enqueueMockedResponse(200,
@@ -109,6 +153,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
+    /**
+     * Test get node addresses.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetNodeAddresses() throws Exception {
         enqueueMockedResponse(200,
@@ -119,6 +168,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Is not equals", "84.242.164.239", btcRpcGetNodeAddressesResponse.getAddress());
     }
 
+    /**
+     * Test get peer info.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetPeerInfo() throws Exception {
         enqueueMockedResponse(200,
@@ -133,6 +187,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         // }
     }
 
+    /**
+     * Test list banned.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testListBanned() throws Exception {
         enqueueMockedResponse(200,
@@ -144,6 +203,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Is not equals", "2.113.15.154/32", btcRpcListBannedResponse.getAddress());
     }
 
+    /**
+     * Test ping.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testPing() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -162,6 +226,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
+    /**
+     * Test set ban.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testSetBan() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -169,6 +238,11 @@ public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertTrue("Expected true", success);
     }
 
+    /**
+     * Test set network active.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testSetNetworkActive() throws Exception {
         enqueueMockedResponse(200, "{\"result\":true,\"error\":null,\"id\":null}");

@@ -54,6 +54,11 @@ public class BtcRpcBaseException extends RuntimeException {
         this.code = 0;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Throwable#getMessage()
+     */
     /*
      * (non-Javadoc)
      * 

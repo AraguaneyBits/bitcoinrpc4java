@@ -1,3 +1,18 @@
+/*
+ * Copyright 2019 AraguaneyBits.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.araguaneybits.crypto.bitcoinrpc.methods.integration;
 
 import static org.awaitility.Awaitility.await;
@@ -13,38 +28,92 @@ import com.araguaneybits.commons.io.ExecuteNativeCommand;
 import com.araguaneybits.commons.utils.ProxyConfiguration;
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcGateway;
 
+/**
+ * The Class AbstractBtcRpcMethodsIntegrationTest.
+ *
+ * @author jestevez
+ */
 public abstract class AbstractBtcRpcMethodsIntegrationTest {
 
+    /** The is active daemon. */
     private static Boolean isActiveDaemon = Boolean.FALSE;
+
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractBtcRpcMethodsIntegrationTest.class);
 
+    /** The bitcoin rpc user. */
     protected static String BITCOIN_RPC_USER;
+
+    /** The bitcoin rpc pass. */
     protected static String BITCOIN_RPC_PASS;
+
+    /** The bitcoin rpc host. */
     protected static String BITCOIN_RPC_HOST;
+
+    /** The bitcoin rpc port. */
     protected static String BITCOIN_RPC_PORT;
+
+    /** The bitcoin rpc protocol. */
     protected static String BITCOIN_RPC_PROTOCOL;
+
+    /** The bitcoin home. */
     protected static String BITCOIN_HOME;
+
+    /** The bitcoind. */
     protected static String BITCOIND;
+
+    /** The bitcoin cli. */
     protected static String BITCOIN_CLI;
+
+    /** The passphrase. */
     protected static String PASSPHRASE;
+
+    /** The use local daemon. */
     protected static Boolean USE_LOCAL_DAEMON = Boolean.FALSE;
 
+    /** The proxy enabled. */
     protected static Boolean PROXY_ENABLED = Boolean.FALSE;
+
+    /** The proxy exclusion. */
     protected static String PROXY_EXCLUSION;
+
+    /** The proxy password. */
     protected static String PROXY_PASSWORD;
+
+    /** The proxy port. */
     protected static String PROXY_PORT;
+
+    /** The proxy url. */
     protected static String PROXY_URL;
+
+    /** The proxy user. */
     protected static String PROXY_USER;
 
+    /** The btc rpc gateway. */
     protected static BtcRpcGateway btcRpcGateway;
 
+    /**
+     * The Class BitcoinDaemon.
+     */
     static class BitcoinDaemon implements Runnable {
+
+        /** The parameter. */
         private String parameter;
 
+        /**
+         * Instantiates a new bitcoin daemon.
+         *
+         * @param parameter the parameter
+         */
         public BitcoinDaemon(String parameter) {
             this.parameter = parameter;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Runnable#run()
+         */
         public void run() {
             try {
                 ExecuteNativeCommand.executeRuntimeCommand(BITCOIND + " " + parameter);
@@ -56,6 +125,11 @@ public abstract class AbstractBtcRpcMethodsIntegrationTest {
         }
     }
 
+    /**
+     * Checks if is ready.
+     *
+     * @return the callable
+     */
     protected static Callable<Boolean> isReady() {
         return new Callable<Boolean>() {
             public Boolean call() throws Exception {
@@ -70,6 +144,9 @@ public abstract class AbstractBtcRpcMethodsIntegrationTest {
         };
     }
 
+    /**
+     * Initialize rpc gateway.
+     */
     private static void initializeRpcGateway() {
         ProxyConfiguration proxyConfiguration = new ProxyConfiguration();
         proxyConfiguration.setEnabled(PROXY_ENABLED);
@@ -82,6 +159,11 @@ public abstract class AbstractBtcRpcMethodsIntegrationTest {
                 proxyConfiguration);
     }
 
+    /**
+     * Sets the up class.
+     *
+     * @throws Exception the exception
+     */
     @BeforeClass
     public static void setUpClass() throws Exception {
         BITCOIN_RPC_USER = ConfigurationIntegrationTest.getVariable("bitcoinrpc4j.it.rpc.user");
@@ -114,6 +196,11 @@ public abstract class AbstractBtcRpcMethodsIntegrationTest {
 
     }
 
+    /**
+     * Tear down class.
+     *
+     * @throws Exception the exception
+     */
     @AfterClass
     public static void tearDownClass() throws Exception {
         // Shut down the server.

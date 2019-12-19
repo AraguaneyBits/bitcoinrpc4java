@@ -42,7 +42,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
  *
  * @author jestevez
  */
-@SuppressWarnings({ "rawtypes", "unchecked" })
 public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
 
     /**
@@ -467,7 +466,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockstats", "params": [1000 '["minfeerate","avgfeerate"]'] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
-     * @param block the block
+     * @param height the height
+     * @param stats the stats
      * @return the block stats
      */
     public Object getBlockStats(Long height, String[] stats) {
@@ -563,8 +563,6 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintxstats", "params": [2016] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
-     * @param nblocks the nblocks
-     * @param blockhash the blockhash
      * @return the chain tx stats
      */
     public BtcRpcGetChainTxStatsResponse getChainTxStats() {
@@ -572,6 +570,12 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
         return getBtcRpcGetChainTxStatsResponse(json);
     }
 
+    /**
+     * Gets the btc rpc get chain tx stats response.
+     *
+     * @param json the json
+     * @return the btc rpc get chain tx stats response
+     */
     private BtcRpcGetChainTxStatsResponse getBtcRpcGetChainTxStatsResponse(String json) {
         RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetChainTxStatsResponse>>() {
@@ -579,6 +583,13 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
         return (BtcRpcGetChainTxStatsResponse) rpcOutputMessage.getResult();
     }
 
+    /**
+     * Gets the chain tx stats by block and block hash.
+     *
+     * @param nblocks the nblocks
+     * @param blockhash the blockhash
+     * @return the chain tx stats by block and block hash
+     */
     public BtcRpcGetChainTxStatsResponse getChainTxStatsByBlockAndBlockHash(Long nblocks, String blockhash) {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_CHAIN_TX_STATS, nblocks, blockhash);
         return getBtcRpcGetChainTxStatsResponse(json);
@@ -1054,6 +1065,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     "data"           (string) A string that is a serialized, hex-encoded data for the proof.
      * </pre>
      *
+     * @param txids the txids
+     * @param blockhash the blockhash
      * @return the tx out proof
      */
     public String getTxOutProof(String[] txids, String blockhash) {
@@ -1133,6 +1146,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "preciousblock", "params": ["blockhash"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param blockhash the blockhash
      * @return the object
      */
     public Object preciousBlock(String blockhash) {
@@ -1165,6 +1179,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "pruneblockchain", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param height the height
      * @return the object
      */
     public Object pruneBlockchain(Long height) {
@@ -1249,6 +1264,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     > curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param checklevel the checklevel
+     * @param nblocks the nblocks
      * @return the object
      */
     public Object verifyChain(Integer checklevel, Integer nblocks) {
@@ -1281,6 +1298,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     ["txid"]      (array, strings) The txid(s) which the proof commits to, or empty array if the proof can not be validated.
      * </pre>
      *
+     * @param proof the proof
      * @return the object
      */
     public Object verifyTxOutProof(String proof) {

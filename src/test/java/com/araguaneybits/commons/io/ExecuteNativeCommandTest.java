@@ -65,7 +65,7 @@ public class ExecuteNativeCommandTest {
     @Test
     public void testExecuteRuntimeCommand() {
         try {
-            List<String> out = ExecuteNativeCommand.executeRuntimeCommand("cd ");
+            List<String> out = ExecuteNativeCommand.executeRuntimeCommand("help");
             Assert.assertNotNull("Expected out", out);
         } catch (Exception e) {
             // Ignore

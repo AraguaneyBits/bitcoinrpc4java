@@ -1,3 +1,18 @@
+/*
+ * Copyright 2019 AraguaneyBits.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.araguaneybits.crypto.bitcoinrpc.methods;
 
 import java.math.BigDecimal;
@@ -13,21 +28,38 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcCreateMultiSig
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcEstimateSmartFeeResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetDescriptorInfoResponse;
 
-//@Ignore
+/**
+ * The Class BtcRpcUtilMethodsTest.
+ *
+ * @author jestevez
+ */
+// @Ignore
 public class BtcRpcUtilMethodsTest extends AbstractBtcRpcMethodsTest {
 
+    /** The undertest. */
     private BtcRpcUtilMethods undertest;
 
+    /**
+     * Sets the up.
+     */
     @Before
     public void setUp() {
         undertest = new BtcRpcUtilMethods(btcRpcGateway);
     }
 
+    /**
+     * Tear down.
+     */
     @After
     public void tearDown() {
 
     }
 
+    /**
+     * Test create multi sig.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testCreateMultiSig() throws Exception {
 
@@ -41,6 +73,11 @@ public class BtcRpcUtilMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Expected correct address", "2NGRTbZBLGV4tJ3y4Avz7sa2Dea9o93UaPH", btcRpcCreateMultiSigResponse.getAddress());
     }
 
+    /**
+     * Test get descriptor info.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetDescriptorInfo() throws Exception {
         enqueueMockedResponse(200,
@@ -55,6 +92,11 @@ public class BtcRpcUtilMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
+    /**
+     * Test estimate smart fee.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testEstimateSmartFee() throws Exception {
         enqueueMockedResponse(200, "{\"result\":{ \"feerate\": 0.00021199, \"blocks\": 3 },\"error\":null,\"id\":null}");

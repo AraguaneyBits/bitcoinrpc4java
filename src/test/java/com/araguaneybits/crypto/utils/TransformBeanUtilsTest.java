@@ -26,32 +26,64 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetTransaction
 import com.fasterxml.jackson.core.type.TypeReference;
 
 /**
+ * The Class TransformBeanUtilsTest.
+ *
  * @author jestevez
  */
 public class TransformBeanUtilsTest {
 
+    /**
+     * The Class Person.
+     */
     static class Person {
+
+        /** The name. */
         private String name;
+
+        /** The age. */
         private Integer age;
 
+        /**
+         * Gets the name.
+         *
+         * @return the name
+         */
         public String getName() {
             return name;
         }
 
+        /**
+         * Sets the name.
+         *
+         * @param name the new name
+         */
         public void setName(String name) {
             this.name = name;
         }
 
+        /**
+         * Gets the age.
+         *
+         * @return the age
+         */
         public Integer getAge() {
             return age;
         }
 
+        /**
+         * Sets the age.
+         *
+         * @param age the new age
+         */
         public void setAge(Integer age) {
             this.age = age;
         }
 
     }
 
+    /**
+     * Test write value as string.
+     */
     @Test
     public void testWriteValueAsString() {
         Person person = new Person();
@@ -61,6 +93,9 @@ public class TransformBeanUtilsTest {
         Assert.assertEquals("Expected this json", "{\"name\":\"Brad Pitt\",\"age\":54}", json);
     }
 
+    /**
+     * Test read value.
+     */
     @Test
     public void testReadValue() {
         String json = "{\"name\":\"Brad Pitt\",\"age\":54}";
@@ -68,6 +103,11 @@ public class TransformBeanUtilsTest {
         Assert.assertEquals("Expected person", "Brad Pitt", person.getName());
     }
 
+    /**
+     * Test read generic.
+     *
+     * @throws Exception the exception
+     */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @Test
     public void testReadGeneric() throws Exception {

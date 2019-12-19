@@ -141,6 +141,9 @@ public class ApiHttpClientTest extends Mockito {
 
     }
 
+    /**
+     * Test enum http status code.
+     */
     @Test
     public void testEnumHttpStatusCode() {
         for (EnumHttpStatusCode f : EnumHttpStatusCode.values()) {
