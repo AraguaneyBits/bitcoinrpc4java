@@ -25,8 +25,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * The Class ReceivedByAddress.
  *
  * @author Jose Luis Estevez jose.estevez.prieto@gmail.com
- * @version 1.0.0
- * @date 02-nov-2017
  */
 public class BtcRpcReceivedByAddressResponse implements Serializable {
 

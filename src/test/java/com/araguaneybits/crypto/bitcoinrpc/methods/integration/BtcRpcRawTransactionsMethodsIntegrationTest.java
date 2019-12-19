@@ -38,13 +38,26 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcFinalizePsbtRe
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcFundRawTransactionResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListUnspentResponse;
 
-//@Ignore
+/**
+ * The Class BtcRpcRawTransactionsMethodsIntegrationTest.
+ *
+ * @author jestevez
+ */
+// @Ignore
 public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcMethodsIntegrationTest {
 
+    /** The undertest. */
     private BtcRpcRawTransactionsMethods undertest;
+
+    /** The btc rpc wallet methods. */
     private BtcRpcWalletMethods btcRpcWalletMethods;
+
+    /** The btc rpc wallet tools methods. */
     private BtcRpcWalletToolsMethods btcRpcWalletToolsMethods;
 
+    /**
+     * Sets the up.
+     */
     @Before
     public void setUp() {
         undertest = new BtcRpcRawTransactionsMethods(btcRpcGateway);
@@ -52,11 +65,19 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         btcRpcWalletToolsMethods = new BtcRpcWalletToolsMethods(btcRpcGateway);
     }
 
+    /**
+     * Tear down.
+     */
     @After
     public void tearDown() {
 
     }
 
+    /**
+     * Test analyze psbt.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testAnalyzePsbt() throws Exception {
         String psbt = createRawTransactionTool(0, 2, 2, new BigDecimal("0.002"), true);
@@ -64,6 +85,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.assertNotNull("Expected not null", btcRpcAnalyzePsbtResponse);
     }
 
+    /**
+     * Test combine psbt.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testCombinePsbt() throws Exception {
         String[] txs = null;
@@ -71,6 +97,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test combine raw transaction.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testCombineRawTransaction() throws Exception {
         String rawTx1 = "";
@@ -82,6 +113,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test convert to psbt.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testConvertToPsbt() throws Exception {
         String hexstring = createRawTransactionTool(0, 2, 2, new BigDecimal("0.002"), false);
@@ -91,12 +127,27 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.assertNotNull("Expected psbt", psbt);
     }
 
+    /**
+     * Test createpsbt.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testCreatepsbt() throws Exception {
         String hexstring = createRawTransactionTool(0, 2, 2, new BigDecimal("0.002"), true);
         Assert.assertNotNull("Expected hexstring", hexstring);
     }
 
+    /**
+     * Creates the raw transaction tool.
+     *
+     * @param startInputs the start inputs
+     * @param maxInputs the max inputs
+     * @param maxOutputs the max outputs
+     * @param amount the amount
+     * @param isPsbt the is psbt
+     * @return the string
+     */
     private String createRawTransactionTool(int startInputs, int maxInputs, int maxOutputs, BigDecimal amount, Boolean isPsbt) {
         Long minconf = null;
         Long maxconf = null;
@@ -150,12 +201,22 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         return rawTx;
     }
 
+    /**
+     * Test create raw transaction.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testCreateRawTransaction() throws Exception {
         String rawTx = createRawTransactionTool(0, 2, 2, new BigDecimal("0.001"), false);
         Assert.assertNotNull("Is not null", rawTx);
     }
 
+    /**
+     * Test decode psbt.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testDecodePsbt() throws Exception {
         String psbt = "cHNidP8BAMUCAAAAAwDqEy7KDCfn2yaLj/Mdj7JUZiNE3a9utaLvmfhtqJTRAQAAAAD9////DgCV8ewPvX2V4vVXiRgUHznDmgLPTOoAXG2yjDqGkQwAAAAAAP3///8OAJXx7A+9fZXi9VeJGBQfOcOaAs9M6gBcbbKMOoaRDAEAAAAA/f///wJADQMAAAAAABepFM3/LG9AKDFoMu5gkE5cwa/oAxvPh0ANAwAAAAAAF6kUaC0uzdTRbxPi447gY1tBZCEBXGiHAAAAAAAAAAAAAA==";
@@ -164,6 +225,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
                 btcRpcDecodePsbtResponse.getTx().getTxid());
     }
 
+    /**
+     * Test decode raw transaction.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testDecodeRawTransaction() throws Exception {
         String hexstring = "02000000030e0095f1ec0fbd7d95e2f5578918141f39c39a02cf4cea005c6db28c3a86910c0000000000fdffffff0e0095f1ec0fbd7d95e2f5578918141f39c39a02cf4cea005c6db28c3a86910c0100000000fdffffff1bcadbdc7799d9340435c46e4440a7c65848a7ffc723cb76618853665ef152650100000000fdffffff0240420f000000000017a9147c1f3a5f66371ae4c739b87893b6eeb44e62705e8740420f000000000017a914c3295dc26a6594f0ed2498356ad6bc5fab5284138700000000";
@@ -173,6 +239,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
                 btcRpcDecodeRawTransactionResponse.getTxid());
     }
 
+    /**
+     * Test decode script.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testDecodeScript() throws Exception {
         String hexstring = "02000000000102ee731a2a5ebfce28016b2ed5c2c1a285d00bf3e4700a4d1105abc293ace735980100000017160014b70358715715053f37922c198a37fba6ded2717dfdffffff48a357bf51f2762c0ef8a835e297d460befbeef45d2be2448e7619d243c528cd010000006a4730440220790c02a6dcb772e85cde6cb9e6ee6d8e627a911322fd20d9b42ce41dd23c1cab02203d1552997405731608856e5d2471802cc68aea193c6ea2941c89fd4b0b47ad23012103bead05a55742993aac187db466a051a962eab7fc609c635017e4e35e8feff7d5fdffffff0240420f000000000017a914dc78ebea77167883abc76874094278e38eab17b087b2bd10000000000017a914c76c5adaf4d86875da869fef462f116f38d1e4b087024730440220196a4767fcb1822bdeeab751f8cc0a93f753da6bf6efd65d1b5cc95398a650d60220324cb15361995ea59139fac847999c1e712ddfc86bdf236b1dfc0f4b3084667c012102041818a3ef65ab8972cf2a35491753ad0aa9cadaaa947acf637db152f0eb196c00389b1800";
@@ -180,6 +251,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.assertEquals("Expected equals", "2MsL6cE7YeQ9SyZaq5g5cSKcxAdAzw4kxwt", btcRpcDecodeScriptResponse.getP2sh());
     }
 
+    /**
+     * Test finalize psbt.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testFinalizePsbt() throws Exception {
         String psbt = "cHNidP8BAMUCAAAAAwDqEy7KDCfn2yaLj/Mdj7JUZiNE3a9utaLvmfhtqJTRAQAAAAD9////DgCV8ewPvX2V4vVXiRgUHznDmgLPTOoAXG2yjDqGkQwAAAAAAP3///8OAJXx7A+9fZXi9VeJGBQfOcOaAs9M6gBcbbKMOoaRDAEAAAAA/f///wJADQMAAAAAABepFM3/LG9AKDFoMu5gkE5cwa/oAxvPh0ANAwAAAAAAF6kUaC0uzdTRbxPi447gY1tBZCEBXGiHAAAAAAAAAAAAAA==";
@@ -188,6 +264,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.assertEquals("Expected equals", psbt, btcRpcFinalizePsbtResponse.getPsbt());
     }
 
+    /**
+     * Test fund raw transaction.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testFundRawTransaction() throws Exception {
         String rawTx = createRawTransactionTool(0, 2, 2, new BigDecimal("0.001"), false);
@@ -195,6 +276,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.assertNotNull("Is not null", btcRpcFundRawTransactionResponse);
     }
 
+    /**
+     * Test get raw transaction.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testGetRawTransaction() throws Exception {
         String toAddress = btcRpcWalletMethods.getNewAddress();
@@ -216,6 +302,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.assertNotNull("Is not null", btcRpcDecodeRawTransactionResponse);
     }
 
+    /**
+     * Test joinpsbts.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testJoinpsbts() throws Exception {
         String hex1 = "";
@@ -227,6 +318,11 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test send raw transaction.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testSendRawTransaction() throws Exception {
         String rawTx = createRawTransactionTool(0, 2, 2, new BigDecimal("0.001"), false);
@@ -235,18 +331,33 @@ public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcM
         Assert.assertNotNull("Is not null", tx);
     }
 
+    /**
+     * Test signrawtransactionwithkey.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testSignrawtransactionwithkey() throws Exception {
         undertest.signrawtransactionwithkey();
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test testmempoolaccept.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testTestmempoolaccept() throws Exception {
         undertest.testmempoolaccept();
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test utxoupdatepsbt.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testUtxoupdatepsbt() throws Exception {
         undertest.utxoupdatepsbt();

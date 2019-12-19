@@ -61,8 +61,7 @@ public final class HttpUtils {
             if (sb.length() > 0) {
                 sb.append("&");
             }
-            sb.append(String.format("%s=%s", urlEncodeUTF8(entry.getKey().toString()),
-                    urlEncodeUTF8(entry.getValue().toString())));
+            sb.append(String.format("%s=%s", urlEncodeUTF8(entry.getKey().toString()), urlEncodeUTF8(entry.getValue().toString())));
         }
         return sb.toString();
     }
@@ -70,7 +69,7 @@ public final class HttpUtils {
     /**
      * To basic authorization.
      *
-     * @param user     the user
+     * @param user the user
      * @param password the password
      * @return the string
      */

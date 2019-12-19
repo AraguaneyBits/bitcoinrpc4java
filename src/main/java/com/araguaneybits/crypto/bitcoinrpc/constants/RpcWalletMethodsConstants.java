@@ -16,11 +16,9 @@
 package com.araguaneybits.crypto.bitcoinrpc.constants;
 
 /**
- * The Enum APICalls. Origina Bitcoin reference https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list
+ * The Enum APICalls. Original Bitcoin reference https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list
  *
  * @author Jose Luis Estevez jose.estevez.prieto@gmail.com
- * @version 1.0.0
- * @date 31-oct-2017
  */
 public final class RpcWalletMethodsConstants {
 

@@ -26,16 +26,18 @@ import org.junit.Test;
  */
 public class CommonsConstantsTest {
 
+    /** The Constant IS_NOT_NULL. */
+    public static final String IS_NOT_NULL = "Is not null";
+
     /**
      * Test constants.
      */
     @Test
     public void testConstants() {
-        assertNotNull("Is not null", CommonsConstants.HTTP_NON_PROXY_HOST);
-
-        assertNotNull("Is not null", CommonsConstants.TRUE);
-        assertNotNull("Is not null", CommonsConstants.FALSE);
-        assertNotNull("Is not null", CommonsConstants.EMPTY_STRING);
-        assertNotNull("Is not null", CommonsConstants.NONE);
+        assertNotNull(CommonsConstantsTest.IS_NOT_NULL, CommonsConstants.HTTP_NON_PROXY_HOST);
+        assertNotNull(CommonsConstantsTest.IS_NOT_NULL, CommonsConstants.TRUE);
+        assertNotNull(CommonsConstantsTest.IS_NOT_NULL, CommonsConstants.FALSE);
+        assertNotNull(CommonsConstantsTest.IS_NOT_NULL, CommonsConstants.EMPTY_STRING);
+        assertNotNull(CommonsConstantsTest.IS_NOT_NULL, CommonsConstants.NONE);
     }
 }

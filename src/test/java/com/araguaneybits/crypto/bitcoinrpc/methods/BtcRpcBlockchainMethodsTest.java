@@ -1,3 +1,18 @@
+/*
+ * Copyright 2019 AraguaneyBits.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.araguaneybits.crypto.bitcoinrpc.methods;
 
 import java.math.BigDecimal;
@@ -18,19 +33,37 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTxStat
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolEntryResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMempoolInfoResponse;
 
+/**
+ * The Class BtcRpcBlockchainMethodsTest.
+ *
+ * @author jestevez
+ */
 public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
+
+    /** The undertest. */
     private BtcRpcBlockchainMethods undertest;
 
+    /**
+     * Sets the up.
+     */
     @Before
     public void setUp() {
         undertest = new BtcRpcBlockchainMethods(btcRpcGateway);
     }
 
+    /**
+     * Tear down.
+     */
     @After
     public void tearDown() {
 
     }
 
+    /**
+     * Test get best block hash.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetBestBlockHash() throws Exception {
         enqueueMockedResponse(200, "{\"result\":\"5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f\",\"error\":null,\"id\":null}");
@@ -38,6 +71,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Expected equals", "5abbfa1ab7105d6f39782cdbac470ace776b4c9247eb02f66d1265e732cc499f", hash);
     }
 
+    /**
+     * Test get block.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetBlock() throws Exception {
         enqueueMockedResponse(200,
@@ -61,6 +99,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
+    /**
+     * Test get blockchain info.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetBlockchainInfo() throws Exception {
         enqueueMockedResponse(200,
@@ -69,6 +112,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertNotNull("Is not null", btcRpcBlockchainInfoResponse);
     }
 
+    /**
+     * Test get block count.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetBlockCount() throws Exception {
         enqueueMockedResponse(200, "{\"result\":202,\"error\":null,\"id\":null}");
@@ -77,6 +125,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
+    /**
+     * Test get block hash.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetBlockHash() throws Exception {
         enqueueMockedResponse(200, "{\"result\":\"0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206\",\"error\":null,\"id\":null}");
@@ -85,6 +138,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
+    /**
+     * Test get block header.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetBlockHeader() throws Exception {
         enqueueMockedResponse(200,
@@ -99,6 +157,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertNotNull("Is not null", btcRpcGetBlockHeaderResponse);
     }
 
+    /**
+     * Test get block stats.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testGetBlockStats() throws Exception {
         // TODO pending
@@ -106,6 +169,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         // undertest.getBlockStats("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206");
     }
 
+    /**
+     * Test get chain tips.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetChainTips() throws Exception {
         enqueueMockedResponse(200,
@@ -114,6 +182,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertNotNull("Is not null", list);
     }
 
+    /**
+     * Test get chain tx stats.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetChainTxStats() throws Exception {
         enqueueMockedResponse(200,
@@ -122,6 +195,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Expected equals", Long.valueOf(203), btcRpcGetChainTxStatsResponse.getTxcount());
     }
 
+    /**
+     * Test get difficulty.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetDifficulty() throws Exception {
         enqueueMockedResponse(200, "{\"result\":4.656542373906925e-10,\"error\":null,\"id\":null}");
@@ -129,6 +207,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Expected equals", new BigDecimal("4.656542373906925e-10"), difficulty);
     }
 
+    /**
+     * Test get mempool ancestors.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetMempoolAncestors() throws Exception {
         enqueueMockedResponse(200,
@@ -140,6 +223,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Expected equals", Long.valueOf(189), btcRpcGetMempoolEntryResponse.getSize());
     }
 
+    /**
+     * Test get mempool descendants.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetMempoolDescendants() throws Exception {
         enqueueMockedResponse(200,
@@ -151,6 +239,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Expected equals", Long.valueOf(189), btcRpcGetMempoolEntryResponse.getSize());
     }
 
+    /**
+     * Test get mempool entry.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetMempoolEntry() throws Exception {
         enqueueMockedResponse(200,
@@ -160,6 +253,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Expected equals", Long.valueOf(210), btcRpcGetMempoolEntryResponse.getSize());
     }
 
+    /**
+     * Test get mempool info.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetMempoolInfo() throws Exception {
         enqueueMockedResponse(200,
@@ -169,6 +267,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
         Assert.assertEquals("Expected equals", new BigInteger("240"), btcRpcGetMempoolInfoResponse.getSize());
     }
 
+    /**
+     * Test get raw mempool.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetRawMempool() throws Exception {
         enqueueMockedResponse(200,
@@ -186,6 +289,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
+    /**
+     * Test get tx out.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testGetTxOut() throws Exception {
         enqueueMockedResponse(200, "");
@@ -193,6 +301,11 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
 
     }
 
+    /**
+     * Test get tx out proof.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetTxOutProof() throws Exception {
         enqueueMockedResponse(200,

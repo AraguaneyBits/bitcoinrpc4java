@@ -34,21 +34,38 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcDecodeScriptRe
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcFinalizePsbtResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcFundRawTransactionResponse;
 
-//@Ignore
+/**
+ * The Class BtcRpcRawTransactionsMethodsTest.
+ *
+ * @author jestevez
+ */
+// @Ignore
 public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest {
 
+    /** The undertest. */
     private BtcRpcRawTransactionsMethods undertest;
 
+    /**
+     * Sets the up.
+     */
     @Before
     public void setUp() {
         undertest = new BtcRpcRawTransactionsMethods(btcRpcGateway);
     }
 
+    /**
+     * Tear down.
+     */
     @After
     public void tearDown() {
 
     }
 
+    /**
+     * Test analyze psbt.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testAnalyzePsbt() throws Exception {
         enqueueMockedResponse(200,
@@ -58,6 +75,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.assertEquals("expected equals", "updater", btcRpcAnalyzePsbtResponse.getNext());
     }
 
+    /**
+     * Test combine psbt.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testCombinePsbt() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -66,6 +88,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test combine raw transaction.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testCombineRawTransaction() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -74,6 +101,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test convert to psbt.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testConvertToPsbt() throws Exception {
         enqueueMockedResponse(200,
@@ -87,6 +119,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
                 psbt);
     }
 
+    /**
+     * Test create psbt.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testCreatePsbt() throws Exception {
         enqueueMockedResponse(200,
@@ -124,6 +161,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
                 psbt);
     }
 
+    /**
+     * Test create raw transaction.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testCreateRawTransaction() throws Exception {
         enqueueMockedResponse(200,
@@ -162,6 +204,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
 
     }
 
+    /**
+     * Test decode psbt.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testDecodePsbt() throws Exception {
         enqueueMockedResponse(200,
@@ -173,6 +220,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
                 btcRpcDecodePsbtResponse.getTx().getTxid());
     }
 
+    /**
+     * Test decode raw transaction.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testDecodeRawTransaction() throws Exception {
         enqueueMockedResponse(200,
@@ -184,6 +236,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
                 btcRpcDecodeRawTransactionResponse.getTxid());
     }
 
+    /**
+     * Test decode script.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testDecodeScript() throws Exception {
         enqueueMockedResponse(200,
@@ -194,6 +251,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.assertEquals("Expected equals", "2MsL6cE7YeQ9SyZaq5g5cSKcxAdAzw4kxwt", btcRpcDecodeScriptResponse.getP2sh());
     }
 
+    /**
+     * Test finalize psbt.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testFinalizePsbt() throws Exception {
         enqueueMockedResponse(200,
@@ -204,6 +266,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.assertEquals("Expected equals", psbt, btcRpcFinalizePsbtResponse.getPsbt());
     }
 
+    /**
+     * Test fund raw transaction.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testFundRawTransaction() throws Exception {
         enqueueMockedResponse(200,
@@ -214,6 +281,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.assertEquals("Expected equals", new BigDecimal("0.00000436"), btcRpcFundRawTransactionResponse.getFee());
     }
 
+    /**
+     * Test getrawtransaction.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void testGetrawtransaction() throws Exception {
         enqueueMockedResponse(200,
@@ -226,6 +298,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
                 btcRpcDecodeRawTransactionResponse.getTxid());
     }
 
+    /**
+     * Test join psbts.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testJoinPsbts() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -235,6 +312,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test send raw transaction.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testSendRawTransaction() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -242,6 +324,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.assertEquals("Expected equals", "", tx);
     }
 
+    /**
+     * Test signrawtransactionwithkey.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testSignrawtransactionwithkey() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -249,6 +336,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test testmempoolaccept.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testTestmempoolaccept() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");
@@ -256,6 +348,11 @@ public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest 
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test utxoupdatepsbt.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testUtxoupdatepsbt() throws Exception {
         enqueueMockedResponse(200, "{\"result\":null,\"error\":null,\"id\":null}");

@@ -31,22 +31,36 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListSinceBlock
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcLoadWalletResponse;
 
 /**
+ * The Class BtcRpcWalletToolsMethodsIntegrationTest.
+ *
  * @author jestevez
  */
 public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMethodsIntegrationTest {
 
+    /** The undertest. */
     private BtcRpcWalletToolsMethods undertest;
 
+    /**
+     * Sets the up.
+     */
     @Before
     public void setUp() {
         undertest = new BtcRpcWalletToolsMethods(btcRpcGateway);
     }
 
+    /**
+     * Tear down.
+     */
     @After
     public void tearDown() {
 
     }
 
+    /**
+     * Test abort rescan.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testAbortRescan() throws Exception {
         Boolean success = undertest.abortRescan();
@@ -61,6 +75,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         // Assert.assertTrue("Expected true", isTrue);
     }
 
+    /**
+     * Test backup wallet.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testBackupWallet() throws Exception {
         Boolean condition = true;
@@ -70,6 +89,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertTrue("Ok", condition);
     }
 
+    /**
+     * Test create wallet.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testCreateWallet() throws Exception {
         String walletName = "junit_wallet_2";
@@ -83,6 +107,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         // "/wallet/junit_wallet", proxyConfiguration);
     }
 
+    /**
+     * Test dump wallet.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testDumpWallet() throws Exception {
         Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
@@ -94,6 +123,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertEquals("Expected equals", filename, fileNameConfirm);
     }
 
+    /**
+     * Test encrypt wallet.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testEncryptWallet() throws Exception {
         try {
@@ -105,12 +139,22 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         }
     }
 
+    /**
+     * Test get wallet info.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testGetWalletInfo() throws Exception {
         BtcRpcGetWalletInfoResponse btcRpcGetWalletInfoResponse = undertest.getWalletInfo();
         Assert.assertTrue("Expected true", btcRpcGetWalletInfoResponse.getPrivateKeysEnabled());
     }
 
+    /**
+     * Test import wallet.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testImportWallet() throws Exception {
         Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
@@ -120,6 +164,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertTrue("Expected true", success);
     }
 
+    /**
+     * Test keypool refill.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testKeypoolRefill() throws Exception {
         Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
@@ -129,6 +178,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertTrue("Expected true", success);
     }
 
+    /**
+     * Test list since block.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testListSinceBlock() throws Exception {
         // String blockhash = null;
@@ -146,18 +200,33 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertNotNull("Is not null", list);
     }
 
+    /**
+     * Test list wallets.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testListWallets() throws Exception {
         List<String> list = undertest.listWallets();
         Assert.assertNotNull("Is not null", list);
     }
 
+    /**
+     * Test list wallet dir.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testListWalletDir() throws Exception {
         List<String> list = undertest.listWalletDir();
         Assert.assertNotNull("Is not null", list);
     }
 
+    /**
+     * Test load wallet.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testLoadWallet() throws Exception {
         String name = "junit_wallet";
@@ -165,6 +234,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertEquals("Expected equals", name, btcRpcLoadWalletResponse.getName());
     }
 
+    /**
+     * Test rescan blockchain.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testRescanBlockchain() throws Exception {
         Long startHeight = 1_200_000L;
@@ -173,6 +247,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertTrue("Expected true", success);
     }
 
+    /**
+     * Test set hd seed.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testSetHdSeed() throws Exception {
         // Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
@@ -183,6 +262,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test unload wallet.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testUnloadWallet() throws Exception {
         String walletName = "junit_wallet";
@@ -190,12 +274,22 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.fail("Test method not implemented");
     }
 
+    /**
+     * Test wallet lock.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testWalletLock() throws Exception {
         Boolean success = undertest.walletLock();
         Assert.assertTrue("Expected true", success);
     }
 
+    /**
+     * Test wallet passphrase.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testWalletPassphrase() throws Exception {
         String passphrase = PASSPHRASE;
@@ -204,6 +298,11 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
         Assert.assertTrue("Expected true", success);
     }
 
+    /**
+     * Test wallet passphrase change.
+     *
+     * @throws Exception the exception
+     */
     // @Test
     public void testWalletPassphraseChange() throws Exception {
         String oldpassphrase = PASSPHRASE;
