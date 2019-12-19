@@ -49,7 +49,7 @@ public class BtcRpcUtilMethods extends BaseBtcRpcMethods {
      * Call category: util
      * </p>
      * <p>
-     * Available since: < 0.10.1
+     * Available since: &lt; 0.10.1
      * </p>
      * <p>
      * The createmultisig RPC creates a P2SH multi-signature address.

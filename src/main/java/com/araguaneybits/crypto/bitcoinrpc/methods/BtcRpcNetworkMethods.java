@@ -207,7 +207,7 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      * Call category: network
      * </p>
      * <p>
-     * Available since: < 0.10.0
+     * Available since: &lt; 0.10.0
      * </p>
      * <p>
      * The getconnectioncount RPC returns the number of connections to other nodes.
@@ -237,7 +237,7 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      * Call category: network
      * </p>
      * <p>
-     * Available since: < 0.12.0
+     * Available since: &lt; 0.12.0
      * </p>
      * <p>
      * The getnettotals RPC returns information about network traffic, including bytes in, bytes out, and the current time.

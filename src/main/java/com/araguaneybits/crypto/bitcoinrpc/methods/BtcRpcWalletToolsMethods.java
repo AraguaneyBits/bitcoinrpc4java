@@ -63,13 +63,13 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Import a private key
-*       bitcoin-cli importprivkey "mykey"
+    *       bitcoin-cli importprivkey "mykey"
      *     
      *     Abort the running wallet rescan
-*       bitcoin-cli abortrescan 
+    *       bitcoin-cli abortrescan 
      *     
      *     As a JSON-RPC call
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "abortrescan", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "abortrescan", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the boolean
@@ -98,8 +98,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     1. "destination"   (string) The destination directory or file
      *     
      *     Examples:
-*       bitcoin-cli backupwallet "backup.dat"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "backupwallet", "params": ["backup.dat"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli backupwallet "backup.dat"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "backupwallet", "params": ["backup.dat"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param destination the destination
@@ -139,8 +139,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli createwallet "testwallet"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createwallet", "params": ["testwallet"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli createwallet "testwallet"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createwallet", "params": ["testwallet"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param walletName the wallet name
@@ -184,8 +184,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli dumpwallet "test"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli dumpwallet "test"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param filename the filename
@@ -224,19 +224,19 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Encrypt your wallet
-*       bitcoin-cli encryptwallet "my pass phrase"
+    *       bitcoin-cli encryptwallet "my pass phrase"
      *     
      *     Now set the passphrase to use the wallet, such as for signing or sending bitcoin
-*       bitcoin-cli walletpassphrase "my pass phrase"
+    *       bitcoin-cli walletpassphrase "my pass phrase"
      *     
      *     Now we can do something like sign
-*       bitcoin-cli signmessage "address" "test message"
+    *       bitcoin-cli signmessage "address" "test message"
      *     
      *     Now lock the wallet again by removing the passphrase
-*       bitcoin-cli walletlock 
+    *       bitcoin-cli walletlock 
      *     
      *     As a json rpc call
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "encryptwallet", "params": ["my pass phrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "encryptwallet", "params": ["my pass phrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param passphrase the passphrase
@@ -281,8 +281,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getwalletinfo 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getwalletinfo 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getwalletinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the wallet info
@@ -330,7 +330,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * Call category: wallet
      * </p>
      * <p>
-     * Available since: < 0.9.0
+     * Available since: &lt; 0.9.0
      * </p>
      * <p>
      * Fills the keypool. The keypoolrefill RPC fills the cache of unused pre-generated keys (the keypool). *
@@ -395,7 +395,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      *     "vout" : n,               (numeric) the vout value
      *     "fee": x.xxx,             (numeric) The amount of the fee in BTC. This is negative and only available for the 'send' category of transactions.
      *     "confirmations": n,       (numeric) The number of confirmations for the transaction. Available for 'send' and 'receive' category of transactions.
-     *                                           When it's < 0, it means the transaction conflicted that many blocks ago.
+     *                                           When it's &lt; 0, it means the transaction conflicted that many blocks ago.
      *     "blockhash": "hashvalue",     (string) The block hash containing the transaction. Available for 'send' and 'receive' category of transactions.
      *     "blockindex": n,          (numeric) The index of the transaction in the block that includes it. Available for 'send' and 'receive' category of transactions.
      *     "blocktime": xxx,         (numeric) The block time in seconds since epoch (1 Jan 1970 GMT).

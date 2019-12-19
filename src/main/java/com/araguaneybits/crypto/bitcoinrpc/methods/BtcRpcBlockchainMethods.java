@@ -73,8 +73,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     "hex"      (string) the block hash hex encoded
      *     
      *     Examples:
-*       bitcoin-cli getbestblockhash 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }
+    *       bitcoin-cli getbestblockhash 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }
      * </pre>
      *
      * @return the best block hash
@@ -144,8 +144,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getblock "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getblock "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblock", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param blockhash the blockhash
@@ -245,8 +245,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getblockchaininfo 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getblockchaininfo 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the blockchain info
@@ -279,8 +279,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     n    (numeric) The current block count
      *     
      *     Examples:
-*       bitcoin-cli getblockcount 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getblockcount 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockcount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the block count
@@ -312,8 +312,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     "hash"         (string) The block hash
      *     
      *     Examples:
-*       bitcoin-cli getblockhash 1000
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getblockhash 1000
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param height the height
@@ -368,8 +368,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     "data"             (string) A string that is serialized, hex-encoded data for block 'hash'.
      *     
      *     Examples:
-*       bitcoin-cli getblockheader "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getblockheader "00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockheader", "params": ["00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param hash the hash
@@ -462,8 +462,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getblockstats 1000 '["minfeerate","avgfeerate"]'
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockstats", "params": [1000 '["minfeerate","avgfeerate"]'] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getblockstats 1000 '["minfeerate","avgfeerate"]'
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockstats", "params": [1000 '["minfeerate","avgfeerate"]'] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param height the height
@@ -513,8 +513,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     5.  "active"                This is the tip of the active main chain, which is certainly valid
      *     
      *     Examples:
-*       bitcoin-cli getchaintips 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getchaintips 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintips", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the chain tips
@@ -553,14 +553,14 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     "txcount": xxxxx,                      (numeric) The total number of transactions in the chain up to that point.
      *     "window_final_block_hash": "...",      (string) The hash of the final block in the window.
      *     "window_block_count": xxxxx,           (numeric) Size of the window in number of blocks.
-     *     "window_tx_count": xxxxx,              (numeric) The number of transactions in the window. Only returned if "window_block_count" is > 0.
-     *     "window_interval": xxxxx,              (numeric) The elapsed time in the window in seconds. Only returned if "window_block_count" is > 0.
-     *     "txrate": x.xx,                        (numeric) The average rate of transactions per second in the window. Only returned if "window_interval" is > 0.
+     *     "window_tx_count": xxxxx,              (numeric) The number of transactions in the window. Only returned if "window_block_count" is &gt; 0.
+     *     "window_interval": xxxxx,              (numeric) The elapsed time in the window in seconds. Only returned if "window_block_count" is &gt; 0.
+     *     "txrate": x.xx,                        (numeric) The average rate of transactions per second in the window. Only returned if "window_interval" is &gt; 0.
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getchaintxstats 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintxstats", "params": [2016] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getchaintxstats 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getchaintxstats", "params": [2016] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the chain tx stats
@@ -600,7 +600,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * Call category: blockchain
      * </p>
      * <p>
-     * Available since: < 0.10.0
+     * Available since: &lt; 0.10.0
      * </p>
      * <p>
      * The getdifficulty RPC returns the proof-of-work difficulty as a multiple of the minimum difficulty.
@@ -615,8 +615,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     n.nnn       (numeric) the proof-of-work difficulty as a multiple of the minimum difficulty.
      *     
      *     Examples:
-*       bitcoin-cli getdifficulty 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getdifficulty 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the difficulty
@@ -705,8 +705,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getmempoolancestors "mytxid"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolancestors", "params": ["mytxid"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getmempoolancestors "mytxid"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolancestors", "params": ["mytxid"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param txid the txid
@@ -775,8 +775,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getmempooldescendants "mytxid"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempooldescendants", "params": ["mytxid"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getmempooldescendants "mytxid"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempooldescendants", "params": ["mytxid"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param txid the txid
@@ -836,8 +836,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getmempoolentry "mytxid"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolentry", "params": ["mytxid"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getmempoolentry "mytxid"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolentry", "params": ["mytxid"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param txid the txid
@@ -878,8 +878,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getmempoolinfo 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getmempoolinfo 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the mempool info
@@ -952,8 +952,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getrawmempool true
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getrawmempool true
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the raw mempool
@@ -1013,13 +1013,13 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Get unspent transactions
-*       bitcoin-cli listunspent 
+    *       bitcoin-cli listunspent 
      *     
      *     View the details
-*       bitcoin-cli gettxout "txid" 1
+    *       bitcoin-cli gettxout "txid" 1
      *     
      *     As a json rpc call
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxout", "params": ["txid", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param txid the txid
@@ -1105,8 +1105,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli gettxoutsetinfo 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli gettxoutsetinfo 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the tx out set info
@@ -1142,8 +1142,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     Result:
      *     
      *     Examples:
-*       bitcoin-cli preciousblock "blockhash"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "preciousblock", "params": ["blockhash"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli preciousblock "blockhash"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "preciousblock", "params": ["blockhash"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param blockhash the blockhash
@@ -1175,8 +1175,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     n    (numeric) Height of the last block pruned.
      *     
      *     Examples:
-*       bitcoin-cli pruneblockchain 1000
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "pruneblockchain", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli pruneblockchain 1000
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "pruneblockchain", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param height the height
@@ -1204,8 +1204,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     Dumps the mempool to disk. It will fail until the previous dump is fully loaded.
      *     
      *     Examples:
-*       bitcoin-cli savemempool 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "savemempool", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli savemempool 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "savemempool", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
@@ -1226,9 +1226,6 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * The scantxoutset RPC scan the UTXO set for entries that match certain output descriptors.
      * </p>
      * 
-     * <pre>
-     * </pre>
-     *
      * @return the object
      */
     public Object scanTxOutSet() {
@@ -1260,8 +1257,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     true|false       (boolean) Verified or not
      *     
      *     Examples:
-*       bitcoin-cli verifychain 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli verifychain 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "verifychain", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param checklevel the checklevel
