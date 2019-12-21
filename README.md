@@ -7,6 +7,13 @@ bitcoinrpc4java is a java client to connect to the bitcoin core with jsonrpc
 It is a library that seeks to be a well-typed rpc client with full implementation. This is a basic example of its use:
 
 ```java
+    import java.math.BigDecimal;
+    import com.araguaneybits.crypto.bitcoinrpc.constants.EnumEstimateMode;
+    import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcGateway;
+    import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcWalletMethods;
+    import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcWalletToolsMethods;
+    import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetTransactionResponse;
+
     public static void main(String[] args) {
         // initialize the gateway
         String rpcUser = "myuser";
@@ -57,6 +64,15 @@ It is a library that seeks to be a well-typed rpc client with full implementatio
     }
 ```
 
+If your project uses Maven for its build, you can depend on bitcoinrpc4java by adding the following snippet to your pom.xml file in the:
+
+```xml
+<dependency>
+  <groupId>com.araguaneybits.bitcoinrpc</groupId>
+  <artifactId>araguaneybits-bitcoinrpc4java</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
 
 It has following dependencies:
 
