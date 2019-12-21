@@ -15,7 +15,15 @@
  */
 package com.araguaneybits.crypto.bitcoinrpc.methods;
 
+import java.math.BigInteger;
+
+import com.araguaneybits.crypto.bitcoinrpc.RpcOutputMessage;
 import com.araguaneybits.crypto.bitcoinrpc.constants.RpcControlMethodsConstants;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMemoryInfoResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetRpcInfoResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcLoggingResponse;
+import com.araguaneybits.crypto.utils.TransformBeanUtils;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 /**
  * The Class BtcRpcControlMethods.
@@ -69,15 +77,18 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     "..."
      *     
      *     Examples:
-*       bitcoin-cli getmemoryinfo 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmemoryinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+     *       bitcoin-cli getmemoryinfo 
+     *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmemoryinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the memoryinfo
      */
-    public Object getmemoryinfo() {
-        // TODO Partially implemented method
-        return callRpcMethod(RpcControlMethodsConstants.CONTROL_GET_MEMORY_INFO);
+    public BtcRpcGetMemoryInfoResponse getMemoryInfo() {
+        String json = callSimpleRpcMethod(RpcControlMethodsConstants.CONTROL_GET_MEMORY_INFO);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcGetMemoryInfoResponse>>() {
+                });
+        return (BtcRpcGetMemoryInfoResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -109,15 +120,18 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getrpcinfo 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrpcinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+     *       bitcoin-cli getrpcinfo 
+     *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrpcinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the rpcinfo
      */
-    public Object getrpcinfo() {
-        // TODO Partially implemented method
-        return callRpcMethod(RpcControlMethodsConstants.CONTROL_GET_RPC_INFO);
+    public BtcRpcGetRpcInfoResponse getRpcInfo() {
+        String json = callSimpleRpcMethod(RpcControlMethodsConstants.CONTROL_GET_RPC_INFO);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcGetRpcInfoResponse>>() {
+                });
+        return (BtcRpcGetRpcInfoResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -146,9 +160,8 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *
      * @return the object
      */
-    public Object help() {
-        // TODO Partially implemented method
-        return callRpcMethod(RpcControlMethodsConstants.CONTROL_HELP);
+    public String help() {
+        return (String) callRpcMethod(RpcControlMethodsConstants.CONTROL_HELP);
     }
 
     /**
@@ -193,15 +206,18 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli logging "[\"all\"]" "[\"http\"]"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "logging", "params": [["all"], "[libevent]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+     *       bitcoin-cli logging "[\"all\"]" "[\"http\"]"
+     *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "logging", "params": [["all"], "[libevent]"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
      */
-    public Object logging() {
-        // TODO Partially implemented method
-        return callRpcMethod(RpcControlMethodsConstants.CONTROL_LOGGING);
+    public BtcRpcLoggingResponse logging() {
+        String json = callSimpleRpcMethod(RpcControlMethodsConstants.CONTROL_LOGGING);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcLoggingResponse>>() {
+                });
+        return (BtcRpcLoggingResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -223,9 +239,8 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *
      * @return the object
      */
-    public Object stop() {
-        // TODO Partially implemented method
-        return callRpcMethod(RpcControlMethodsConstants.CONTROL_STOP);
+    public String stop() {
+        return (String) callRpcMethod(RpcControlMethodsConstants.CONTROL_STOP);
     }
 
     /**
@@ -248,15 +263,14 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     ttt        (numeric) The number of seconds that the server has been running
      *     
      *     Examples:
-*       bitcoin-cli uptime 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "uptime", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli uptime 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "uptime", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
      */
-    public Object uptime() {
-        // TODO Partially implemented method
-        return callRpcMethod(RpcControlMethodsConstants.CONTROL_UPTIME);
+    public BigInteger uptime() {
+        return (BigInteger) callRpcMethod(RpcControlMethodsConstants.CONTROL_UPTIME);
     }
 
     /**
@@ -285,8 +299,8 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      *     ]
      *     
      *     Examples:
-*       bitcoin-cli getzmqnotifications 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getzmqnotifications", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getzmqnotifications 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getzmqnotifications", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the zmqnotifications
