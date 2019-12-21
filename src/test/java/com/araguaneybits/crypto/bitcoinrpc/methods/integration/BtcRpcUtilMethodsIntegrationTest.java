@@ -20,6 +20,7 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumAddressType;
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumEstimateMode;
@@ -33,7 +34,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetDescriptorI
  *
  * @author jestevez
  */
-// @Ignore
+@Ignore
 public class BtcRpcUtilMethodsIntegrationTest extends AbstractBtcRpcMethodsIntegrationTest {
 
     /** The undertest. */

@@ -20,6 +20,7 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumRpcErrorCode;
 import com.araguaneybits.crypto.bitcoinrpc.exception.BtcRpcBaseException;
@@ -35,6 +36,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcLoadWalletResp
  *
  * @author jestevez
  */
+@Ignore
 public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMethodsIntegrationTest {
 
     /** The undertest. */
