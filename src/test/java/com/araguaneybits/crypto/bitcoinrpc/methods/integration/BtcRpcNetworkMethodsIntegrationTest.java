@@ -21,6 +21,7 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumAddNodeType;
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcNetworkMethods;
@@ -36,7 +37,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcNetworkInfoRes
  *
  * @author jestevez
  */
-// @Ignore
+@Ignore
 public class BtcRpcNetworkMethodsIntegrationTest extends AbstractBtcRpcMethodsIntegrationTest {
 
     /** The undertest. */

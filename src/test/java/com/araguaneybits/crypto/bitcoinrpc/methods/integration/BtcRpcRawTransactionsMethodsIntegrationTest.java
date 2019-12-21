@@ -24,6 +24,7 @@ import java.util.Map;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumEstimateMode;
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcRawTransactionsMethods;
@@ -43,7 +44,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListUnspentRes
  *
  * @author jestevez
  */
-// @Ignore
+@Ignore
 public class BtcRpcRawTransactionsMethodsIntegrationTest extends AbstractBtcRpcMethodsIntegrationTest {
 
     /** The undertest. */

@@ -25,6 +25,7 @@ import java.util.UUID;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumAddressType;
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumEstimateMode;
@@ -49,7 +50,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcReceivedByAddr
  *
  * @author jestevez
  */
-// @Ignore
+@Ignore
 public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsIntegrationTest {
 
     /** The undertest. */

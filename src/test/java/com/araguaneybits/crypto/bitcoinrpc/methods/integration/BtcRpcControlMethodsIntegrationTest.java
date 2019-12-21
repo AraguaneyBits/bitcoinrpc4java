@@ -20,6 +20,7 @@ import java.math.BigInteger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcControlMethods;
@@ -32,7 +33,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcLoggingRespons
  *
  * @author jestevez
  */
-// @Ignore
+@Ignore
 public class BtcRpcControlMethodsIntegrationTest extends AbstractBtcRpcMethodsIntegrationTest {
 
     /** The undertest. */
