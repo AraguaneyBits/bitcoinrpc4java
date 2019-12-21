@@ -13,11 +13,47 @@ It is a library that seeks to be a well-typed rpc client with full implementatio
         String rpcPassword = "mypass";
         String rpcHost = "localhost";
         String rpcPort = "8332";
-        BtcRpcGateway btcRpcGateway = new BtcRpcGateway(rpcUser, rpcPassword, rpcHost, rpcPort);
-        // wallet methods
+        String protocol = "https";
+        String passphrase = "mywalletpass";
+        
+        // Initialize bitcoin rpc connections
+        BtcRpcGateway btcRpcGateway = new BtcRpcGateway(rpcUser, rpcPassword, rpcHost, rpcPort, protocol);
+        // Instance the Wallet Method
         BtcRpcWalletMethods btcRpcWalletMethods = new BtcRpcWalletMethods(btcRpcGateway);
+        // Instance the Wallet Tools Method
+        BtcRpcWalletToolsMethods btcRpcWalletToolsMethods = new BtcRpcWalletToolsMethods(btcRpcGateway);
+
+        // Get balance
         BigDecimal balance = btcRpcWalletMethods.getBalance();
         System.out.println("The balance is " + balance);
+
+        // Get new Address
+        String toAddress = btcRpcWalletMethods.getNewAddress();
+        System.out.println("New address is " + toAddress);
+
+        // Unlocked the wallet
+        Boolean unlocked = btcRpcWalletToolsMethods.walletPassphrase(passphrase, 30L);
+        System.out.println("The wallet is unlocked " + unlocked);
+
+        // Create new transaction
+        BigDecimal amount = new BigDecimal("0.010");
+        String comment = "";
+        String commentTo = "";
+        Boolean subtractFeeFromAmount = false;
+        Boolean replaceable = true;
+        Long confTarget = 1L;
+        String txid = btcRpcWalletMethods.sendToAddress(toAddress, amount, comment, commentTo, subtractFeeFromAmount, replaceable, confTarget,
+                EnumEstimateMode.CONSERVATIVE);
+        System.out.println("New txid is " + txid);
+
+        // Locked the wallet
+        Boolean locked = btcRpcWalletToolsMethods.walletLock();
+        System.out.println("The wallet is locked " + locked);
+
+        // Get the generated transaction
+        BtcRpcGetTransactionResponse btcRpcGetTransactionResponse = btcRpcWalletMethods.getTransaction(txid);
+        System.out.println("BtcRpcGetTransactionResponse is " + btcRpcGetTransactionResponse);
+    
     }
 ```
 
