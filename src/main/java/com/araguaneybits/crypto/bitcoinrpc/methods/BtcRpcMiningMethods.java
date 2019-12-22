@@ -18,7 +18,13 @@ package com.araguaneybits.crypto.bitcoinrpc.methods;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import com.araguaneybits.crypto.bitcoinrpc.RpcOutputMessage;
 import com.araguaneybits.crypto.bitcoinrpc.constants.RpcMiningMethodsConstants;
+import com.araguaneybits.crypto.bitcoinrpc.methods.request.BtcRpcBlockTemplateRequest;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcBlockTemplateResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMiningInfoResponse;
+import com.araguaneybits.crypto.utils.TransformBeanUtils;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 /**
  * The Class BtcRpcMiningMethods.
@@ -119,15 +125,18 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getblocktemplate {"rules": ["segwit"]}
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [{"rules": ["segwit"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getblocktemplate {"rules": ["segwit"]}
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [{"rules": ["segwit"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the blocktemplate
      */
-    public Object getblocktemplate() {
-        // TODO Partially implemented method
-        return callRpcMethod(RpcMiningMethodsConstants.MINING_GET_BLOCK_TEMPLATE);
+    public BtcRpcBlockTemplateResponse getBlockTemplate(BtcRpcBlockTemplateRequest btcRpcBlockTemplateRequest) {
+        String json = callSimpleRpcMethod(RpcMiningMethodsConstants.MINING_GET_BLOCK_TEMPLATE, btcRpcBlockTemplateRequest);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcBlockTemplateResponse>>() {
+                });
+        return (BtcRpcBlockTemplateResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -159,15 +168,18 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getmininginfo 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getmininginfo 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmininginfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the mininginfo
      */
-    public Object getmininginfo() {
-        // TODO Partially implemented method
-        return callRpcMethod(RpcMiningMethodsConstants.MINING_GET_MINING_INFO);
+    public BtcRpcGetMiningInfoResponse getMiningInfo() {
+        String json = callSimpleRpcMethod(RpcMiningMethodsConstants.MINING_GET_MINING_INFO);
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcGetMiningInfoResponse>>() {
+                });
+        return (BtcRpcGetMiningInfoResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -196,15 +208,15 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     x             (numeric) Hashes per second estimated
      *     
      *     Examples:
-*       bitcoin-cli getnetworkhashps 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getnetworkhashps 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkhashps", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param nblocks the nblocks
      * @param height the height
      * @return the networkhashps
      */
-    public BigDecimal getnetworkhashps(Integer nblocks, Integer height) {
+    public BigDecimal getNetworkHashPs(BigInteger nblocks, BigInteger height) {
         return (BigDecimal) callRpcMethod(RpcMiningMethodsConstants.MINING_GET_NETWORK_HASHPS, nblocks, height);
     }
 
@@ -238,15 +250,15 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     true              (boolean) Returns true
      *     
      *     Examples:
-*       bitcoin-cli prioritisetransaction "txid" 0.0 10000
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli prioritisetransaction "txid" 0.0 10000
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 0.0, 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param txid the txid
      * @param feeDelta the fee delta
      * @return the boolean
      */
-    public Boolean prioritisetransaction(String txid, BigInteger feeDelta) {
+    public Boolean prioritiseTransaction(String txid, BigInteger feeDelta) {
         return (Boolean) callRpcMethod(RpcMiningMethodsConstants.MINING_PRIORITISE_TRANSACTION, txid, 0.0, feeDelta);
     }
 
@@ -275,14 +287,14 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     Result:
      *     
      *     Examples:
-*       bitcoin-cli submitblock "mydata"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli submitblock "mydata"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitblock", "params": ["mydata"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param hexdata the hexdata
      * @return the object
      */
-    public Object submitblock(String hexdata) {
+    public Object submitBlock(String hexdata) {
         // TODO Partially implemented method
         return callRpcMethod(RpcMiningMethodsConstants.MINING_SUBMIT_BLOCK, hexdata);
     }
@@ -310,15 +322,15 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     Result:
      *     None
      *     Examples:
-*       bitcoin-cli submitheader "aabbcc"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitheader", "params": ["aabbcc"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli submitheader "aabbcc"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitheader", "params": ["aabbcc"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the object
      */
-    public Object submitheader() {
+    public Object submitHeader(String hexdata) {
         // TODO Partially implemented method
-        return callRpcMethod(RpcMiningMethodsConstants.MINING_SUBMIT_HEADER);
+        return callRpcMethod(RpcMiningMethodsConstants.MINING_SUBMIT_HEADER, hexdata);
     }
 
     /**
@@ -348,13 +360,13 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Generate 11 blocks to myaddress
-*       bitcoin-cli generatetoaddress 11 "myaddress"
+    *       bitcoin-cli generatetoaddress 11 "myaddress"
      * </pre>
      *
      * @return the object
      */
-    public Object generatetoaddress() {
+    public Object generateToAddress(BigInteger nblocks, String address, BigInteger maxtries) {
         // TODO Partially implemented method
-        return callRpcMethod(RpcMiningMethodsConstants.GENERATING_GENERATE_TO_ADDRESS);
+        return callRpcMethod(RpcMiningMethodsConstants.GENERATING_GENERATE_TO_ADDRESS, nblocks, address, maxtries);
     }
 }
