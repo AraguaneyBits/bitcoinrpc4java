@@ -21,6 +21,7 @@ import java.math.BigInteger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumEstimateMode;
@@ -36,7 +37,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMiningInfoR
  *
  * @author jestevez
  */
-// @Ignore
+@Ignore
 public class BtcRpcMiningMethodsIntegrationTest extends AbstractBtcRpcMethodsIntegrationTest {
 
     /** The undertest. */
