@@ -26,6 +26,7 @@ import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockHeaderResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockStatsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockWithTxResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
@@ -164,9 +165,12 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
      */
     @Test
     public void testGetBlockStats() throws Exception {
-        // TODO pending
-        // {"result":null,"error":{"code":-8,"message":"One or more of the selected stats requires -txindex enabled"},"id":null}
-        // undertest.getBlockStats("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206");
+        enqueueMockedResponse(200,
+                " {\"result\":{\"avgfee\":0,\"avgfeerate\":0,\"avgtxsize\":0,\"blockhash\":\"00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048\",\"feerate_percentiles\":[0,0,0,0,0],\"height\":1,\"ins\":0,\"maxfee\":0,\"maxfeerate\":0,\"maxtxsize\":0,\"medianfee\":0,\"mediantime\":1231469665,\"mediantxsize\":0,\"minfee\":0,\"minfeerate\":0,\"mintxsize\":0,\"outs\":1,\"subsidy\":5000000000,\"swtotal_size\":0,\"swtotal_weight\":0,\"swtxs\":0,\"time\":1231469665,\"total_out\":0,\"total_size\":0,\"total_weight\":0,\"totalfee\":0,\"txs\":1,\"utxo_increase\":1,\"utxo_size_inc\":117},\"error\":null,\"id\":null}");
+        BtcRpcGetBlockStatsResponse btcRpcGetBlockStatsResponse = undertest.getBlockStats(1L);
+
+        Assert.assertNotNull("Is not null", btcRpcGetBlockStatsResponse);
+
     }
 
     /**
