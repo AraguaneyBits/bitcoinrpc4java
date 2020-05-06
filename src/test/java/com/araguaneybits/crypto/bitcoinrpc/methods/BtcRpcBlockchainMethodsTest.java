@@ -162,7 +162,7 @@ public class BtcRpcBlockchainMethodsTest extends AbstractBtcRpcMethodsTest {
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetBlockStats() throws Exception {
         // TODO pending
         // {"result":null,"error":{"code":-8,"message":"One or more of the selected stats requires -txindex enabled"},"id":null}

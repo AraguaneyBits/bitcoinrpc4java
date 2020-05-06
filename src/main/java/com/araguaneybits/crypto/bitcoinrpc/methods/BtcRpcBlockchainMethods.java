@@ -27,6 +27,7 @@ import com.araguaneybits.crypto.bitcoinrpc.constants.EnumBlockVerbosity;
 import com.araguaneybits.crypto.bitcoinrpc.constants.RpcBlockchainMethodsConstants;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockHeaderResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockStatsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockWithTxResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
@@ -470,9 +471,18 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @param stats the stats
      * @return the block stats
      */
-    public Object getBlockStats(Long height, String[] stats) {
-        // TODO Develop this method
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK_STATS, height, stats);
+    public BtcRpcGetBlockStatsResponse getBlockStats(Long height) {
+        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK_STATS, height);
+
+        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcGetBlockHeaderResponse>>() {
+                });
+
+        return (BtcRpcGetBlockStatsResponse) rpcOutputMessage.getResult();
+    }
+
+    public BtcRpcGetBlockStatsResponse getBlockStats(Long height, String[] stats) {
+        return null;
     }
 
     /**
