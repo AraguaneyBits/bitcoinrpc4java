@@ -25,6 +25,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * The Class ProxyTest.
@@ -67,7 +68,7 @@ public class ProxyTest {
      * @throws MalformedURLException the malformed URL exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    // @Test
+    @Test
     public void testProxy() throws MalformedURLException, IOException {
         ProxyConfiguration proxyConfiguration = new ProxyConfiguration();
         proxyConfiguration.setEnabled(true);

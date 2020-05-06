@@ -85,7 +85,7 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetMemoryInfoResponse getMemoryInfo() {
         String json = callSimpleRpcMethod(RpcControlMethodsConstants.CONTROL_GET_MEMORY_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetMemoryInfoResponse>>() {
                 });
         return (BtcRpcGetMemoryInfoResponse) rpcOutputMessage.getResult();
@@ -128,7 +128,7 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetRpcInfoResponse getRpcInfo() {
         String json = callSimpleRpcMethod(RpcControlMethodsConstants.CONTROL_GET_RPC_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetRpcInfoResponse>>() {
                 });
         return (BtcRpcGetRpcInfoResponse) rpcOutputMessage.getResult();
@@ -214,7 +214,7 @@ public class BtcRpcControlMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcLoggingResponse logging() {
         String json = callSimpleRpcMethod(RpcControlMethodsConstants.CONTROL_LOGGING);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcLoggingResponse>>() {
                 });
         return (BtcRpcLoggingResponse) rpcOutputMessage.getResult();

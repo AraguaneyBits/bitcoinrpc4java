@@ -39,7 +39,6 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcFundRawTransac
  *
  * @author jestevez
  */
-// @Ignore
 public class BtcRpcRawTransactionsMethodsTest extends AbstractBtcRpcMethodsTest {
 
     /** The undertest. */

@@ -26,6 +26,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumAddressType;
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumEstimateMode;
@@ -85,7 +86,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testAbandonTransaction() throws Exception {
         // String toAddress = undertest.getNewAddress();
         //
@@ -117,7 +118,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testAddMultiSigAddress() throws Exception {
         Long nrequired = 2L;
         String[] keys = new String[] { "03bead05a55742993aac187db466a051a962eab7fc609c635017e4e35e8feff7d5",
@@ -133,7 +134,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testBumpfee() throws Exception {
         btcRpcWalletToolsMethods.walletPassphrase(PASSPHRASE, 30L);
 
@@ -151,7 +152,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testDumpPrivkey() throws Exception {
         String address = undertest.getNewAddress();
         btcRpcWalletToolsMethods.walletPassphrase(PASSPHRASE, 30L);
@@ -164,7 +165,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetAddressesByLabel() throws Exception {
         String label = UUID.randomUUID().toString();
         String address = undertest.getNewAddress(label, EnumAddressType.LEGACY);
@@ -178,7 +179,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetAddressInfo() throws Exception {
         String address = undertest.getNewAddress();
         BtcRpcGetAddressInfoResponse btcRpcGetAddressInfoResponse = undertest.getAddressInfo(address);
@@ -190,7 +191,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetBalance() throws Exception {
         BigDecimal balance = undertest.getBalance();
         Assert.assertNotNull("Is not null", balance);
@@ -201,7 +202,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetNewAddress() throws Exception {
         String address = undertest.getNewAddress();
         Assert.assertNotNull("Is not null", address);
@@ -212,7 +213,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetRawChangeAddress() throws Exception {
         String address = undertest.getRawChangeAddress(EnumAddressType.LEGACY);
         Assert.assertNotNull("Is not null", address);
@@ -223,7 +224,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetReceivedByAddress() throws Exception {
         String address = undertest.getNewAddress();
         Integer minconf = 1;
@@ -236,7 +237,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetReceivedByLabel() throws Exception {
         String label = "bb619c12-9653-45a8-808d-0dfa3179f924";
         Integer minconf = 1;
@@ -249,7 +250,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetTransaction() throws Exception {
         String toAddress = undertest.getNewAddress();
 
@@ -275,7 +276,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetUnconfirmedBalance() throws Exception {
         BigDecimal balance = undertest.getUnconfirmedBalance();
         Assert.assertNotNull("Is not null", balance);
@@ -286,7 +287,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testImportAddress() throws Exception {
         String address = "mhfs2qAB5DZd6ri8DU9rNxENasNM2pXTdY";
         String label = "";
@@ -302,7 +303,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testImportmulti() throws Exception {
         undertest.importmulti();
         Assert.fail("Test method not implemented");
@@ -313,7 +314,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testImportPrivKey() throws Exception {
         btcRpcWalletToolsMethods.walletPassphrase(PASSPHRASE, 30L);
 
@@ -329,7 +330,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testImportPrunedFunds() throws Exception {
         String rawtransaction = null;
         String txoutproof = null;
@@ -342,7 +343,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testImportPubkey() throws Exception {
         String pubkey = null;
         String label = null;
@@ -356,7 +357,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testListReceivedByAddress() throws Exception {
         List<BtcRpcReceivedByAddressResponse> list = undertest.listReceivedByAddress();
         Assert.assertNotNull("expected list", list);
@@ -367,7 +368,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testListLabels() throws Exception {
         String purpose = null;
         List<String> list = undertest.listLabels(purpose);
@@ -379,7 +380,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testListLockUnspent() throws Exception {
         undertest.listLockUnspent();
         Assert.fail("Test method not implemented");
@@ -390,7 +391,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testListReceivedByLabel() throws Exception {
         Long minconf = null;
         Boolean includeEmpty = null;
@@ -404,7 +405,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testListTransactions() throws Exception {
         String dummy = null;
         Long count = null;
@@ -419,7 +420,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testListUnspent() throws Exception {
         Long minconf = null;
         Long maxconf = null;
@@ -435,7 +436,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testLockUnspent() throws Exception {
         Boolean unlock = false;
         BtcRpcLockUnspentRequest btcRpcLockUnspentRequest = new BtcRpcLockUnspentRequest();
@@ -453,7 +454,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testRemovePrunedFunds() throws Exception {
         String txid = null;
         undertest.removePrunedFunds(txid);
@@ -465,7 +466,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testSendmany() throws Exception {
         Map<String, String> amounts = new HashMap<>();
         amounts.put(undertest.getNewAddress(), "0.01");
@@ -488,7 +489,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testSendToAddress() throws Exception {
         String toAddress = undertest.getNewAddress();
         BigDecimal amount = new BigDecimal("0.010");
@@ -509,7 +510,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testSetLabel() throws Exception {
         String address = undertest.getNewAddress();
         String label = UUID.randomUUID().toString();
@@ -522,7 +523,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testSetTxFee() throws Exception {
         BigDecimal amount = new BigDecimal("0.0001");
         Boolean success = undertest.setTxFee(amount);
@@ -534,7 +535,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testSignMessage() throws Exception {
         String address = undertest.getNewAddress("", EnumAddressType.LEGACY);
         String message = "Hello World";
@@ -550,7 +551,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testSignRawTransactionWithWallet() throws Exception {
         Long minconf = null;
         Long maxconf = null;
@@ -592,7 +593,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testWalletcreatefundedpsbt() throws Exception {
         undertest.walletcreatefundedpsbt();
         Assert.fail("Test method not implemented");
@@ -603,7 +604,7 @@ public class BtcRpcWalletMethodsIntegrationTest extends AbstractBtcRpcMethodsInt
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testWalletprocesspsbt() throws Exception {
         undertest.walletprocesspsbt();
         Assert.fail("Test method not implemented");

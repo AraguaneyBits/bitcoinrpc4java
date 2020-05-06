@@ -51,7 +51,6 @@ public class BtcRpcDecodePsbtResponse implements Serializable {
      */
     public BtcRpcDecodePsbtResponse() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**

@@ -165,7 +165,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
     public BtcRpcGetBlockWithTxResponse getBlockObjectWithTx(String blockhash) {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK, blockhash,
                 EnumBlockVerbosity.OBJECT_AND_TRANSACTION.getValue());
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetBlockWithTxResponse>>() {
                 });
         return (BtcRpcGetBlockWithTxResponse) rpcOutputMessage.getResult();
@@ -576,7 +576,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @param json the json
      * @return the btc rpc get chain tx stats response
      */
-    private BtcRpcGetChainTxStatsResponse getBtcRpcGetChainTxStatsResponse(String json) {
+    private static BtcRpcGetChainTxStatsResponse getBtcRpcGetChainTxStatsResponse(String json) {
         RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetChainTxStatsResponse>>() {
                 });
@@ -638,7 +638,6 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
         LinkedHashMap<String, LinkedHashMap> map = (LinkedHashMap) callRpcMethod(callMethod, params);
 
         for (Map.Entry<String, LinkedHashMap> entry : map.entrySet()) {
-            String key = entry.getKey();
             LinkedHashMap value = entry.getValue();
             String json = TransformBeanUtils.writeValueAsString(value);
             BtcRpcGetMempoolEntryResponse btcRpcGetMempoolAncestorsResponse = TransformBeanUtils.readValue(json, BtcRpcGetMempoolEntryResponse.class);

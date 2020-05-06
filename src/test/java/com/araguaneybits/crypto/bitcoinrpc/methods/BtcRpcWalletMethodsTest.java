@@ -43,7 +43,6 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcReceivedByAddr
  *
  * @author jestevez
  */
-// @Ignore
 public class BtcRpcWalletMethodsTest extends AbstractBtcRpcMethodsTest {
 
     /** The undertest. */

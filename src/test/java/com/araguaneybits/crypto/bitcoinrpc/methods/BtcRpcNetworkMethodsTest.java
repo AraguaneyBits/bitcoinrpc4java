@@ -36,7 +36,6 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcNetworkInfoRes
  *
  * @author jestevez
  */
-// @Ignore
 public class BtcRpcNetworkMethodsTest extends AbstractBtcRpcMethodsTest {
 
     /** The undertest. */

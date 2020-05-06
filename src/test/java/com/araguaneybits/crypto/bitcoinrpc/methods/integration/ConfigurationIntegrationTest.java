@@ -21,6 +21,8 @@ import java.math.BigDecimal;
 import java.util.MissingResourceException;
 import java.util.Properties;
 
+import org.junit.Ignore;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +31,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author jestevez
  */
+@Ignore
 public class ConfigurationIntegrationTest {
 
     /** The Constant LOG. */
@@ -101,5 +104,10 @@ public class ConfigurationIntegrationTest {
             LOG.error("Error al recuperar parámetros de configuración con key: {} Error {} ", key, e.getKey());
             return BigDecimal.ZERO;
         }
+    }
+
+    @Test
+    public void test() throws Exception {
+        LOG.debug("dummy test");
     }
 }
