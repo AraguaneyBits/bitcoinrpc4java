@@ -30,6 +30,7 @@ import com.araguaneybits.commons.http.EnumHttpStatusCode;
 import com.araguaneybits.commons.utils.HttpUtils;
 import com.araguaneybits.commons.utils.ProxyConfiguration;
 import com.araguaneybits.crypto.bitcoinrpc.RpcInputMessage;
+import com.araguaneybits.crypto.bitcoinrpc.constants.RpcWalletMethodsConstants;
 import com.araguaneybits.crypto.bitcoinrpc.exception.AuthenticationException;
 import com.araguaneybits.crypto.bitcoinrpc.exception.CallRpcApiMethodException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -179,7 +180,12 @@ public class BtcRpcGateway {
         }
         ObjectMapper objectMapper = new ObjectMapper();
         String data = objectMapper.writeValueAsString(body);
-        LOGGER.debug("RPC Params: [{}]", data);
+        if (RpcWalletMethodsConstants.WALLET_WALLET_PASSPHRASE.equals(callMethod)) {
+            LOGGER.debug("RPC hidden Params: [{}]", RpcWalletMethodsConstants.WALLET_WALLET_PASSPHRASE);
+        } else {
+            LOGGER.debug("RPC Params: [{}]", data);
+        }
+
         return data;
     }
 
