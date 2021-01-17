@@ -133,7 +133,7 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcBlockTemplateResponse getBlockTemplate(BtcRpcBlockTemplateRequest btcRpcBlockTemplateRequest) {
         String json = callSimpleRpcMethod(RpcMiningMethodsConstants.MINING_GET_BLOCK_TEMPLATE, btcRpcBlockTemplateRequest);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcBlockTemplateResponse>>() {
                 });
         return (BtcRpcBlockTemplateResponse) rpcOutputMessage.getResult();
@@ -176,7 +176,7 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetMiningInfoResponse getMiningInfo() {
         String json = callSimpleRpcMethod(RpcMiningMethodsConstants.MINING_GET_MINING_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetMiningInfoResponse>>() {
                 });
         return (BtcRpcGetMiningInfoResponse) rpcOutputMessage.getResult();

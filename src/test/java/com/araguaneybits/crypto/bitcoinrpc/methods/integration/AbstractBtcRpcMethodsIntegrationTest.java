@@ -157,6 +157,9 @@ public abstract class AbstractBtcRpcMethodsIntegrationTest {
         proxyConfiguration.setUser(PROXY_USER);
         btcRpcGateway = new BtcRpcGateway(BITCOIN_RPC_USER, BITCOIN_RPC_PASS, BITCOIN_RPC_HOST, BITCOIN_RPC_PORT, BITCOIN_RPC_PROTOCOL,
                 proxyConfiguration);
+
+        // btcRpcGateway = new BtcRpcGateway(BITCOIN_RPC_USER, BITCOIN_RPC_PASS, BITCOIN_RPC_HOST, BITCOIN_RPC_PORT, BITCOIN_RPC_PROTOCOL,
+        // "/wallet/junit_wallet", proxyConfiguration);
     }
 
     /**

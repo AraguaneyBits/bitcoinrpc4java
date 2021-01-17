@@ -27,6 +27,7 @@ import com.araguaneybits.crypto.bitcoinrpc.constants.EnumBlockVerbosity;
 import com.araguaneybits.crypto.bitcoinrpc.constants.RpcBlockchainMethodsConstants;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockHeaderResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockStatsResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockWithTxResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockchainInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetChainTipsResponse;
@@ -165,7 +166,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
     public BtcRpcGetBlockWithTxResponse getBlockObjectWithTx(String blockhash) {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK, blockhash,
                 EnumBlockVerbosity.OBJECT_AND_TRANSACTION.getValue());
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetBlockWithTxResponse>>() {
                 });
         return (BtcRpcGetBlockWithTxResponse) rpcOutputMessage.getResult();
@@ -179,7 +180,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetBlockResponse getBlockObject(String blockhash) {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK, blockhash, EnumBlockVerbosity.OBJECT.getValue());
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetBlockResponse>>() {
                 });
         return (BtcRpcGetBlockResponse) rpcOutputMessage.getResult();
@@ -253,7 +254,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetBlockchainInfoResponse getBlockchainInfo() {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCKCHAIN_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetBlockchainInfoResponse>>() {
                 });
         return (BtcRpcGetBlockchainInfoResponse) rpcOutputMessage.getResult();
@@ -378,7 +379,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
     public BtcRpcGetBlockHeaderResponse getBlockHeader(String hash) {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK_HEADER, hash, true);
 
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetBlockHeaderResponse>>() {
                 });
 
@@ -462,17 +463,41 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-    *       bitcoin-cli getblockstats 1000 '["minfeerate","avgfeerate"]'
-    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockstats", "params": [1000 '["minfeerate","avgfeerate"]'] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+     *       bitcoin-cli getblockstats 1000 '["minfeerate","avgfeerate"]'
+     *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockstats", "params": [1000 '["minfeerate","avgfeerate"]'] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
+     *
+     * @param height the height
+     * @return the block stats
+     */
+    public BtcRpcGetBlockStatsResponse getBlockStats(Long height) {
+        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK_STATS, height);
+        return transformGetBlockStatsResponse(json);
+    }
+
+    /**
+     * Gets the block stats.
      *
      * @param height the height
      * @param stats the stats
      * @return the block stats
      */
-    public Object getBlockStats(Long height, String[] stats) {
-        // TODO Develop this method
-        return callRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK_STATS, height, stats);
+    public BtcRpcGetBlockStatsResponse getBlockStats(Long height, String[] stats) {
+        String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_BLOCK_STATS, height, stats);
+        return transformGetBlockStatsResponse(json);
+    }
+
+    /**
+     * Transform get block stats response.
+     *
+     * @param json the json
+     * @return the btc rpc get block stats response
+     */
+    private BtcRpcGetBlockStatsResponse transformGetBlockStatsResponse(String json) {
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcGetBlockStatsResponse>>() {
+                });
+        return (BtcRpcGetBlockStatsResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -521,10 +546,10 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      */
     public List<BtcRpcGetChainTipsResponse> getChainTips() {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_CHAIN_TIPS);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<ArrayList<BtcRpcGetChainTipsResponse>>>() {
                 });
-        return (ArrayList<BtcRpcGetChainTipsResponse>) rpcOutputMessage.getResult();
+        return (List<BtcRpcGetChainTipsResponse>) rpcOutputMessage.getResult();
     }
 
     /**
@@ -576,8 +601,8 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      * @param json the json
      * @return the btc rpc get chain tx stats response
      */
-    private BtcRpcGetChainTxStatsResponse getBtcRpcGetChainTxStatsResponse(String json) {
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+    private static BtcRpcGetChainTxStatsResponse getBtcRpcGetChainTxStatsResponse(String json) {
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetChainTxStatsResponse>>() {
                 });
         return (BtcRpcGetChainTxStatsResponse) rpcOutputMessage.getResult();
@@ -638,7 +663,6 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
         LinkedHashMap<String, LinkedHashMap> map = (LinkedHashMap) callRpcMethod(callMethod, params);
 
         for (Map.Entry<String, LinkedHashMap> entry : map.entrySet()) {
-            String key = entry.getKey();
             LinkedHashMap value = entry.getValue();
             String json = TransformBeanUtils.writeValueAsString(value);
             BtcRpcGetMempoolEntryResponse btcRpcGetMempoolAncestorsResponse = TransformBeanUtils.readValue(json, BtcRpcGetMempoolEntryResponse.class);
@@ -845,7 +869,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetMempoolEntryResponse getMempoolEntry(String txid) {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_ENTRY, txid);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetMempoolEntryResponse>>() {
                 });
         return (BtcRpcGetMempoolEntryResponse) rpcOutputMessage.getResult();
@@ -886,7 +910,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetMempoolInfoResponse getMempoolInfo() {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.BLOCKCHAIN_GET_MEMPOOL_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetMempoolInfoResponse>>() {
                 });
         return (BtcRpcGetMempoolInfoResponse) rpcOutputMessage.getResult();
@@ -1342,7 +1366,7 @@ public class BtcRpcBlockchainMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetInfoResponse getInfo() {
         String json = callSimpleRpcMethod(RpcBlockchainMethodsConstants.LEGACY_GET_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetInfoResponse>>() {
                 });
 

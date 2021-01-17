@@ -21,6 +21,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumAddressType;
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumEstimateMode;
@@ -61,7 +62,7 @@ public class BtcRpcUtilMethodsIntegrationTest extends AbstractBtcRpcMethodsInteg
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testCreateMultiSig() throws Exception {
         BtcRpcCreateMultiSigResponse btcRpcCreateMultiSigResponse = undertest.createMultiSig(2L,
                 new String[] { "03789ed0bb717d88f7d321a368d905e7430207ebbd82bd342cf11ae157a7ace5fd",
@@ -75,7 +76,7 @@ public class BtcRpcUtilMethodsIntegrationTest extends AbstractBtcRpcMethodsInteg
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testDeriveAddresses() throws Exception {
         List<String> address = undertest.deriveAddresses(
                 "wpkh([d34db33f/84'/0'/0']0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798)#n9g43y4k", new Long[] { 0L, 2L });
@@ -87,7 +88,7 @@ public class BtcRpcUtilMethodsIntegrationTest extends AbstractBtcRpcMethodsInteg
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testEstimateRawFee() throws Exception {
         undertest.estimateRawFee(6, 0.9);
     }
@@ -97,7 +98,7 @@ public class BtcRpcUtilMethodsIntegrationTest extends AbstractBtcRpcMethodsInteg
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testEstimateSmartFee() throws Exception {
         BtcRpcEstimateSmartFeeResponse btcRpcEstimateSmartFeeResponse = undertest.estimateSmartFee(3, EnumEstimateMode.CONSERVATIVE);
         // Assert.assertEquals("Expected feerate", new BigDecimal("0.00021199"), btcRpcEstimateSmartFeeResponse.getFeerate());
@@ -108,7 +109,7 @@ public class BtcRpcUtilMethodsIntegrationTest extends AbstractBtcRpcMethodsInteg
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetDescriptorInfo() throws Exception {
         BtcRpcGetDescriptorInfoResponse btcRpGetDescriptorInfoResponse = undertest
                 .getDescriptorInfo("wpkh([d34db33f/84h/0h/0h]0279be667ef9dcbbac55a06295Ce870b07029Bfcdb2dce28d959f2815b16f81798)");
@@ -124,7 +125,7 @@ public class BtcRpcUtilMethodsIntegrationTest extends AbstractBtcRpcMethodsInteg
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testSignMessageWithPrivkey() throws Exception {
         String signature = undertest.signMessageWithPrivkey("cVBNJ3dyZcfS3jSYJAxz9wnEbvxVY33dynVoNBv6Ey7HZDsuwYVF", "Hola Mundo");
         Assert.assertEquals("Expected signature", "IAuY+2NwqUpUZYrCfZskwXz+T2+F/I7W2XA5OFWRJaHeI2qOHztwjm3eZbuC7rRz0cCN46tBA326sYStRKSI4jI=",
@@ -136,7 +137,7 @@ public class BtcRpcUtilMethodsIntegrationTest extends AbstractBtcRpcMethodsInteg
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testValidateAddress() throws Exception {
         Boolean valid = undertest.validateAddress("n3LPqUzimPjuYuk2rVeL59R1sQrHuMvMwe");
         Assert.assertTrue("Is valid", valid);
@@ -147,7 +148,7 @@ public class BtcRpcUtilMethodsIntegrationTest extends AbstractBtcRpcMethodsInteg
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testVerifymessage() throws Exception {
         Boolean isOk = undertest.verifymessage("n3LPqUzimPjuYuk2rVeL59R1sQrHuMvMwe",
                 "IAuY+2NwqUpUZYrCfZskwXz+T2+F/I7W2XA5OFWRJaHeI2qOHztwjm3eZbuC7rRz0cCN46tBA326sYStRKSI4jI=", "Hola Mundo");

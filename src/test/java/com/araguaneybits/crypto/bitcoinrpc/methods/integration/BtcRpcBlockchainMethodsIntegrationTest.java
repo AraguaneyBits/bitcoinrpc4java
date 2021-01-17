@@ -23,6 +23,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.methods.BtcRpcBlockchainMethods;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBlockHeaderResponse;
@@ -66,7 +67,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetBestBlockHash() throws Exception {
         String hash = undertest.getBestBlockHash();
         Assert.assertNotNull("Is not null", hash);
@@ -77,7 +78,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetBlock() throws Exception {
         String blockhash = "00000000000001dff89d2ea594ce664cd675de5f8eb3762f0364dcf0e0095378";
         String hex = undertest.getBlock(blockhash);
@@ -95,7 +96,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetBlockchainInfo() throws Exception {
         BtcRpcGetBlockchainInfoResponse btcRpcBlockchainInfoResponse = undertest.getBlockchainInfo();
         Assert.assertNotNull("Is not null", btcRpcBlockchainInfoResponse);
@@ -106,7 +107,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetBlockCount() throws Exception {
         BigInteger blocks = undertest.getBlockCount();
         Assert.assertNotNull("Is not null", blocks);
@@ -117,7 +118,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetBlockHash() throws Exception {
         String hash = undertest.getBlockHash(0L);
         Assert.assertEquals("Expected equals", "000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943", hash);
@@ -128,7 +129,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetBlockHeader() throws Exception {
         String hex = undertest.getBlockHeaderHex("000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943");
         Assert.assertNotNull("Is not null", hex);
@@ -142,7 +143,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetBlockStats() throws Exception {
         // TODO pending
         // {"result":null,"error":{"code":-8,"message":"One or more of the selected stats requires -txindex enabled"},"id":null}
@@ -154,7 +155,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetChainTips() throws Exception {
         List<BtcRpcGetChainTipsResponse> list = undertest.getChainTips();
         Assert.assertNotNull("Is not null", list);
@@ -165,7 +166,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetChainTxStats() throws Exception {
         BtcRpcGetChainTxStatsResponse btcRpcGetChainTxStatsResponse = undertest.getChainTxStats();
         Assert.assertNotNull("Is not null", btcRpcGetChainTxStatsResponse);
@@ -176,7 +177,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetDifficulty() throws Exception {
         BigDecimal difficulty = undertest.getDifficulty();
         Assert.assertNotNull("Is not null", difficulty);
@@ -187,7 +188,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetMempoolAncestors() throws Exception {
         List<BtcRpcGetMempoolEntryResponse> list = undertest.getMempoolAncestors("03146921f56264ac39bf1d49bc19f3a2827941c188e4c20c65cea3891359a614",
                 true);
@@ -199,7 +200,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetMempoolDescendants() throws Exception {
         List<BtcRpcGetMempoolEntryResponse> list = undertest.getMempoolDescendants("03146921f56264ac39bf1d49bc19f3a2827941c188e4c20c65cea3891359a614",
                 true);
@@ -211,7 +212,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetMempoolEntry() throws Exception {
 
         BtcRpcGetMempoolEntryResponse btcRpcGetMempoolEntryResponse = undertest
@@ -224,7 +225,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetMempoolInfo() throws Exception {
         BtcRpcGetMempoolInfoResponse btcRpcGetMempoolInfoResponse = undertest.getMempoolInfo();
         Assert.assertNotNull("Is not null", btcRpcGetMempoolInfoResponse);
@@ -235,7 +236,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetRawMempool() throws Exception {
         undertest.getRawMempool();
         undertest.getRawMempoolVerbose();
@@ -246,7 +247,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetTxOut() throws Exception {
         undertest.getTxOut("5115cae1985816327e9013e46ec96c02df6f0f3673396c1160a3b0ee9dbb29b0", Long.valueOf(0), true);
     }
@@ -256,7 +257,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetTxOutProof() throws Exception {
         String data = undertest.getTxOutProof(new String[] { "38b5b894962b20534497dfc536814ebdcd0bfd9dab68bc4ca4d04a09cd6fbc98" },
                 "000000000000016711b50488910601f524f5379bcda214d18f8913f2ffe51062");
@@ -268,7 +269,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetTxOutSetInfo() throws Exception {
         Object data = undertest.getTxOutSetInfo();
         Assert.assertNotNull("Is not null", data);
@@ -279,7 +280,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testPreciousBlock() throws Exception {
         Object data = undertest.preciousBlock("000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943");
         Assert.assertNotNull("Is not null", data);
@@ -290,7 +291,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testPruneBlockchain() throws Exception {
         Object data = undertest.pruneBlockchain(500000L);
         Assert.assertNotNull("Is not null", data);
@@ -299,7 +300,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
     /**
      * Test save mempool.
      */
-    // @Test
+    @Test
     public void testSaveMempool() {
         Boolean ok = undertest.saveMempool();
         Assert.assertTrue("Is not save", ok);
@@ -308,7 +309,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
     /**
      * Test scan tx out set.
      */
-    // @Test
+    @Test
     public void testScanTxOutSet() {
         Object data = undertest.scanTxOutSet();
         Assert.assertNotNull("Is not null", data);
@@ -317,7 +318,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
     /**
      * Test verify chain.
      */
-    // @Test
+    @Test
     public void testVerifyChain() {
         Object data = undertest.verifyChain(0, 0);
         Assert.assertNotNull("Is not null", data);
@@ -326,7 +327,7 @@ public class BtcRpcBlockchainMethodsIntegrationTest extends AbstractBtcRpcMethod
     /**
      * Test verify tx out proof.
      */
-    // @Test
+    @Test
     public void testVerifyTxOutProof() {
         String data = undertest.getTxOutProof(new String[] { "38b5b894962b20534497dfc536814ebdcd0bfd9dab68bc4ca4d04a09cd6fbc98" },
                 "000000000000016711b50488910601f524f5379bcda214d18f8913f2ffe51062");

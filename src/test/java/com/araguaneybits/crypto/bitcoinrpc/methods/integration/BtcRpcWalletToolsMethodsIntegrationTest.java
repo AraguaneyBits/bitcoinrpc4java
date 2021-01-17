@@ -21,6 +21,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 
 import com.araguaneybits.crypto.bitcoinrpc.constants.EnumRpcErrorCode;
 import com.araguaneybits.crypto.bitcoinrpc.exception.BtcRpcBaseException;
@@ -63,7 +64,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testAbortRescan() throws Exception {
         Boolean success = undertest.abortRescan();
         Assert.assertFalse("Expected false", success);
@@ -82,7 +83,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testBackupWallet() throws Exception {
         Boolean condition = true;
         // System.getProperty("java.io.tmpdir")+ File.separator
@@ -96,7 +97,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testCreateWallet() throws Exception {
         String walletName = "junit_wallet_2";
         Boolean disablePrivateKeys = false;
@@ -114,7 +115,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testDumpWallet() throws Exception {
         Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
         Assert.assertTrue("Ok", condition);
@@ -130,7 +131,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testEncryptWallet() throws Exception {
         try {
             String passphrase = PASSPHRASE;
@@ -146,7 +147,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testGetWalletInfo() throws Exception {
         BtcRpcGetWalletInfoResponse btcRpcGetWalletInfoResponse = undertest.getWalletInfo();
         Assert.assertTrue("Expected true", btcRpcGetWalletInfoResponse.getPrivateKeysEnabled());
@@ -157,7 +158,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testImportWallet() throws Exception {
         Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
         Assert.assertTrue("Ok", condition);
@@ -171,7 +172,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testKeypoolRefill() throws Exception {
         Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
         Assert.assertTrue("Ok", condition);
@@ -185,7 +186,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testListSinceBlock() throws Exception {
         // String blockhash = null;
         // Long targetConfirmations = null;
@@ -207,7 +208,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testListWallets() throws Exception {
         List<String> list = undertest.listWallets();
         Assert.assertNotNull("Is not null", list);
@@ -218,7 +219,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testListWalletDir() throws Exception {
         List<String> list = undertest.listWalletDir();
         Assert.assertNotNull("Is not null", list);
@@ -229,7 +230,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testLoadWallet() throws Exception {
         String name = "junit_wallet";
         BtcRpcLoadWalletResponse btcRpcLoadWalletResponse = undertest.loadWallet(name);
@@ -241,7 +242,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testRescanBlockchain() throws Exception {
         Long startHeight = 1_200_000L;
         Long stopHeight = 1_200_001L;
@@ -254,7 +255,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testSetHdSeed() throws Exception {
         // Boolean condition = undertest.walletPassphrase(PASSPHRASE, 30L);
         // Assert.assertTrue("Ok", condition);
@@ -269,7 +270,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testUnloadWallet() throws Exception {
         String walletName = "junit_wallet";
         undertest.unloadWallet(walletName);
@@ -281,7 +282,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testWalletLock() throws Exception {
         Boolean success = undertest.walletLock();
         Assert.assertTrue("Expected true", success);
@@ -292,7 +293,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testWalletPassphrase() throws Exception {
         String passphrase = PASSPHRASE;
         Long timeout = 30L;
@@ -305,7 +306,7 @@ public class BtcRpcWalletToolsMethodsIntegrationTest extends AbstractBtcRpcMetho
      *
      * @throws Exception the exception
      */
-    // @Test
+    @Test
     public void testWalletPassphraseChange() throws Exception {
         String oldpassphrase = PASSPHRASE;
         String newpassphrase = PASSPHRASE;

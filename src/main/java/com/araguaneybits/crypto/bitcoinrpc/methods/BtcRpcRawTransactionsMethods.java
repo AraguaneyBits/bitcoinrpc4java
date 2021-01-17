@@ -105,7 +105,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcAnalyzePsbtResponse analyzePsbt(String psbt) {
         String json = callSimpleRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_ANALYZE_PSBT, psbt);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcAnalyzePsbtResponse>>() {
                 });
         return (BtcRpcAnalyzePsbtResponse) rpcOutputMessage.getResult();
@@ -459,7 +459,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcDecodePsbtResponse decodePsbt(String psbt) {
         String json = callSimpleRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_DECODE_PSBT, psbt);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcDecodePsbtResponse>>() {
                 });
         return (BtcRpcDecodePsbtResponse) rpcOutputMessage.getResult();
@@ -538,7 +538,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcDecodeRawTransactionResponse decodeRawTransaction(String hexstring, Boolean iswitness) {
         String json = callSimpleRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_DECODE_RAW_TRANSACTION, hexstring, iswitness);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcDecodeRawTransactionResponse>>() {
                 });
         return (BtcRpcDecodeRawTransactionResponse) rpcOutputMessage.getResult();
@@ -584,7 +584,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcDecodeScriptResponse decodeScript(String hexstring) {
         String json = callSimpleRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_DECODE_SCRIPT, hexstring);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcDecodeScriptResponse>>() {
                 });
         return (BtcRpcDecodeScriptResponse) rpcOutputMessage.getResult();
@@ -632,7 +632,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcFinalizePsbtResponse finalizePsbt(String psbt, Boolean extract) {
         String json = callSimpleRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_FINALIZE_PSBT, psbt, extract);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcFinalizePsbtResponse>>() {
                 });
         return (BtcRpcFinalizePsbtResponse) rpcOutputMessage.getResult();
@@ -708,7 +708,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcFundRawTransactionResponse fundRawTransaction(String rawtransactionhex) {
         String json = callSimpleRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_FUNDRAW_TRANSACTION, rawtransactionhex);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcFundRawTransactionResponse>>() {
                 });
         return (BtcRpcFundRawTransactionResponse) rpcOutputMessage.getResult();
@@ -813,7 +813,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcDecodeRawTransactionResponse getRawTransaction(String txid, Boolean verbose, String blockhash) {
         String json = callSimpleRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_GET_RAW_TRANSACTION, txid, verbose);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcDecodeRawTransactionResponse>>() {
                 });
         return (BtcRpcDecodeRawTransactionResponse) rpcOutputMessage.getResult();

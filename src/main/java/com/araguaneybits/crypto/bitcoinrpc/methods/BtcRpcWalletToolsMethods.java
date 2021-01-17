@@ -150,7 +150,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcCreateWalletResponse createWallet(String walletName, Boolean disablePrivateKeys, Boolean blank) {
         String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_CREATE_WALLET, walletName, disablePrivateKeys, blank);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcCreateWalletResponse>>() {
                 });
         return (BtcRpcCreateWalletResponse) rpcOutputMessage.getResult();
@@ -289,7 +289,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      */
     public BtcRpcGetWalletInfoResponse getWalletInfo() {
         String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_GET_WALLET_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetWalletInfoResponse>>() {
                 });
         return (BtcRpcGetWalletInfoResponse) rpcOutputMessage.getResult();
@@ -445,8 +445,8 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * @param json the json
      * @return the btc rpc list since block response
      */
-    private BtcRpcListSinceBlockResponse getBtcRpcListSinceBlockResponse(String json) {
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+    private static BtcRpcListSinceBlockResponse getBtcRpcListSinceBlockResponse(String json) {
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcListSinceBlockResponse>>() {
                 });
         return (BtcRpcListSinceBlockResponse) rpcOutputMessage.getResult();
@@ -478,7 +478,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      */
     public List<String> listWallets() {
         String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_WALLETS);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<ArrayList<String>>>() {
                 });
         return (ArrayList<String>) rpcOutputMessage.getResult();
@@ -560,7 +560,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
     public BtcRpcLoadWalletResponse loadWallet(String name) {
 
         String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LOAD_WALLET, name);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcLoadWalletResponse>>() {
                 });
         return (BtcRpcLoadWalletResponse) rpcOutputMessage.getResult();

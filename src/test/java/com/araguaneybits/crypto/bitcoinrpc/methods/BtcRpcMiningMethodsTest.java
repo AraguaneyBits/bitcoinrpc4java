@@ -32,7 +32,6 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetMiningInfoR
  *
  * @author jestevez
  */
-// @Ignore
 public class BtcRpcMiningMethodsTest extends AbstractBtcRpcMethodsTest {
 
     /** The undertest. */

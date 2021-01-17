@@ -33,7 +33,6 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetDescriptorI
  *
  * @author jestevez
  */
-// @Ignore
 public class BtcRpcUtilMethodsTest extends AbstractBtcRpcMethodsTest {
 
     /** The undertest. */

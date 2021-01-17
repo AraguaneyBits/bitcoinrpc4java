@@ -71,8 +71,8 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     2. "command"  (string, required) 'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once
      *     
      *     Examples:
-*       bitcoin-cli addnode "192.168.0.6:8333" "onetry"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addnode", "params": ["192.168.0.6:8333", "onetry"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli addnode "192.168.0.6:8333" "onetry"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "addnode", "params": ["192.168.0.6:8333", "onetry"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param node the node
@@ -101,8 +101,8 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     Clear all banned IPs.
      *     
      *     Examples:
-*       bitcoin-cli clearbanned 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli clearbanned 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the boolean
@@ -137,10 +137,10 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     2. "nodeid"      (number, optional) The node ID (see getpeerinfo for node IDs)
      *     
      *     Examples:
-*       bitcoin-cli disconnectnode "192.168.0.6:8333"
-*       bitcoin-cli disconnectnode "" 1
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["192.168.0.6:8333"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli disconnectnode "192.168.0.6:8333"
+    *       bitcoin-cli disconnectnode "" 1
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["192.168.0.6:8333"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "disconnectnode", "params": ["", 1] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param address the address
@@ -188,15 +188,15 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     ]
      *     
      *     Examples:
-*       bitcoin-cli getaddednodeinfo "192.168.0.201"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddednodeinfo", "params": ["192.168.0.201"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getaddednodeinfo "192.168.0.201"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddednodeinfo", "params": ["192.168.0.201"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the added node info
      */
     public List<BtcRpcGetAddedNodeInfoResponse> getAddedNodeInfo() {
         String json = callSimpleRpcMethod(RpcNetworkMethodsConstants.NETWORK_GET_ADDED_NODE_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<ArrayList<BtcRpcGetAddedNodeInfoResponse>>>() {
                 });
         return (ArrayList<BtcRpcGetAddedNodeInfoResponse>) rpcOutputMessage.getResult();
@@ -222,8 +222,8 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     n          (numeric) The connection count
      *     
      *     Examples:
-*       bitcoin-cli getconnectioncount 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getconnectioncount 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the connection count
@@ -266,15 +266,15 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getnettotals 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnettotals", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getnettotals 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnettotals", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the net totals
      */
     public BtcRpcGetNetTotalsResponse getNetTotals() {
         String json = callSimpleRpcMethod(RpcNetworkMethodsConstants.NETWORK_GET_NET_TOTALS);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcGetNetTotalsResponse>>() {
                 });
         return (BtcRpcGetNetTotalsResponse) rpcOutputMessage.getResult();
@@ -329,8 +329,8 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-*       bitcoin-cli getnetworkinfo 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getnetworkinfo 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnetworkinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the network info
@@ -338,7 +338,7 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
     public BtcRpcNetworkInfoResponse getNetworkInfo() {
         String json = callSimpleRpcMethod(RpcNetworkMethodsConstants.NETWORK_GET_NETWORK_INFO);
 
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<BtcRpcNetworkInfoResponse>>() {
                 });
 
@@ -376,15 +376,15 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     ]
      *     
      *     Examples:
-*       bitcoin-cli getnodeaddresses 8
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnodeaddresses", "params": [8] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getnodeaddresses 8
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnodeaddresses", "params": [8] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the node addresses
      */
     public List<BtcRpcGetNodeAddressesResponse> getNodeAddresses() {
         String json = callSimpleRpcMethod(RpcNetworkMethodsConstants.NETWORK_GET_NODE_ADDRESSES);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<ArrayList<BtcRpcGetNodeAddressesResponse>>>() {
                 });
         return (ArrayList<BtcRpcGetNodeAddressesResponse>) rpcOutputMessage.getResult();
@@ -455,15 +455,15 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     ]
      *     
      *     Examples:
-*       bitcoin-cli getpeerinfo 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli getpeerinfo 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getpeerinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the peer info
      */
     public List<BtcRpcGetPeerInfoResponse> getPeerInfo() {
         String json = callSimpleRpcMethod(RpcNetworkMethodsConstants.NETWORK_GET_PEER_INFO);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<ArrayList<BtcRpcGetPeerInfoResponse>>>() {
                 });
         return (ArrayList<BtcRpcGetPeerInfoResponse>) rpcOutputMessage.getResult();
@@ -486,15 +486,15 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     List all banned IPs/Subnets.
      *     
      *     Examples:
-*       bitcoin-cli listbanned 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli listbanned 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the list
      */
     public List<BtcRpcListBannedResponse> listBanned() {
         String json = callSimpleRpcMethod(RpcNetworkMethodsConstants.NETWORK_LIST_BANNED);
-        RpcOutputMessage rpcOutputMessage = (RpcOutputMessage) TransformBeanUtils.readValue(json,
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
                 new TypeReference<RpcOutputMessage<ArrayList<BtcRpcListBannedResponse>>>() {
                 });
         return (ArrayList<BtcRpcListBannedResponse>) rpcOutputMessage.getResult();
@@ -521,8 +521,8 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     Ping command is handled in queue with all other commands, so it measures processing backlog, not just network ping.
      *     
      *     Examples:
-*       bitcoin-cli ping 
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "ping", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli ping 
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "ping", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @return the boolean
@@ -555,9 +555,9 @@ public class BtcRpcNetworkMethods extends BaseBtcRpcMethods {
      *     4. "absolute"     (boolean, optional) If set, the bantime must be an absolute timestamp in seconds since epoch (Jan 1 1970 GMT)
      *     
      *     Examples:
-*       bitcoin-cli setban "192.168.0.6" "add" 86400
-*       bitcoin-cli setban "192.168.0.0/24" "add"
-*       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setban", "params": ["192.168.0.6", "add", 86400] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+    *       bitcoin-cli setban "192.168.0.6" "add" 86400
+    *       bitcoin-cli setban "192.168.0.0/24" "add"
+    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setban", "params": ["192.168.0.6", "add", 86400] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
      * @param subnet the subnet

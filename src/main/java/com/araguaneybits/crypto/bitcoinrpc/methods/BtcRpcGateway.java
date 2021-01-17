@@ -203,7 +203,7 @@ public class BtcRpcGateway {
             String json = apiResponse.getBody();
             LOGGER.trace("RPC Response: [{}]", json);
             return json;
-        } catch (Exception e) {
+        } catch (IOException e) {
             LOGGER.error("Fail in callRpcApiMethod", e);
             throw new CallRpcApiMethodException("Fail to call method " + callMethod);
         }
