@@ -125,10 +125,11 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     }
      *     
      *     Examples:
-    *       bitcoin-cli getblocktemplate {"rules": ["segwit"]}
-    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [{"rules": ["segwit"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+     *       bitcoin-cli getblocktemplate {"rules": ["segwit"]}
+     *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblocktemplate", "params": [{"rules": ["segwit"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param btcRpcBlockTemplateRequest the btc rpc block template request
      * @return the blocktemplate
      */
     public BtcRpcBlockTemplateResponse getBlockTemplate(BtcRpcBlockTemplateRequest btcRpcBlockTemplateRequest) {
@@ -322,10 +323,11 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     Result:
      *     None
      *     Examples:
-    *       bitcoin-cli submitheader "aabbcc"
-    *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitheader", "params": ["aabbcc"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+     *       bitcoin-cli submitheader "aabbcc"
+     *       curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "submitheader", "params": ["aabbcc"] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
      * </pre>
      *
+     * @param hexdata the hexdata
      * @return the object
      */
     public Object submitHeader(String hexdata) {
@@ -360,9 +362,12 @@ public class BtcRpcMiningMethods extends BaseBtcRpcMethods {
      *     Examples:
      *     
      *     Generate 11 blocks to myaddress
-    *       bitcoin-cli generatetoaddress 11 "myaddress"
+     *       bitcoin-cli generatetoaddress 11 "myaddress"
      * </pre>
      *
+     * @param nblocks the nblocks
+     * @param address the address
+     * @param maxtries the maxtries
      * @return the object
      */
     public Object generateToAddress(BigInteger nblocks, String address, BigInteger maxtries) {
