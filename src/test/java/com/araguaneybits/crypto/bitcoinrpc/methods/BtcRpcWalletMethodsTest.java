@@ -33,6 +33,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcAddMultiSigAdd
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcBumpFeeResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetAddressInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetAddressesByLabelResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBalancesResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetTransactionResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListReceivedByLabelResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListUnspentResponse;
@@ -168,6 +169,21 @@ public class BtcRpcWalletMethodsTest extends AbstractBtcRpcMethodsTest {
 
         BigDecimal balance = undertest.getBalance();
         Assert.assertEquals("Expected equals", new BigDecimal("5099.21616543"), balance);
+    }
+
+    /**
+     * Test get balances.
+     *
+     * @throws Exception the exception
+     */
+    @Test
+    public void testGetBalances() throws Exception {
+        enqueueMockedResponse(200,
+                "{\"result\":{\"mine\":{\"trusted\":1.02296022,\"untrusted_pending\":0.15893250,\"immature\":0.00000000}},\"error\":null,\"id\":null}");
+
+        BtcRpcGetBalancesResponse balances = undertest.getBalances();
+        Assert.assertEquals("Expected equals", new BigDecimal("1.02296022"), balances.getMine().getTrusted());
+        Assert.assertEquals("Expected equals", new BigDecimal("0.15893250"), balances.getMine().getUntrustedPending());
     }
 
     /**
