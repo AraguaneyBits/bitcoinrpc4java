@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetAddressInfoLabelResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetAddressInfoLabelResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -36,58 +41,5 @@ public class BtcRpcGetAddressInfoLabelResponse implements Serializable {
     /** The purpose. */
     @JsonProperty("purpose")
     private String purpose;
-
-    /**
-     * Instantiates a new btc rpc get address info label response.
-     */
-    public BtcRpcGetAddressInfoLabelResponse() {
-        super();
-    }
-
-    /**
-     * Gets the name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the name.
-     *
-     * @param name the new name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets the purpose.
-     *
-     * @return the purpose
-     */
-    public String getPurpose() {
-        return purpose;
-    }
-
-    /**
-     * Sets the purpose.
-     *
-     * @param purpose the new purpose
-     */
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetAddressInfoLabelResponse [name=" + name + ", purpose=" + purpose + "]";
-    }
 
 }

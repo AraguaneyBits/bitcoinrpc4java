@@ -20,11 +20,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetAddedNodeInfoResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetAddedNodeInfoResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -41,76 +46,5 @@ public class BtcRpcGetAddedNodeInfoResponse implements Serializable {
     /** The addresses. */
     @JsonProperty("addresses")
     private List<BtcRpcGetAddedNodeInfoAddressResponse> addresses;
-
-    /**
-     * Instantiates a new btc rpc get added node info response.
-     */
-    public BtcRpcGetAddedNodeInfoResponse() {
-        super();
-    }
-
-    /**
-     * Gets the addednode.
-     *
-     * @return the addednode
-     */
-    public String getAddednode() {
-        return addednode;
-    }
-
-    /**
-     * Sets the addednode.
-     *
-     * @param addednode the new addednode
-     */
-    public void setAddednode(String addednode) {
-        this.addednode = addednode;
-    }
-
-    /**
-     * Gets the connected.
-     *
-     * @return the connected
-     */
-    public Boolean getConnected() {
-        return connected;
-    }
-
-    /**
-     * Sets the connected.
-     *
-     * @param connected the new connected
-     */
-    public void setConnected(Boolean connected) {
-        this.connected = connected;
-    }
-
-    /**
-     * Gets the addresses.
-     *
-     * @return the addresses
-     */
-    public List<BtcRpcGetAddedNodeInfoAddressResponse> getAddresses() {
-        return addresses;
-    }
-
-    /**
-     * Sets the addresses.
-     *
-     * @param addresses the new addresses
-     */
-    public void setAddresses(List<BtcRpcGetAddedNodeInfoAddressResponse> addresses) {
-        this.addresses = addresses;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetAddedNodeInfoResponse [addednode=" + addednode + ", connected=" + connected + ", addresses=" + addresses + "]";
-    }
 
 }

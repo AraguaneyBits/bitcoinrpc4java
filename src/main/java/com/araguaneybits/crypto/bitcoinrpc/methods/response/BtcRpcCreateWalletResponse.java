@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcCreateWalletResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcCreateWalletResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -36,58 +41,5 @@ public class BtcRpcCreateWalletResponse implements Serializable {
     /** The warning. */
     @JsonProperty("warning")
     private String warning;
-
-    /**
-     * Instantiates a new btc rpc create wallet response.
-     */
-    public BtcRpcCreateWalletResponse() {
-        super();
-    }
-
-    /**
-     * Gets the name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the name.
-     *
-     * @param name the new name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets the warning.
-     *
-     * @return the warning
-     */
-    public String getWarning() {
-        return warning;
-    }
-
-    /**
-     * Sets the warning.
-     *
-     * @param warning the new warning
-     */
-    public void setWarning(String warning) {
-        this.warning = warning;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcCreateWalletResponse [name=" + name + ", warning=" + warning + "]";
-    }
 
 }

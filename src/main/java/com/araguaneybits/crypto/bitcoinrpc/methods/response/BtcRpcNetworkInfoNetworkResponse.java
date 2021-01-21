@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcNetworkInfoNetworkResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcNetworkInfoNetworkResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -48,113 +53,5 @@ public class BtcRpcNetworkInfoNetworkResponse implements Serializable {
     /** The proxy randomize credentials. */
     @JsonProperty("proxy_randomize_credentials")
     private Boolean proxyRandomizeCredentials;
-
-    /**
-     * Instantiates a new btc rpc network info network response.
-     */
-    public BtcRpcNetworkInfoNetworkResponse() {
-        super();
-    }
-
-    /**
-     * Gets the name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the name.
-     *
-     * @param name the new name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets the limited.
-     *
-     * @return the limited
-     */
-    public Boolean getLimited() {
-        return limited;
-    }
-
-    /**
-     * Sets the limited.
-     *
-     * @param limited the new limited
-     */
-    public void setLimited(Boolean limited) {
-        this.limited = limited;
-    }
-
-    /**
-     * Gets the reachable.
-     *
-     * @return the reachable
-     */
-    public Boolean getReachable() {
-        return reachable;
-    }
-
-    /**
-     * Sets the reachable.
-     *
-     * @param reachable the new reachable
-     */
-    public void setReachable(Boolean reachable) {
-        this.reachable = reachable;
-    }
-
-    /**
-     * Gets the proxy.
-     *
-     * @return the proxy
-     */
-    public String getProxy() {
-        return proxy;
-    }
-
-    /**
-     * Sets the proxy.
-     *
-     * @param proxy the new proxy
-     */
-    public void setProxy(String proxy) {
-        this.proxy = proxy;
-    }
-
-    /**
-     * Gets the proxy randomize credentials.
-     *
-     * @return the proxy randomize credentials
-     */
-    public Boolean getProxyRandomizeCredentials() {
-        return proxyRandomizeCredentials;
-    }
-
-    /**
-     * Sets the proxy randomize credentials.
-     *
-     * @param proxyRandomizeCredentials the new proxy randomize credentials
-     */
-    public void setProxyRandomizeCredentials(Boolean proxyRandomizeCredentials) {
-        this.proxyRandomizeCredentials = proxyRandomizeCredentials;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcNetworkInfoNetworkResponse [name=" + name + ", limited=" + limited + ", reachable=" + reachable + ", proxy=" + proxy
-                + ", proxyRandomizeCredentials=" + proxyRandomizeCredentials + "]";
-    }
 
 }

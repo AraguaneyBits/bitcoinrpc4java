@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcDecodePsbtScriptSigResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcDecodePsbtScriptSigResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -36,58 +41,5 @@ public class BtcRpcDecodePsbtScriptSigResponse implements Serializable {
     /** The hex. */
     @JsonProperty("hex")
     private String hex;
-
-    /**
-     * Instantiates a new btc rpc decode psbt script sig response.
-     */
-    public BtcRpcDecodePsbtScriptSigResponse() {
-        super();
-    }
-
-    /**
-     * Gets the asm.
-     *
-     * @return the asm
-     */
-    public String getAsm() {
-        return asm;
-    }
-
-    /**
-     * Sets the asm.
-     *
-     * @param asm the new asm
-     */
-    public void setAsm(String asm) {
-        this.asm = asm;
-    }
-
-    /**
-     * Gets the hex.
-     *
-     * @return the hex
-     */
-    public String getHex() {
-        return hex;
-    }
-
-    /**
-     * Sets the hex.
-     *
-     * @param hex the new hex
-     */
-    public void setHex(String hex) {
-        this.hex = hex;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcDecodePsbtScriptSigResponse [asm=" + asm + ", hex=" + hex + "]";
-    }
 
 }

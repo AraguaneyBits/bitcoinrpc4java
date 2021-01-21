@@ -20,11 +20,16 @@ import java.math.BigInteger;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetNodeAddressesResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetNodeAddressesResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -45,94 +50,5 @@ public class BtcRpcGetNodeAddressesResponse implements Serializable {
     /** The port. */
     @JsonProperty("port")
     private BigInteger port;
-
-    /**
-     * Instantiates a new btc rpc get node addresses response.
-     */
-    public BtcRpcGetNodeAddressesResponse() {
-        super();
-    }
-
-    /**
-     * Gets the time.
-     *
-     * @return the time
-     */
-    public BigInteger getTime() {
-        return time;
-    }
-
-    /**
-     * Sets the time.
-     *
-     * @param time the new time
-     */
-    public void setTime(BigInteger time) {
-        this.time = time;
-    }
-
-    /**
-     * Gets the services.
-     *
-     * @return the services
-     */
-    public BigInteger getServices() {
-        return services;
-    }
-
-    /**
-     * Sets the services.
-     *
-     * @param services the new services
-     */
-    public void setServices(BigInteger services) {
-        this.services = services;
-    }
-
-    /**
-     * Gets the address.
-     *
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the address.
-     *
-     * @param address the new address
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * Gets the port.
-     *
-     * @return the port
-     */
-    public BigInteger getPort() {
-        return port;
-    }
-
-    /**
-     * Sets the port.
-     *
-     * @param port the new port
-     */
-    public void setPort(BigInteger port) {
-        this.port = port;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetNodeAddressesResponse [time=" + time + ", services=" + services + ", address=" + address + ", port=" + port + "]";
-    }
 
 }

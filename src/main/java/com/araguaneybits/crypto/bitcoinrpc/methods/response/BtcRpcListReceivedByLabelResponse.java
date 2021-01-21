@@ -20,11 +20,16 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcListReceivedByLabelResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcListReceivedByLabelResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -41,76 +46,5 @@ public class BtcRpcListReceivedByLabelResponse implements Serializable {
     /** The label. */
     @JsonProperty("label")
     private String label;
-
-    /**
-     * Instantiates a new btc rpc list received by label response.
-     */
-    public BtcRpcListReceivedByLabelResponse() {
-        super();
-    }
-
-    /**
-     * Gets the amount.
-     *
-     * @return the amount
-     */
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    /**
-     * Sets the amount.
-     *
-     * @param amount the new amount
-     */
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    /**
-     * Gets the confirmations.
-     *
-     * @return the confirmations
-     */
-    public Long getConfirmations() {
-        return confirmations;
-    }
-
-    /**
-     * Sets the confirmations.
-     *
-     * @param confirmations the new confirmations
-     */
-    public void setConfirmations(Long confirmations) {
-        this.confirmations = confirmations;
-    }
-
-    /**
-     * Gets the label.
-     *
-     * @return the label
-     */
-    public String getLabel() {
-        return label;
-    }
-
-    /**
-     * Sets the label.
-     *
-     * @param label the new label
-     */
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcListReceivedByLabelResponse [amount=" + amount + ", confirmations=" + confirmations + ", label=" + label + "]";
-    }
 
 }

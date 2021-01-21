@@ -20,11 +20,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcDecodePsbtVinResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcDecodePsbtVinResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -49,112 +54,5 @@ public class BtcRpcDecodePsbtVinResponse implements Serializable {
     /** The txinwitness. */
     @JsonProperty("txinwitness")
     private List<String> txinwitness;
-
-    /**
-     * Instantiates a new btc rpc decode psbt vin response.
-     */
-    public BtcRpcDecodePsbtVinResponse() {
-        super();
-    }
-
-    /**
-     * Gets the txid.
-     *
-     * @return the txid
-     */
-    public String getTxid() {
-        return txid;
-    }
-
-    /**
-     * Sets the txid.
-     *
-     * @param txid the new txid
-     */
-    public void setTxid(String txid) {
-        this.txid = txid;
-    }
-
-    /**
-     * Gets the vout.
-     *
-     * @return the vout
-     */
-    public Long getVout() {
-        return vout;
-    }
-
-    /**
-     * Sets the vout.
-     *
-     * @param vout the new vout
-     */
-    public void setVout(Long vout) {
-        this.vout = vout;
-    }
-
-    /**
-     * Gets the script sig.
-     *
-     * @return the script sig
-     */
-    public BtcRpcDecodePsbtScriptSigResponse getScriptSig() {
-        return scriptSig;
-    }
-
-    /**
-     * Sets the script sig.
-     *
-     * @param scriptSig the new script sig
-     */
-    public void setScriptSig(BtcRpcDecodePsbtScriptSigResponse scriptSig) {
-        this.scriptSig = scriptSig;
-    }
-
-    /**
-     * Gets the sequence.
-     *
-     * @return the sequence
-     */
-    public Long getSequence() {
-        return sequence;
-    }
-
-    /**
-     * Sets the sequence.
-     *
-     * @param sequence the new sequence
-     */
-    public void setSequence(Long sequence) {
-        this.sequence = sequence;
-    }
-
-    /**
-     * Gets the txinwitness.
-     *
-     * @return the txinwitness
-     */
-    public List<String> getTxinwitness() {
-        return txinwitness;
-    }
-
-    /**
-     * Sets the txinwitness.
-     *
-     * @param txinwitness the new txinwitness
-     */
-    public void setTxinwitness(List<String> txinwitness) {
-        this.txinwitness = txinwitness;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcDecodePsbtVinResponse [txid=" + txid + ", vout=" + vout + ", scriptSig=" + scriptSig + ", sequence=" + sequence + "]";
-    }
 
 }

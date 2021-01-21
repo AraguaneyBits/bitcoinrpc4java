@@ -20,11 +20,16 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetBlockVoutResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetBlockVoutResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -41,66 +46,5 @@ public class BtcRpcGetBlockVoutResponse implements Serializable {
     /** The script pub key. */
     @JsonProperty("scriptPubKey")
     private BtcRpcGetBlockScriptPubKeyResponse scriptPubKey;
-
-    /**
-     * Instantiates a new btc rpc get block vout response.
-     */
-    public BtcRpcGetBlockVoutResponse() {
-        super();
-    }
-
-    /**
-     * Gets the value.
-     *
-     * @return the value
-     */
-    public BigDecimal getValue() {
-        return value;
-    }
-
-    /**
-     * Sets the value.
-     *
-     * @param value the new value
-     */
-    public void setValue(BigDecimal value) {
-        this.value = value;
-    }
-
-    /**
-     * Gets the n.
-     *
-     * @return the n
-     */
-    public Long getN() {
-        return n;
-    }
-
-    /**
-     * Sets the n.
-     *
-     * @param n the new n
-     */
-    public void setN(Long n) {
-        this.n = n;
-    }
-
-    /**
-     * Gets the script pub key.
-     *
-     * @return the script pub key
-     */
-    public BtcRpcGetBlockScriptPubKeyResponse getScriptPubKey() {
-        return scriptPubKey;
-    }
-
-    /**
-     * Sets the script pub key.
-     *
-     * @param scriptPubKey the new script pub key
-     */
-    public void setScriptPubKey(BtcRpcGetBlockScriptPubKeyResponse scriptPubKey) {
-        this.scriptPubKey = scriptPubKey;
-    }
 
 }

@@ -20,11 +20,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcDecodeRawTransactionResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcDecodeRawTransactionResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -69,203 +74,5 @@ public class BtcRpcDecodeRawTransactionResponse implements Serializable {
     /** The hex. */
     @JsonProperty("hex")
     private String hex;
-
-    /**
-     * Instantiates a new btc rpc decode raw transaction response.
-     */
-    public BtcRpcDecodeRawTransactionResponse() {
-        super();
-    }
-
-    /**
-     * Gets the txid.
-     *
-     * @return the txid
-     */
-    public String getTxid() {
-        return txid;
-    }
-
-    /**
-     * Sets the txid.
-     *
-     * @param txid the new txid
-     */
-    public void setTxid(String txid) {
-        this.txid = txid;
-    }
-
-    /**
-     * Gets the hash.
-     *
-     * @return the hash
-     */
-    public String getHash() {
-        return hash;
-    }
-
-    /**
-     * Sets the hash.
-     *
-     * @param hash the new hash
-     */
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
-
-    /**
-     * Gets the version.
-     *
-     * @return the version
-     */
-    public Long getVersion() {
-        return version;
-    }
-
-    /**
-     * Sets the version.
-     *
-     * @param version the new version
-     */
-    public void setVersion(Long version) {
-        this.version = version;
-    }
-
-    /**
-     * Gets the size.
-     *
-     * @return the size
-     */
-    public Long getSize() {
-        return size;
-    }
-
-    /**
-     * Sets the size.
-     *
-     * @param size the new size
-     */
-    public void setSize(Long size) {
-        this.size = size;
-    }
-
-    /**
-     * Gets the vsize.
-     *
-     * @return the vsize
-     */
-    public Long getVsize() {
-        return vsize;
-    }
-
-    /**
-     * Sets the vsize.
-     *
-     * @param vsize the new vsize
-     */
-    public void setVsize(Long vsize) {
-        this.vsize = vsize;
-    }
-
-    /**
-     * Gets the weight.
-     *
-     * @return the weight
-     */
-    public Long getWeight() {
-        return weight;
-    }
-
-    /**
-     * Sets the weight.
-     *
-     * @param weight the new weight
-     */
-    public void setWeight(Long weight) {
-        this.weight = weight;
-    }
-
-    /**
-     * Gets the locktime.
-     *
-     * @return the locktime
-     */
-    public Long getLocktime() {
-        return locktime;
-    }
-
-    /**
-     * Sets the locktime.
-     *
-     * @param locktime the new locktime
-     */
-    public void setLocktime(Long locktime) {
-        this.locktime = locktime;
-    }
-
-    /**
-     * Gets the vin.
-     *
-     * @return the vin
-     */
-    public List<BtcRpcDecodePsbtVinResponse> getVin() {
-        return vin;
-    }
-
-    /**
-     * Sets the vin.
-     *
-     * @param vin the new vin
-     */
-    public void setVin(List<BtcRpcDecodePsbtVinResponse> vin) {
-        this.vin = vin;
-    }
-
-    /**
-     * Gets the vout.
-     *
-     * @return the vout
-     */
-    public List<BtcRpcDecodePsbtVoutResponse> getVout() {
-        return vout;
-    }
-
-    /**
-     * Sets the vout.
-     *
-     * @param vout the new vout
-     */
-    public void setVout(List<BtcRpcDecodePsbtVoutResponse> vout) {
-        this.vout = vout;
-    }
-
-    /**
-     * Gets the hex.
-     *
-     * @return the hex
-     */
-    public String getHex() {
-        return hex;
-    }
-
-    /**
-     * Sets the hex.
-     *
-     * @param hex the new hex
-     */
-    public void setHex(String hex) {
-        this.hex = hex;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcDecodeRawTransactionResponse [txid=" + txid + ", hash=" + hash + ", version=" + version + ", size=" + size + ", vsize=" + vsize
-                + ", weight=" + weight + ", locktime=" + locktime + ", vin=" + vin + ", vout=" + vout + "]";
-    }
 
 }

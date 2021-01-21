@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcBlockTemplateCoinbaseAuxResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcBlockTemplateCoinbaseAuxResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -32,40 +37,5 @@ public class BtcRpcBlockTemplateCoinbaseAuxResponse implements Serializable {
     /** The flags. */
     @JsonProperty("flags")
     private String flags;
-
-    /**
-     * Instantiates a new btc rpc block template coinbase aux response.
-     */
-    public BtcRpcBlockTemplateCoinbaseAuxResponse() {
-        super();
-    }
-
-    /**
-     * Gets the flags.
-     *
-     * @return the flags
-     */
-    public String getFlags() {
-        return flags;
-    }
-
-    /**
-     * Sets the flags.
-     *
-     * @param flags the new flags
-     */
-    public void setFlags(String flags) {
-        this.flags = flags;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcBlockTemplateCoinbaseAuxResponse [flags=" + flags + "]";
-    }
 
 }

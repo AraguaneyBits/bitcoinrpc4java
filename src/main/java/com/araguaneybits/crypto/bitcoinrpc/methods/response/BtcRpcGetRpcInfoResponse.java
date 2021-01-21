@@ -20,11 +20,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetRpcInfoResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetRpcInfoResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -37,58 +42,5 @@ public class BtcRpcGetRpcInfoResponse implements Serializable {
     /** The logpath. */
     @JsonProperty("logpath")
     private String logpath;
-
-    /**
-     * Instantiates a new btc rpc get rpc info response.
-     */
-    public BtcRpcGetRpcInfoResponse() {
-        super();
-    }
-
-    /**
-     * Gets the active commands.
-     *
-     * @return the active commands
-     */
-    public List<BtcRpcGetRpcInfoActiveCommandResponse> getActiveCommands() {
-        return activeCommands;
-    }
-
-    /**
-     * Sets the active commands.
-     *
-     * @param activeCommands the new active commands
-     */
-    public void setActiveCommands(List<BtcRpcGetRpcInfoActiveCommandResponse> activeCommands) {
-        this.activeCommands = activeCommands;
-    }
-
-    /**
-     * Gets the logpath.
-     *
-     * @return the logpath
-     */
-    public String getLogpath() {
-        return logpath;
-    }
-
-    /**
-     * Sets the logpath.
-     *
-     * @param logpath the new logpath
-     */
-    public void setLogpath(String logpath) {
-        this.logpath = logpath;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetRpcInfoResponse [activeCommands=" + activeCommands + ", logpath=" + logpath + "]";
-    }
 
 }

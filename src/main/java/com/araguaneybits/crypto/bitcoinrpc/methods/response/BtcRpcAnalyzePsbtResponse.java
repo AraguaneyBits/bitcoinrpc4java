@@ -20,11 +20,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcAnalyzePsbtResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcAnalyzePsbtResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -37,58 +42,5 @@ public class BtcRpcAnalyzePsbtResponse implements Serializable {
     /** The next. */
     @JsonProperty("next")
     private String next;
-
-    /**
-     * Instantiates a new btc rpc analyze psbt response.
-     */
-    public BtcRpcAnalyzePsbtResponse() {
-        super();
-    }
-
-    /**
-     * Gets the inputs.
-     *
-     * @return the inputs
-     */
-    public List<BtcRpcAnalyzePsbtInputResponse> getInputs() {
-        return inputs;
-    }
-
-    /**
-     * Sets the inputs.
-     *
-     * @param inputs the new inputs
-     */
-    public void setInputs(List<BtcRpcAnalyzePsbtInputResponse> inputs) {
-        this.inputs = inputs;
-    }
-
-    /**
-     * Gets the next.
-     *
-     * @return the next
-     */
-    public String getNext() {
-        return next;
-    }
-
-    /**
-     * Sets the next.
-     *
-     * @param next the new next
-     */
-    public void setNext(String next) {
-        this.next = next;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcAnalyzePsbtResponse [inputs=" + inputs + ", next=" + next + "]";
-    }
 
 }

@@ -12,18 +12,24 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */package com.araguaneybits.crypto.bitcoinrpc.methods.response;
+ */
+package com.araguaneybits.crypto.bitcoinrpc.methods.response;
 
 import java.io.Serializable;
 import java.math.BigInteger;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetNetTotalsResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetNetTotalsResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -44,95 +50,5 @@ public class BtcRpcGetNetTotalsResponse implements Serializable {
     /** The uploadtarget. */
     @JsonProperty("uploadtarget")
     private BtcRpcGetNetTotalsUploadTargetResponse uploadtarget;
-
-    /**
-     * Instantiates a new btc rpc get net totals response.
-     */
-    public BtcRpcGetNetTotalsResponse() {
-        super();
-    }
-
-    /**
-     * Gets the totalbytesrecv.
-     *
-     * @return the totalbytesrecv
-     */
-    public BigInteger getTotalbytesrecv() {
-        return totalbytesrecv;
-    }
-
-    /**
-     * Sets the totalbytesrecv.
-     *
-     * @param totalbytesrecv the new totalbytesrecv
-     */
-    public void setTotalbytesrecv(BigInteger totalbytesrecv) {
-        this.totalbytesrecv = totalbytesrecv;
-    }
-
-    /**
-     * Gets the totalbytessent.
-     *
-     * @return the totalbytessent
-     */
-    public BigInteger getTotalbytessent() {
-        return totalbytessent;
-    }
-
-    /**
-     * Sets the totalbytessent.
-     *
-     * @param totalbytessent the new totalbytessent
-     */
-    public void setTotalbytessent(BigInteger totalbytessent) {
-        this.totalbytessent = totalbytessent;
-    }
-
-    /**
-     * Gets the timemillis.
-     *
-     * @return the timemillis
-     */
-    public BigInteger getTimemillis() {
-        return timemillis;
-    }
-
-    /**
-     * Sets the timemillis.
-     *
-     * @param timemillis the new timemillis
-     */
-    public void setTimemillis(BigInteger timemillis) {
-        this.timemillis = timemillis;
-    }
-
-    /**
-     * Gets the uploadtarget.
-     *
-     * @return the uploadtarget
-     */
-    public BtcRpcGetNetTotalsUploadTargetResponse getUploadtarget() {
-        return uploadtarget;
-    }
-
-    /**
-     * Sets the uploadtarget.
-     *
-     * @param uploadtarget the new uploadtarget
-     */
-    public void setUploadtarget(BtcRpcGetNetTotalsUploadTargetResponse uploadtarget) {
-        this.uploadtarget = uploadtarget;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetNetTotalsResponse [totalbytesrecv=" + totalbytesrecv + ", totalbytessent=" + totalbytessent + ", timemillis=" + timemillis
-                + ", uploadtarget=" + uploadtarget + "]";
-    }
 
 }

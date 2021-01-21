@@ -15,12 +15,22 @@
  */
 package com.araguaneybits.crypto.bitcoinrpc;
 
+import java.io.Serializable;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class InputRpcMessage.
  *
  * @author Jose Luis Estevez jose.estevez.prieto@gmail.com
  */
-public class RpcInputMessage {
+@Data
+@NoArgsConstructor
+public class RpcInputMessage implements Serializable {
+
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = 3834142678150038651L;
 
     /** The method. */
     private String method;
@@ -31,64 +41,4 @@ public class RpcInputMessage {
     /** The params. */
     private Object[] params = new Object[] {};
 
-    /**
-     * Instantiates a new input rpc message.
-     */
-    public RpcInputMessage() {
-        super();
-    }
-
-    /**
-     * Gets the method.
-     *
-     * @return the method
-     */
-    public String getMethod() {
-        return method;
-    }
-
-    /**
-     * Sets the method.
-     *
-     * @param method the new method
-     */
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    /**
-     * Gets the id.
-     *
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Sets the id.
-     *
-     * @param id the new id
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * Gets the params.
-     *
-     * @return the params
-     */
-    public Object[] getParams() {
-        return params;
-    }
-
-    /**
-     * Sets the params.
-     *
-     * @param params the new params
-     */
-    public void setParams(Object[] params) {
-        this.params = params;
-    }
 }

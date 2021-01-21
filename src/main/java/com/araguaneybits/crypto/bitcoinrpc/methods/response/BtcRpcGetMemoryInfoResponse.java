@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetMemoryInfoResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetMemoryInfoResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -32,40 +37,5 @@ public class BtcRpcGetMemoryInfoResponse implements Serializable {
     /** The locked. */
     @JsonProperty("locked")
     private BtcRpcGetMemoryInfoLockedResponse locked;
-
-    /**
-     * Instantiates a new btc rpc get memory info response.
-     */
-    public BtcRpcGetMemoryInfoResponse() {
-        super();
-    }
-
-    /**
-     * Gets the locked.
-     *
-     * @return the locked
-     */
-    public BtcRpcGetMemoryInfoLockedResponse getLocked() {
-        return locked;
-    }
-
-    /**
-     * Sets the locked.
-     *
-     * @param locked the new locked
-     */
-    public void setLocked(BtcRpcGetMemoryInfoLockedResponse locked) {
-        this.locked = locked;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetMemoryInfoResponse [locked=" + locked + "]";
-    }
 
 }

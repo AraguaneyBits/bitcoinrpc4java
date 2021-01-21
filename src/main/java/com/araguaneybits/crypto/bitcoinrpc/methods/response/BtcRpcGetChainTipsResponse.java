@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetChainTipsResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetChainTipsResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -44,84 +49,5 @@ public class BtcRpcGetChainTipsResponse implements Serializable {
     /** The status. */
     @JsonProperty("status")
     private String status;
-
-    /**
-     * Instantiates a new btc rpc get chain tips response.
-     */
-    public BtcRpcGetChainTipsResponse() {
-        super();
-    }
-
-    /**
-     * Gets the height.
-     *
-     * @return the height
-     */
-    public Long getHeight() {
-        return height;
-    }
-
-    /**
-     * Sets the height.
-     *
-     * @param height the new height
-     */
-    public void setHeight(Long height) {
-        this.height = height;
-    }
-
-    /**
-     * Gets the hash.
-     *
-     * @return the hash
-     */
-    public String getHash() {
-        return hash;
-    }
-
-    /**
-     * Sets the hash.
-     *
-     * @param hash the new hash
-     */
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
-
-    /**
-     * Gets the branchlen.
-     *
-     * @return the branchlen
-     */
-    public Long getBranchlen() {
-        return branchlen;
-    }
-
-    /**
-     * Sets the branchlen.
-     *
-     * @param branchlen the new branchlen
-     */
-    public void setBranchlen(Long branchlen) {
-        this.branchlen = branchlen;
-    }
-
-    /**
-     * Gets the status.
-     *
-     * @return the status
-     */
-    public String getStatus() {
-        return status;
-    }
-
-    /**
-     * Sets the status.
-     *
-     * @param status the new status
-     */
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
 }

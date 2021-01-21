@@ -21,11 +21,17 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class ReceivedByAddress.
  *
  * @author Jose Luis Estevez jose.estevez.prieto@gmail.com
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcReceivedByAddressResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -54,131 +60,5 @@ public class BtcRpcReceivedByAddressResponse implements Serializable {
     /** The account. */
     @JsonProperty("account")
     private String account;
-
-    /**
-     * No args constructor for use in serialization.
-     */
-    public BtcRpcReceivedByAddressResponse() {
-        super();
-    }
-
-    /**
-     * Gets the address.
-     *
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the address.
-     *
-     * @param address the new address
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * Gets the account.
-     *
-     * @return the account
-     */
-    public String getAccount() {
-        return account;
-    }
-
-    /**
-     * Sets the account.
-     *
-     * @param account the new account
-     */
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    /**
-     * Gets the amount.
-     *
-     * @return the amount
-     */
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    /**
-     * Sets the amount.
-     *
-     * @param amount the new amount
-     */
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    /**
-     * Gets the confirmations.
-     *
-     * @return the confirmations
-     */
-    public Long getConfirmations() {
-        return confirmations;
-    }
-
-    /**
-     * Sets the confirmations.
-     *
-     * @param confirmations the new confirmations
-     */
-    public void setConfirmations(Long confirmations) {
-        this.confirmations = confirmations;
-    }
-
-    /**
-     * Gets the label.
-     *
-     * @return the label
-     */
-    public String getLabel() {
-        return label;
-    }
-
-    /**
-     * Sets the label.
-     *
-     * @param label the new label
-     */
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    /**
-     * Gets the txids.
-     *
-     * @return the txids
-     */
-    public List<String> getTxids() {
-        return txids;
-    }
-
-    /**
-     * Sets the txids.
-     *
-     * @param txids the new txids
-     */
-    public void setTxids(List<String> txids) {
-        this.txids = txids;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcReceivedByAddressResponse [address=" + address + ", amount=" + amount + ", confirmations=" + confirmations + ", label=" + label
-                + ", txids=" + txids + ", account=" + account + "]";
-    }
 
 }

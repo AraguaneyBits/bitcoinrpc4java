@@ -20,11 +20,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcListBannedResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcListBannedResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -45,95 +50,5 @@ public class BtcRpcListBannedResponse implements Serializable {
     /** The ban reason. */
     @JsonProperty("ban_reason")
     private String banReason;
-
-    /**
-     * Instantiates a new btc rpc list banned response.
-     */
-    public BtcRpcListBannedResponse() {
-        super();
-    }
-
-    /**
-     * Gets the address.
-     *
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the address.
-     *
-     * @param address the new address
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * Gets the banned until.
-     *
-     * @return the banned until
-     */
-    public Long getBannedUntil() {
-        return bannedUntil;
-    }
-
-    /**
-     * Sets the banned until.
-     *
-     * @param bannedUntil the new banned until
-     */
-    public void setBannedUntil(Long bannedUntil) {
-        this.bannedUntil = bannedUntil;
-    }
-
-    /**
-     * Gets the ban created.
-     *
-     * @return the ban created
-     */
-    public Long getBanCreated() {
-        return banCreated;
-    }
-
-    /**
-     * Sets the ban created.
-     *
-     * @param banCreated the new ban created
-     */
-    public void setBanCreated(Long banCreated) {
-        this.banCreated = banCreated;
-    }
-
-    /**
-     * Gets the ban reason.
-     *
-     * @return the ban reason
-     */
-    public String getBanReason() {
-        return banReason;
-    }
-
-    /**
-     * Sets the ban reason.
-     *
-     * @param banReason the new ban reason
-     */
-    public void setBanReason(String banReason) {
-        this.banReason = banReason;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcListBannedResponse [address=" + address + ", bannedUntil=" + bannedUntil + ", banCreated=" + banCreated + ", banReason="
-                + banReason + "]";
-    }
 
 }

@@ -21,9 +21,14 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcBlockTemplateTransactionResponse implements Serializable {
 
     private static final long serialVersionUID = 9008400018378120287L;
@@ -41,71 +46,5 @@ public class BtcRpcBlockTemplateTransactionResponse implements Serializable {
     private BigInteger sigops;
     @JsonProperty("weight")
     private BigInteger weight;
-
-    public BtcRpcBlockTemplateTransactionResponse() {
-        super();
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getTxid() {
-        return txid;
-    }
-
-    public void setTxid(String txid) {
-        this.txid = txid;
-    }
-
-    public String getHash() {
-        return hash;
-    }
-
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
-
-    public List<Object> getDepends() {
-        return depends;
-    }
-
-    public void setDepends(List<Object> depends) {
-        this.depends = depends;
-    }
-
-    public BigInteger getFee() {
-        return fee;
-    }
-
-    public void setFee(BigInteger fee) {
-        this.fee = fee;
-    }
-
-    public BigInteger getSigops() {
-        return sigops;
-    }
-
-    public void setSigops(BigInteger sigops) {
-        this.sigops = sigops;
-    }
-
-    public BigInteger getWeight() {
-        return weight;
-    }
-
-    public void setWeight(BigInteger weight) {
-        this.weight = weight;
-    }
-
-    @Override
-    public String toString() {
-        return "BtcRpcBlockTemplateTransactionResponse [data=" + data + ", txid=" + txid + ", hash=" + hash + ", depends=" + depends + ", fee=" + fee
-                + ", sigops=" + sigops + ", weight=" + weight + "]";
-    }
 
 }

@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcAnalyzePsbtInputResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcAnalyzePsbtInputResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -40,76 +45,5 @@ public class BtcRpcAnalyzePsbtInputResponse implements Serializable {
     /** The next. */
     @JsonProperty("next")
     private String next;
-
-    /**
-     * Instantiates a new btc rpc analyze psbt input response.
-     */
-    public BtcRpcAnalyzePsbtInputResponse() {
-        super();
-    }
-
-    /**
-     * Gets the checks for utxo.
-     *
-     * @return the checks for utxo
-     */
-    public Boolean getHasUtxo() {
-        return hasUtxo;
-    }
-
-    /**
-     * Sets the checks for utxo.
-     *
-     * @param hasUtxo the new checks for utxo
-     */
-    public void setHasUtxo(Boolean hasUtxo) {
-        this.hasUtxo = hasUtxo;
-    }
-
-    /**
-     * Gets the checks if is final.
-     *
-     * @return the checks if is final
-     */
-    public Boolean getIsFinal() {
-        return isFinal;
-    }
-
-    /**
-     * Sets the checks if is final.
-     *
-     * @param isFinal the new checks if is final
-     */
-    public void setIsFinal(Boolean isFinal) {
-        this.isFinal = isFinal;
-    }
-
-    /**
-     * Gets the next.
-     *
-     * @return the next
-     */
-    public String getNext() {
-        return next;
-    }
-
-    /**
-     * Sets the next.
-     *
-     * @param next the new next
-     */
-    public void setNext(String next) {
-        this.next = next;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcAnalyzePsbtInputResponse [hasUtxo=" + hasUtxo + ", isFinal=" + isFinal + ", next=" + next + "]";
-    }
 
 }

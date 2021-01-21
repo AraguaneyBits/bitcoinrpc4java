@@ -78,3 +78,4 @@ It has following dependencies:
 
 - `OKHttp <https://github.com/square/okhttp/>`_ for HTTP connections
 - `Jackson Core <https://github.com/FasterXML/jackson-core>`_ for fast JSON serialisation/deserialisation
+- `Lombok <https://projectlombok.org/>`_ library that allows us to define POJO classes using a set of straightforward, but powerful annotations

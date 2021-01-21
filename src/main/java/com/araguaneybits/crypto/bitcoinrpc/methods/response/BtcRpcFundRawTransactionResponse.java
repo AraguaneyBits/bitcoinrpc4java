@@ -20,11 +20,16 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcFundRawTransactionResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcFundRawTransactionResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -41,76 +46,5 @@ public class BtcRpcFundRawTransactionResponse implements Serializable {
     /** The changepos. */
     @JsonProperty("changepos")
     private Long changepos;
-
-    /**
-     * Instantiates a new btc rpc fund raw transaction response.
-     */
-    public BtcRpcFundRawTransactionResponse() {
-        super();
-    }
-
-    /**
-     * Gets the hex.
-     *
-     * @return the hex
-     */
-    public String getHex() {
-        return hex;
-    }
-
-    /**
-     * Sets the hex.
-     *
-     * @param hex the new hex
-     */
-    public void setHex(String hex) {
-        this.hex = hex;
-    }
-
-    /**
-     * Gets the fee.
-     *
-     * @return the fee
-     */
-    public BigDecimal getFee() {
-        return fee;
-    }
-
-    /**
-     * Sets the fee.
-     *
-     * @param fee the new fee
-     */
-    public void setFee(BigDecimal fee) {
-        this.fee = fee;
-    }
-
-    /**
-     * Gets the changepos.
-     *
-     * @return the changepos
-     */
-    public Long getChangepos() {
-        return changepos;
-    }
-
-    /**
-     * Sets the changepos.
-     *
-     * @param changepos the new changepos
-     */
-    public void setChangepos(Long changepos) {
-        this.changepos = changepos;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcFundRawTransactionResponse [hex=" + hex + ", fee=" + fee + ", changepos=" + changepos + "]";
-    }
 
 }

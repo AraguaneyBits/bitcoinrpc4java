@@ -20,11 +20,16 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcSignRawTransactionWithWalletRequest.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcSignRawTransactionWithWalletRequest implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -53,131 +58,5 @@ public class BtcRpcSignRawTransactionWithWalletRequest implements Serializable {
     /** The amount. */
     @JsonProperty("amount")
     private BigDecimal amount;
-
-    /**
-     * Instantiates a new btc rpc sign raw transaction with wallet request.
-     */
-    public BtcRpcSignRawTransactionWithWalletRequest() {
-        super();
-    }
-
-    /**
-     * Gets the txid.
-     *
-     * @return the txid
-     */
-    public String getTxid() {
-        return txid;
-    }
-
-    /**
-     * Sets the txid.
-     *
-     * @param txid the new txid
-     */
-    public void setTxid(String txid) {
-        this.txid = txid;
-    }
-
-    /**
-     * Gets the vout.
-     *
-     * @return the vout
-     */
-    public Long getVout() {
-        return vout;
-    }
-
-    /**
-     * Sets the vout.
-     *
-     * @param vout the new vout
-     */
-    public void setVout(Long vout) {
-        this.vout = vout;
-    }
-
-    /**
-     * Gets the script pub key.
-     *
-     * @return the script pub key
-     */
-    public String getScriptPubKey() {
-        return scriptPubKey;
-    }
-
-    /**
-     * Sets the script pub key.
-     *
-     * @param scriptPubKey the new script pub key
-     */
-    public void setScriptPubKey(String scriptPubKey) {
-        this.scriptPubKey = scriptPubKey;
-    }
-
-    /**
-     * Gets the redeem script.
-     *
-     * @return the redeem script
-     */
-    public String getRedeemScript() {
-        return redeemScript;
-    }
-
-    /**
-     * Sets the redeem script.
-     *
-     * @param redeemScript the new redeem script
-     */
-    public void setRedeemScript(String redeemScript) {
-        this.redeemScript = redeemScript;
-    }
-
-    /**
-     * Gets the witness script.
-     *
-     * @return the witness script
-     */
-    public String getWitnessScript() {
-        return witnessScript;
-    }
-
-    /**
-     * Sets the witness script.
-     *
-     * @param witnessScript the new witness script
-     */
-    public void setWitnessScript(String witnessScript) {
-        this.witnessScript = witnessScript;
-    }
-
-    /**
-     * Gets the amount.
-     *
-     * @return the amount
-     */
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    /**
-     * Sets the amount.
-     *
-     * @param amount the new amount
-     */
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcSignRawTransactionWithWalletResponse [txid=" + txid + ", vout=" + vout + ", scriptPubKey=" + scriptPubKey + ", redeemScript="
-                + redeemScript + ", witnessScript=" + witnessScript + ", amount=" + amount + "]";
-    }
 
 }

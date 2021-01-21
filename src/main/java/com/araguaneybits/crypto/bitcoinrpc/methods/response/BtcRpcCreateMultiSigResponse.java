@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcCreateMultiSigResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcCreateMultiSigResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -36,58 +41,5 @@ public class BtcRpcCreateMultiSigResponse implements Serializable {
     /** The redeem script. */
     @JsonProperty("redeemScript")
     private String redeemScript;
-
-    /**
-     * Instantiates a new btc rpc create multi sig response.
-     */
-    public BtcRpcCreateMultiSigResponse() {
-        super();
-    }
-
-    /**
-     * Gets the address.
-     *
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the address.
-     *
-     * @param address the new address
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * Gets the redeem script.
-     *
-     * @return the redeem script
-     */
-    public String getRedeemScript() {
-        return redeemScript;
-    }
-
-    /**
-     * Sets the redeem script.
-     *
-     * @param redeemScript the new redeem script
-     */
-    public void setRedeemScript(String redeemScript) {
-        this.redeemScript = redeemScript;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcCreateMultiSigResponse [address=" + address + ", redeemScript=" + redeemScript + "]";
-    }
 
 }
