@@ -20,11 +20,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetBlockTxResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetBlockTxResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -69,192 +74,5 @@ public class BtcRpcGetBlockTxResponse implements Serializable {
     /** The hex. */
     @JsonProperty("hex")
     private String hex;
-
-    /**
-     * Instantiates a new btc rpc get block tx response.
-     */
-    public BtcRpcGetBlockTxResponse() {
-        super();
-    }
-
-    /**
-     * Gets the txid.
-     *
-     * @return the txid
-     */
-    public String getTxid() {
-        return txid;
-    }
-
-    /**
-     * Sets the txid.
-     *
-     * @param txid the new txid
-     */
-    public void setTxid(String txid) {
-        this.txid = txid;
-    }
-
-    /**
-     * Gets the hash.
-     *
-     * @return the hash
-     */
-    public String getHash() {
-        return hash;
-    }
-
-    /**
-     * Sets the hash.
-     *
-     * @param hash the new hash
-     */
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
-
-    /**
-     * Gets the version.
-     *
-     * @return the version
-     */
-    public Long getVersion() {
-        return version;
-    }
-
-    /**
-     * Sets the version.
-     *
-     * @param version the new version
-     */
-    public void setVersion(Long version) {
-        this.version = version;
-    }
-
-    /**
-     * Gets the size.
-     *
-     * @return the size
-     */
-    public Long getSize() {
-        return size;
-    }
-
-    /**
-     * Sets the size.
-     *
-     * @param size the new size
-     */
-    public void setSize(Long size) {
-        this.size = size;
-    }
-
-    /**
-     * Gets the vsize.
-     *
-     * @return the vsize
-     */
-    public Long getVsize() {
-        return vsize;
-    }
-
-    /**
-     * Sets the vsize.
-     *
-     * @param vsize the new vsize
-     */
-    public void setVsize(Long vsize) {
-        this.vsize = vsize;
-    }
-
-    /**
-     * Gets the weight.
-     *
-     * @return the weight
-     */
-    public Long getWeight() {
-        return weight;
-    }
-
-    /**
-     * Sets the weight.
-     *
-     * @param weight the new weight
-     */
-    public void setWeight(Long weight) {
-        this.weight = weight;
-    }
-
-    /**
-     * Gets the locktime.
-     *
-     * @return the locktime
-     */
-    public Long getLocktime() {
-        return locktime;
-    }
-
-    /**
-     * Sets the locktime.
-     *
-     * @param locktime the new locktime
-     */
-    public void setLocktime(Long locktime) {
-        this.locktime = locktime;
-    }
-
-    /**
-     * Gets the vin.
-     *
-     * @return the vin
-     */
-    public List<BtcRpcGetBlockVinResponse> getVin() {
-        return vin;
-    }
-
-    /**
-     * Sets the vin.
-     *
-     * @param vin the new vin
-     */
-    public void setVin(List<BtcRpcGetBlockVinResponse> vin) {
-        this.vin = vin;
-    }
-
-    /**
-     * Gets the vout.
-     *
-     * @return the vout
-     */
-    public List<BtcRpcGetBlockVoutResponse> getVout() {
-        return vout;
-    }
-
-    /**
-     * Sets the vout.
-     *
-     * @param vout the new vout
-     */
-    public void setVout(List<BtcRpcGetBlockVoutResponse> vout) {
-        this.vout = vout;
-    }
-
-    /**
-     * Gets the hex.
-     *
-     * @return the hex
-     */
-    public String getHex() {
-        return hex;
-    }
-
-    /**
-     * Sets the hex.
-     *
-     * @param hex the new hex
-     */
-    public void setHex(String hex) {
-        this.hex = hex;
-    }
 
 }

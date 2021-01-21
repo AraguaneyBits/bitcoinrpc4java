@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcFinalizePsbtResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcFinalizePsbtResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -40,76 +45,5 @@ public class BtcRpcFinalizePsbtResponse implements Serializable {
     /** The complete. */
     @JsonProperty("complete")
     private Boolean complete;
-
-    /**
-     * Instantiates a new btc rpc finalize psbt response.
-     */
-    public BtcRpcFinalizePsbtResponse() {
-        super();
-    }
-
-    /**
-     * Gets the psbt.
-     *
-     * @return the psbt
-     */
-    public String getPsbt() {
-        return psbt;
-    }
-
-    /**
-     * Sets the psbt.
-     *
-     * @param psbt the new psbt
-     */
-    public void setPsbt(String psbt) {
-        this.psbt = psbt;
-    }
-
-    /**
-     * Gets the hex.
-     *
-     * @return the hex
-     */
-    public String getHex() {
-        return hex;
-    }
-
-    /**
-     * Sets the hex.
-     *
-     * @param hex the new hex
-     */
-    public void setHex(String hex) {
-        this.hex = hex;
-    }
-
-    /**
-     * Gets the complete.
-     *
-     * @return the complete
-     */
-    public Boolean getComplete() {
-        return complete;
-    }
-
-    /**
-     * Sets the complete.
-     *
-     * @param complete the new complete
-     */
-    public void setComplete(Boolean complete) {
-        this.complete = complete;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcFinalizePsbtResponse [psbt=" + psbt + ", hex=" + hex + ", complete=" + complete + "]";
-    }
 
 }

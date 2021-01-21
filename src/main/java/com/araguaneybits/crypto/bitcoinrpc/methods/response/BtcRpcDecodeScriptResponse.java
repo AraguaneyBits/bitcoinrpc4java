@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcDecodeScriptResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcDecodeScriptResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -44,94 +49,5 @@ public class BtcRpcDecodeScriptResponse implements Serializable {
     /** The segwit. */
     @JsonProperty("segwit")
     private BtcRpcDecodeScriptSegwitResponse segwit;
-
-    /**
-     * Instantiates a new btc rpc decode script response.
-     */
-    public BtcRpcDecodeScriptResponse() {
-        super();
-    }
-
-    /**
-     * Gets the asm.
-     *
-     * @return the asm
-     */
-    public String getAsm() {
-        return asm;
-    }
-
-    /**
-     * Sets the asm.
-     *
-     * @param asm the new asm
-     */
-    public void setAsm(String asm) {
-        this.asm = asm;
-    }
-
-    /**
-     * Gets the type.
-     *
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Sets the type.
-     *
-     * @param type the new type
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
-     * Gets the p 2 sh.
-     *
-     * @return the p 2 sh
-     */
-    public String getP2sh() {
-        return p2sh;
-    }
-
-    /**
-     * Sets the p 2 sh.
-     *
-     * @param p2sh the new p 2 sh
-     */
-    public void setP2sh(String p2sh) {
-        this.p2sh = p2sh;
-    }
-
-    /**
-     * Gets the segwit.
-     *
-     * @return the segwit
-     */
-    public BtcRpcDecodeScriptSegwitResponse getSegwit() {
-        return segwit;
-    }
-
-    /**
-     * Sets the segwit.
-     *
-     * @param segwit the new segwit
-     */
-    public void setSegwit(BtcRpcDecodeScriptSegwitResponse segwit) {
-        this.segwit = segwit;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcDecodeScriptResponse [asm=" + asm + ", type=" + type + ", p2sh=" + p2sh + ", segwit=" + segwit + "]";
-    }
 
 }

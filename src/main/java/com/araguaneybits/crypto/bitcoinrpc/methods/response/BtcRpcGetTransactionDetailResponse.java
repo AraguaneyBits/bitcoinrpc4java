@@ -20,11 +20,16 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetTransactionDetailResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetTransactionDetailResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -57,131 +62,5 @@ public class BtcRpcGetTransactionDetailResponse implements Serializable {
     /** The abandoned. */
     @JsonProperty("abandoned")
     private Boolean abandoned;
-
-    /**
-     * Instantiates a new btc rpc get transaction detail response.
-     */
-    public BtcRpcGetTransactionDetailResponse() {
-        super();
-    }
-
-    /**
-     * Gets the address.
-     *
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the address.
-     *
-     * @param address the new address
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * Gets the category.
-     *
-     * @return the category
-     */
-    public String getCategory() {
-        return category;
-    }
-
-    /**
-     * Sets the category.
-     *
-     * @param category the new category
-     */
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    /**
-     * Gets the amount.
-     *
-     * @return the amount
-     */
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    /**
-     * Sets the amount.
-     *
-     * @param amount the new amount
-     */
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    /**
-     * Gets the vout.
-     *
-     * @return the vout
-     */
-    public Long getVout() {
-        return vout;
-    }
-
-    /**
-     * Sets the vout.
-     *
-     * @param vout the new vout
-     */
-    public void setVout(Long vout) {
-        this.vout = vout;
-    }
-
-    /**
-     * Gets the fee.
-     *
-     * @return the fee
-     */
-    public BigDecimal getFee() {
-        return fee;
-    }
-
-    /**
-     * Sets the fee.
-     *
-     * @param fee the new fee
-     */
-    public void setFee(BigDecimal fee) {
-        this.fee = fee;
-    }
-
-    /**
-     * Gets the abandoned.
-     *
-     * @return the abandoned
-     */
-    public Boolean getAbandoned() {
-        return abandoned;
-    }
-
-    /**
-     * Sets the abandoned.
-     *
-     * @param abandoned the new abandoned
-     */
-    public void setAbandoned(Boolean abandoned) {
-        this.abandoned = abandoned;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetTransactionDetailResponse [address=" + address + ", category=" + category + ", amount=" + amount + ", label=" + label
-                + ", vout=" + vout + ", fee=" + fee + ", abandoned=" + abandoned + "]";
-    }
 
 }

@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcLockUnspentRequest.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcLockUnspentRequest implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -36,58 +41,5 @@ public class BtcRpcLockUnspentRequest implements Serializable {
     /** The vout. */
     @JsonProperty("vout")
     private Long vout;
-
-    /**
-     * Instantiates a new btc rpc lock unspent request.
-     */
-    public BtcRpcLockUnspentRequest() {
-        super();
-    }
-
-    /**
-     * Gets the txid.
-     *
-     * @return the txid
-     */
-    public String getTxid() {
-        return txid;
-    }
-
-    /**
-     * Sets the txid.
-     *
-     * @param txid the new txid
-     */
-    public void setTxid(String txid) {
-        this.txid = txid;
-    }
-
-    /**
-     * Gets the vout.
-     *
-     * @return the vout
-     */
-    public Long getVout() {
-        return vout;
-    }
-
-    /**
-     * Sets the vout.
-     *
-     * @param vout the new vout
-     */
-    public void setVout(Long vout) {
-        this.vout = vout;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcLockUnspentRequest [txid=" + txid + ", vout=" + vout + "]";
-    }
 
 }

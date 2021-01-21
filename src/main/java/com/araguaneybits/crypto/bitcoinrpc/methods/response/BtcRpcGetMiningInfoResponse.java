@@ -21,11 +21,16 @@ import java.math.BigInteger;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetMiningInfoResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetMiningInfoResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -62,168 +67,5 @@ public class BtcRpcGetMiningInfoResponse implements Serializable {
     /** The warnings. */
     @JsonProperty("warnings")
     private String warnings;
-
-    /**
-     * Instantiates a new btc rpc get mining info response.
-     */
-    public BtcRpcGetMiningInfoResponse() {
-        super();
-    }
-
-    /**
-     * Gets the blocks.
-     *
-     * @return the blocks
-     */
-    public BigInteger getBlocks() {
-        return blocks;
-    }
-
-    /**
-     * Sets the blocks.
-     *
-     * @param blocks the new blocks
-     */
-    public void setBlocks(BigInteger blocks) {
-        this.blocks = blocks;
-    }
-
-    /**
-     * Gets the currentblockweight.
-     *
-     * @return the currentblockweight
-     */
-    public BigInteger getCurrentblockweight() {
-        return currentblockweight;
-    }
-
-    /**
-     * Sets the currentblockweight.
-     *
-     * @param currentblockweight the new currentblockweight
-     */
-    public void setCurrentblockweight(BigInteger currentblockweight) {
-        this.currentblockweight = currentblockweight;
-    }
-
-    /**
-     * Gets the currentblocktx.
-     *
-     * @return the currentblocktx
-     */
-    public BigInteger getCurrentblocktx() {
-        return currentblocktx;
-    }
-
-    /**
-     * Sets the currentblocktx.
-     *
-     * @param currentblocktx the new currentblocktx
-     */
-    public void setCurrentblocktx(BigInteger currentblocktx) {
-        this.currentblocktx = currentblocktx;
-    }
-
-    /**
-     * Gets the difficulty.
-     *
-     * @return the difficulty
-     */
-    public BigInteger getDifficulty() {
-        return difficulty;
-    }
-
-    /**
-     * Sets the difficulty.
-     *
-     * @param difficulty the new difficulty
-     */
-    public void setDifficulty(BigInteger difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    /**
-     * Gets the networkhashps.
-     *
-     * @return the networkhashps
-     */
-    public BigDecimal getNetworkhashps() {
-        return networkhashps;
-    }
-
-    /**
-     * Sets the networkhashps.
-     *
-     * @param networkhashps the new networkhashps
-     */
-    public void setNetworkhashps(BigDecimal networkhashps) {
-        this.networkhashps = networkhashps;
-    }
-
-    /**
-     * Gets the pooledtx.
-     *
-     * @return the pooledtx
-     */
-    public BigInteger getPooledtx() {
-        return pooledtx;
-    }
-
-    /**
-     * Sets the pooledtx.
-     *
-     * @param pooledtx the new pooledtx
-     */
-    public void setPooledtx(BigInteger pooledtx) {
-        this.pooledtx = pooledtx;
-    }
-
-    /**
-     * Gets the chain.
-     *
-     * @return the chain
-     */
-    public String getChain() {
-        return chain;
-    }
-
-    /**
-     * Sets the chain.
-     *
-     * @param chain the new chain
-     */
-    public void setChain(String chain) {
-        this.chain = chain;
-    }
-
-    /**
-     * Gets the warnings.
-     *
-     * @return the warnings
-     */
-    public String getWarnings() {
-        return warnings;
-    }
-
-    /**
-     * Sets the warnings.
-     *
-     * @param warnings the new warnings
-     */
-    public void setWarnings(String warnings) {
-        this.warnings = warnings;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetMiningInfoResponse [blocks=" + blocks + ", currentblockweight=" + currentblockweight + ", currentblocktx=" + currentblocktx
-                + ", difficulty=" + difficulty + ", networkhashps=" + networkhashps + ", pooledtx=" + pooledtx + ", chain=" + chain + ", warnings="
-                + warnings + "]";
-    }
 
 }

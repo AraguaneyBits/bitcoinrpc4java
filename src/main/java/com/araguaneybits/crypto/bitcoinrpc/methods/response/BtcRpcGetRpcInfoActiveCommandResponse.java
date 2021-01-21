@@ -20,11 +20,16 @@ import java.math.BigInteger;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetRpcInfoActiveCommandResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetRpcInfoActiveCommandResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -37,58 +42,5 @@ public class BtcRpcGetRpcInfoActiveCommandResponse implements Serializable {
     /** The duration. */
     @JsonProperty("duration")
     private BigInteger duration;
-
-    /**
-     * Instantiates a new btc rpc get rpc info active command response.
-     */
-    public BtcRpcGetRpcInfoActiveCommandResponse() {
-        super();
-    }
-
-    /**
-     * Gets the method.
-     *
-     * @return the method
-     */
-    public String getMethod() {
-        return method;
-    }
-
-    /**
-     * Sets the method.
-     *
-     * @param method the new method
-     */
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    /**
-     * Gets the duration.
-     *
-     * @return the duration
-     */
-    public BigInteger getDuration() {
-        return duration;
-    }
-
-    /**
-     * Sets the duration.
-     *
-     * @param duration the new duration
-     */
-    public void setDuration(BigInteger duration) {
-        this.duration = duration;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetRpcInfoActiveCommandResponse [method=" + method + ", duration=" + duration + "]";
-    }
 
 }

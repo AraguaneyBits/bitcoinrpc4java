@@ -22,11 +22,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcBumpFeeResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcBumpFeeResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -47,94 +52,5 @@ public class BtcRpcBumpFeeResponse implements Serializable {
     /** The errors. */
     @JsonProperty("errors")
     private List<Object> errors;
-
-    /**
-     * Instantiates a new btc rpc bump fee response.
-     */
-    public BtcRpcBumpFeeResponse() {
-        super();
-    }
-
-    /**
-     * Gets the txid.
-     *
-     * @return the txid
-     */
-    public String getTxid() {
-        return txid;
-    }
-
-    /**
-     * Sets the txid.
-     *
-     * @param txid the new txid
-     */
-    public void setTxid(String txid) {
-        this.txid = txid;
-    }
-
-    /**
-     * Gets the origfee.
-     *
-     * @return the origfee
-     */
-    public BigDecimal getOrigfee() {
-        return origfee;
-    }
-
-    /**
-     * Sets the origfee.
-     *
-     * @param origfee the new origfee
-     */
-    public void setOrigfee(BigDecimal origfee) {
-        this.origfee = origfee;
-    }
-
-    /**
-     * Gets the fee.
-     *
-     * @return the fee
-     */
-    public BigDecimal getFee() {
-        return fee;
-    }
-
-    /**
-     * Sets the fee.
-     *
-     * @param fee the new fee
-     */
-    public void setFee(BigDecimal fee) {
-        this.fee = fee;
-    }
-
-    /**
-     * Gets the errors.
-     *
-     * @return the errors
-     */
-    public List<Object> getErrors() {
-        return errors;
-    }
-
-    /**
-     * Sets the errors.
-     *
-     * @param errors the new errors
-     */
-    public void setErrors(List<Object> errors) {
-        this.errors = errors;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcBumpFeeResponse [txid=" + txid + ", origfee=" + origfee + ", fee=" + fee + ", errors=" + errors + "]";
-    }
 
 }

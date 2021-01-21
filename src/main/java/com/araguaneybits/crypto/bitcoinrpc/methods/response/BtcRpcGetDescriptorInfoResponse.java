@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetDescriptorInfoResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetDescriptorInfoResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -44,95 +49,5 @@ public class BtcRpcGetDescriptorInfoResponse implements Serializable {
     /** The hasprivatekeys. */
     @JsonProperty("hasprivatekeys")
     private Boolean hasprivatekeys;
-
-    /**
-     * Instantiates a new btc rpc get descriptor info response.
-     */
-    public BtcRpcGetDescriptorInfoResponse() {
-        super();
-    }
-
-    /**
-     * Gets the descriptor.
-     *
-     * @return the descriptor
-     */
-    public String getDescriptor() {
-        return descriptor;
-    }
-
-    /**
-     * Sets the descriptor.
-     *
-     * @param descriptor the new descriptor
-     */
-    public void setDescriptor(String descriptor) {
-        this.descriptor = descriptor;
-    }
-
-    /**
-     * Gets the isrange.
-     *
-     * @return the isrange
-     */
-    public Boolean getIsrange() {
-        return isrange;
-    }
-
-    /**
-     * Sets the isrange.
-     *
-     * @param isrange the new isrange
-     */
-    public void setIsrange(Boolean isrange) {
-        this.isrange = isrange;
-    }
-
-    /**
-     * Gets the issolvable.
-     *
-     * @return the issolvable
-     */
-    public Boolean getIssolvable() {
-        return issolvable;
-    }
-
-    /**
-     * Sets the issolvable.
-     *
-     * @param issolvable the new issolvable
-     */
-    public void setIssolvable(Boolean issolvable) {
-        this.issolvable = issolvable;
-    }
-
-    /**
-     * Gets the hasprivatekeys.
-     *
-     * @return the hasprivatekeys
-     */
-    public Boolean getHasprivatekeys() {
-        return hasprivatekeys;
-    }
-
-    /**
-     * Sets the hasprivatekeys.
-     *
-     * @param hasprivatekeys the new hasprivatekeys
-     */
-    public void setHasprivatekeys(Boolean hasprivatekeys) {
-        this.hasprivatekeys = hasprivatekeys;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetDescriptorInfoResponse [descriptor=" + descriptor + ", isrange=" + isrange + ", issolvable=" + issolvable
-                + ", hasprivatekeys=" + hasprivatekeys + "]";
-    }
 
 }

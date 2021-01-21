@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetAddedNodeInfoAddressResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetAddedNodeInfoAddressResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -36,58 +41,5 @@ public class BtcRpcGetAddedNodeInfoAddressResponse implements Serializable {
     /** The connected. */
     @JsonProperty("connected")
     private String connected;
-
-    /**
-     * Instantiates a new btc rpc get added node info address response.
-     */
-    public BtcRpcGetAddedNodeInfoAddressResponse() {
-        super();
-    }
-
-    /**
-     * Gets the address.
-     *
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the address.
-     *
-     * @param address the new address
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * Gets the connected.
-     *
-     * @return the connected
-     */
-    public String getConnected() {
-        return connected;
-    }
-
-    /**
-     * Sets the connected.
-     *
-     * @param connected the new connected
-     */
-    public void setConnected(String connected) {
-        this.connected = connected;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetAddedNodeInfoAddressResponse [address=" + address + ", connected=" + connected + "]";
-    }
 
 }

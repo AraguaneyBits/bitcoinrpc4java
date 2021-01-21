@@ -20,11 +20,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetBlockScriptPubKeyResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetBlockScriptPubKeyResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -49,102 +54,5 @@ public class BtcRpcGetBlockScriptPubKeyResponse implements Serializable {
     /** The addresses. */
     @JsonProperty("addresses")
     private List<String> addresses;
-
-    /**
-     * Instantiates a new btc rpc get block script pub key response.
-     */
-    public BtcRpcGetBlockScriptPubKeyResponse() {
-        super();
-    }
-
-    /**
-     * Gets the asm.
-     *
-     * @return the asm
-     */
-    public String getAsm() {
-        return asm;
-    }
-
-    /**
-     * Sets the asm.
-     *
-     * @param asm the new asm
-     */
-    public void setAsm(String asm) {
-        this.asm = asm;
-    }
-
-    /**
-     * Gets the hex.
-     *
-     * @return the hex
-     */
-    public String getHex() {
-        return hex;
-    }
-
-    /**
-     * Sets the hex.
-     *
-     * @param hex the new hex
-     */
-    public void setHex(String hex) {
-        this.hex = hex;
-    }
-
-    /**
-     * Gets the req sigs.
-     *
-     * @return the req sigs
-     */
-    public Long getReqSigs() {
-        return reqSigs;
-    }
-
-    /**
-     * Sets the req sigs.
-     *
-     * @param reqSigs the new req sigs
-     */
-    public void setReqSigs(Long reqSigs) {
-        this.reqSigs = reqSigs;
-    }
-
-    /**
-     * Gets the type.
-     *
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Sets the type.
-     *
-     * @param type the new type
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
-     * Gets the addresses.
-     *
-     * @return the addresses
-     */
-    public List<String> getAddresses() {
-        return addresses;
-    }
-
-    /**
-     * Sets the addresses.
-     *
-     * @param addresses the new addresses
-     */
-    public void setAddresses(List<String> addresses) {
-        this.addresses = addresses;
-    }
 
 }

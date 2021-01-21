@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcBlockTemplateRequest.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcBlockTemplateRequest implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -40,56 +45,5 @@ public class BtcRpcBlockTemplateRequest implements Serializable {
     /** The rules. */
     @JsonProperty("rules")
     private String[] rules;
-
-    /**
-     * Instantiates a new btc rpc block template request.
-     */
-    public BtcRpcBlockTemplateRequest() {
-        super();
-    }
-
-    /**
-     * Gets the mode.
-     *
-     * @return the mode
-     */
-    public String getMode() {
-        return mode;
-    }
-
-    /**
-     * Sets the mode.
-     *
-     * @param mode the new mode
-     */
-    public void setMode(String mode) {
-        this.mode = mode;
-    }
-
-    public String[] getCapabilities() {
-        return capabilities;
-    }
-
-    public void setCapabilities(String[] capabilities) {
-        this.capabilities = capabilities;
-    }
-
-    public String[] getRules() {
-        return rules;
-    }
-
-    public void setRules(String[] rules) {
-        this.rules = rules;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcBlockTemplateRequest [mode=" + mode + ", capabilities=" + capabilities + ", rules=" + rules + "]";
-    }
 
 }

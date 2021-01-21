@@ -20,11 +20,16 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcListSinceBlockResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcListSinceBlockResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -41,76 +46,5 @@ public class BtcRpcListSinceBlockResponse implements Serializable {
     /** The lastblock. */
     @JsonProperty("lastblock")
     private String lastblock;
-
-    /**
-     * Instantiates a new btc rpc list since block response.
-     */
-    public BtcRpcListSinceBlockResponse() {
-        super();
-    }
-
-    /**
-     * Gets the transactions.
-     *
-     * @return the transactions
-     */
-    public List<BtcRpcListSinceBlockTransactionResponse> getTransactions() {
-        return transactions;
-    }
-
-    /**
-     * Sets the transactions.
-     *
-     * @param transactions the new transactions
-     */
-    public void setTransactions(List<BtcRpcListSinceBlockTransactionResponse> transactions) {
-        this.transactions = transactions;
-    }
-
-    /**
-     * Gets the removed.
-     *
-     * @return the removed
-     */
-    public List<Object> getRemoved() {
-        return removed;
-    }
-
-    /**
-     * Sets the removed.
-     *
-     * @param removed the new removed
-     */
-    public void setRemoved(List<Object> removed) {
-        this.removed = removed;
-    }
-
-    /**
-     * Gets the lastblock.
-     *
-     * @return the lastblock
-     */
-    public String getLastblock() {
-        return lastblock;
-    }
-
-    /**
-     * Sets the lastblock.
-     *
-     * @param lastblock the new lastblock
-     */
-    public void setLastblock(String lastblock) {
-        this.lastblock = lastblock;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcListSinceBlockResponse [transactions=" + transactions + ", removed=" + removed + ", lastblock=" + lastblock + "]";
-    }
 
 }

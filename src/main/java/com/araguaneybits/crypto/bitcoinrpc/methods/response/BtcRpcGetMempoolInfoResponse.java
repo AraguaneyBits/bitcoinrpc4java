@@ -21,11 +21,16 @@ import java.math.BigInteger;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetMempoolInfoResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetMempoolInfoResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -54,120 +59,5 @@ public class BtcRpcGetMempoolInfoResponse implements Serializable {
     /** The minrelaytxfee. */
     @JsonProperty("minrelaytxfee")
     private BigDecimal minrelaytxfee;
-
-    /**
-     * Instantiates a new btc rpc get mempool info response.
-     */
-    public BtcRpcGetMempoolInfoResponse() {
-        super();
-    }
-
-    /**
-     * Gets the size.
-     *
-     * @return the size
-     */
-    public BigInteger getSize() {
-        return size;
-    }
-
-    /**
-     * Sets the size.
-     *
-     * @param size the new size
-     */
-    public void setSize(BigInteger size) {
-        this.size = size;
-    }
-
-    /**
-     * Gets the bytes.
-     *
-     * @return the bytes
-     */
-    public BigInteger getBytes() {
-        return bytes;
-    }
-
-    /**
-     * Sets the bytes.
-     *
-     * @param bytes the new bytes
-     */
-    public void setBytes(BigInteger bytes) {
-        this.bytes = bytes;
-    }
-
-    /**
-     * Gets the usage.
-     *
-     * @return the usage
-     */
-    public BigInteger getUsage() {
-        return usage;
-    }
-
-    /**
-     * Sets the usage.
-     *
-     * @param usage the new usage
-     */
-    public void setUsage(BigInteger usage) {
-        this.usage = usage;
-    }
-
-    /**
-     * Gets the maxmempool.
-     *
-     * @return the maxmempool
-     */
-    public BigInteger getMaxmempool() {
-        return maxmempool;
-    }
-
-    /**
-     * Sets the maxmempool.
-     *
-     * @param maxmempool the new maxmempool
-     */
-    public void setMaxmempool(BigInteger maxmempool) {
-        this.maxmempool = maxmempool;
-    }
-
-    /**
-     * Gets the mempoolminfee.
-     *
-     * @return the mempoolminfee
-     */
-    public BigDecimal getMempoolminfee() {
-        return mempoolminfee;
-    }
-
-    /**
-     * Sets the mempoolminfee.
-     *
-     * @param mempoolminfee the new mempoolminfee
-     */
-    public void setMempoolminfee(BigDecimal mempoolminfee) {
-        this.mempoolminfee = mempoolminfee;
-    }
-
-    /**
-     * Gets the minrelaytxfee.
-     *
-     * @return the minrelaytxfee
-     */
-    public BigDecimal getMinrelaytxfee() {
-        return minrelaytxfee;
-    }
-
-    /**
-     * Sets the minrelaytxfee.
-     *
-     * @param minrelaytxfee the new minrelaytxfee
-     */
-    public void setMinrelaytxfee(BigDecimal minrelaytxfee) {
-        this.minrelaytxfee = minrelaytxfee;
-    }
 
 }

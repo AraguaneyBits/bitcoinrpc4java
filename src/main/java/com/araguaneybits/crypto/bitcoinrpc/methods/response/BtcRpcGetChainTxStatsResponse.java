@@ -20,11 +20,16 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetChainTxStatsResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetChainTxStatsResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -57,138 +62,5 @@ public class BtcRpcGetChainTxStatsResponse implements Serializable {
     /** The txrate. */
     @JsonProperty("txrate")
     private BigDecimal txrate;
-
-    /**
-     * Instantiates a new btc rpc get chain tx stats response.
-     */
-    public BtcRpcGetChainTxStatsResponse() {
-        super();
-    }
-
-    /**
-     * Gets the time.
-     *
-     * @return the time
-     */
-    public Long getTime() {
-        return time;
-    }
-
-    /**
-     * Sets the time.
-     *
-     * @param time the new time
-     */
-    public void setTime(Long time) {
-        this.time = time;
-    }
-
-    /**
-     * Gets the txcount.
-     *
-     * @return the txcount
-     */
-    public Long getTxcount() {
-        return txcount;
-    }
-
-    /**
-     * Sets the txcount.
-     *
-     * @param txcount the new txcount
-     */
-    public void setTxcount(Long txcount) {
-        this.txcount = txcount;
-    }
-
-    /**
-     * Gets the window final block hash.
-     *
-     * @return the window final block hash
-     */
-    public String getWindowFinalBlockHash() {
-        return windowFinalBlockHash;
-    }
-
-    /**
-     * Sets the window final block hash.
-     *
-     * @param windowFinalBlockHash the new window final block hash
-     */
-    public void setWindowFinalBlockHash(String windowFinalBlockHash) {
-        this.windowFinalBlockHash = windowFinalBlockHash;
-    }
-
-    /**
-     * Gets the window block count.
-     *
-     * @return the window block count
-     */
-    public Long getWindowBlockCount() {
-        return windowBlockCount;
-    }
-
-    /**
-     * Sets the window block count.
-     *
-     * @param windowBlockCount the new window block count
-     */
-    public void setWindowBlockCount(Long windowBlockCount) {
-        this.windowBlockCount = windowBlockCount;
-    }
-
-    /**
-     * Gets the window tx count.
-     *
-     * @return the window tx count
-     */
-    public Long getWindowTxCount() {
-        return windowTxCount;
-    }
-
-    /**
-     * Sets the window tx count.
-     *
-     * @param windowTxCount the new window tx count
-     */
-    public void setWindowTxCount(Long windowTxCount) {
-        this.windowTxCount = windowTxCount;
-    }
-
-    /**
-     * Gets the window interval.
-     *
-     * @return the window interval
-     */
-    public Long getWindowInterval() {
-        return windowInterval;
-    }
-
-    /**
-     * Sets the window interval.
-     *
-     * @param windowInterval the new window interval
-     */
-    public void setWindowInterval(Long windowInterval) {
-        this.windowInterval = windowInterval;
-    }
-
-    /**
-     * Gets the txrate.
-     *
-     * @return the txrate
-     */
-    public BigDecimal getTxrate() {
-        return txrate;
-    }
-
-    /**
-     * Sets the txrate.
-     *
-     * @param txrate the new txrate
-     */
-    public void setTxrate(BigDecimal txrate) {
-        this.txrate = txrate;
-    }
 
 }

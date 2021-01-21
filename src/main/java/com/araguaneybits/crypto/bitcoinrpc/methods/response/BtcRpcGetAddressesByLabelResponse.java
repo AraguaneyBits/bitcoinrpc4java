@@ -17,11 +17,16 @@ package com.araguaneybits.crypto.bitcoinrpc.methods.response;
 
 import java.io.Serializable;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetAddressesByLabelResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetAddressesByLabelResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -32,58 +37,5 @@ public class BtcRpcGetAddressesByLabelResponse implements Serializable {
 
     /** The purpose. */
     private String purpose;
-
-    /**
-     * Instantiates a new btc rpc get addresses by label response.
-     */
-    public BtcRpcGetAddressesByLabelResponse() {
-        super();
-    }
-
-    /**
-     * Gets the address.
-     *
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the address.
-     *
-     * @param address the new address
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * Gets the purpose.
-     *
-     * @return the purpose
-     */
-    public String getPurpose() {
-        return purpose;
-    }
-
-    /**
-     * Sets the purpose.
-     *
-     * @param purpose the new purpose
-     */
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetAddressesByLabelResponse [address=" + address + ", purpose=" + purpose + "]";
-    }
 
 }

@@ -20,11 +20,16 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcEstimateSmartFeeResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcEstimateSmartFeeResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -37,58 +42,5 @@ public class BtcRpcEstimateSmartFeeResponse implements Serializable {
     /** The blocks. */
     @JsonProperty("blocks")
     private Long blocks;
-
-    /**
-     * Instantiates a new btc rpc estimate smart fee response.
-     */
-    public BtcRpcEstimateSmartFeeResponse() {
-        super();
-    }
-
-    /**
-     * Gets the feerate.
-     *
-     * @return the feerate
-     */
-    public BigDecimal getFeerate() {
-        return feerate;
-    }
-
-    /**
-     * Sets the feerate.
-     *
-     * @param feerate the new feerate
-     */
-    public void setFeerate(BigDecimal feerate) {
-        this.feerate = feerate;
-    }
-
-    /**
-     * Gets the blocks.
-     *
-     * @return the blocks
-     */
-    public Long getBlocks() {
-        return blocks;
-    }
-
-    /**
-     * Sets the blocks.
-     *
-     * @param blocks the new blocks
-     */
-    public void setBlocks(Long blocks) {
-        this.blocks = blocks;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcEstimateSmartFeeResponse [feerate=" + feerate + ", blocks=" + blocks + "]";
-    }
 
 }

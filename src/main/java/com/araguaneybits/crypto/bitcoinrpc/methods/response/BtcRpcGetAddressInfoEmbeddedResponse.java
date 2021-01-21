@@ -19,11 +19,16 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * The Class BtcRpcGetAddressInfoEmbeddedResponse.
  *
  * @author jestevez
  */
+@Data
+@NoArgsConstructor
 public class BtcRpcGetAddressInfoEmbeddedResponse implements Serializable {
 
     /** The Constant serialVersionUID. */
@@ -56,149 +61,5 @@ public class BtcRpcGetAddressInfoEmbeddedResponse implements Serializable {
     /** The script pub key. */
     @JsonProperty("scriptPubKey")
     private String scriptPubKey;
-
-    /**
-     * Instantiates a new btc rpc get address info embedded response.
-     */
-    public BtcRpcGetAddressInfoEmbeddedResponse() {
-        super();
-    }
-
-    /**
-     * Gets the isscript.
-     *
-     * @return the isscript
-     */
-    public Boolean getIsscript() {
-        return isscript;
-    }
-
-    /**
-     * Sets the isscript.
-     *
-     * @param isscript the new isscript
-     */
-    public void setIsscript(Boolean isscript) {
-        this.isscript = isscript;
-    }
-
-    /**
-     * Gets the iswitness.
-     *
-     * @return the iswitness
-     */
-    public Boolean getIswitness() {
-        return iswitness;
-    }
-
-    /**
-     * Sets the iswitness.
-     *
-     * @param iswitness the new iswitness
-     */
-    public void setIswitness(Boolean iswitness) {
-        this.iswitness = iswitness;
-    }
-
-    /**
-     * Gets the witness version.
-     *
-     * @return the witness version
-     */
-    public Long getWitnessVersion() {
-        return witnessVersion;
-    }
-
-    /**
-     * Sets the witness version.
-     *
-     * @param witnessVersion the new witness version
-     */
-    public void setWitnessVersion(Long witnessVersion) {
-        this.witnessVersion = witnessVersion;
-    }
-
-    /**
-     * Gets the witness program.
-     *
-     * @return the witness program
-     */
-    public String getWitnessProgram() {
-        return witnessProgram;
-    }
-
-    /**
-     * Sets the witness program.
-     *
-     * @param witnessProgram the new witness program
-     */
-    public void setWitnessProgram(String witnessProgram) {
-        this.witnessProgram = witnessProgram;
-    }
-
-    /**
-     * Gets the pubkey.
-     *
-     * @return the pubkey
-     */
-    public String getPubkey() {
-        return pubkey;
-    }
-
-    /**
-     * Sets the pubkey.
-     *
-     * @param pubkey the new pubkey
-     */
-    public void setPubkey(String pubkey) {
-        this.pubkey = pubkey;
-    }
-
-    /**
-     * Gets the address.
-     *
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the address.
-     *
-     * @param address the new address
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * Gets the script pub key.
-     *
-     * @return the script pub key
-     */
-    public String getScriptPubKey() {
-        return scriptPubKey;
-    }
-
-    /**
-     * Sets the script pub key.
-     *
-     * @param scriptPubKey the new script pub key
-     */
-    public void setScriptPubKey(String scriptPubKey) {
-        this.scriptPubKey = scriptPubKey;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "BtcRpcGetAddressInfoEmbeddedResponse [isscript=" + isscript + ", iswitness=" + iswitness + ", witnessVersion=" + witnessVersion
-                + ", witnessProgram=" + witnessProgram + ", pubkey=" + pubkey + ", address=" + address + ", scriptPubKey=" + scriptPubKey + "]";
-    }
 
 }
