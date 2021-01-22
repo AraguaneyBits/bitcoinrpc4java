@@ -70,7 +70,7 @@ If your project uses Maven for its build, you can depend on bitcoinrpc4java by a
 <dependency>
   <groupId>com.araguaneybits.bitcoinrpc</groupId>
   <artifactId>araguaneybits-bitcoinrpc4java</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0.RELEASE</version>
 </dependency>
 ```
 
