@@ -642,6 +642,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object setHdSeed(Boolean newkeypool, String seed) {
+        // TODO method not implemented
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_SET_HD_SEED, newkeypool, seed);
     }
 
@@ -674,6 +675,7 @@ public class BtcRpcWalletToolsMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object unloadWallet(String walletName) {
+        // TODO method not implemented
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_UNLOAD_WALLET, walletName);
     }
 

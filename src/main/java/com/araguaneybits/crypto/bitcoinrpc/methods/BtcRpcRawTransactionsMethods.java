@@ -855,6 +855,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object joinPsbts(String[] txs) {
+        // TODO Implementar este metodo
         return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_JOIN_PSBTS, txs);
     }
 
@@ -977,6 +978,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object signrawtransactionwithkey() {
+        // TODO Implementar este metodo
         return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_SIGN_RAW_TRANSACTION_WITH_KEY);
     }
 
@@ -1033,6 +1035,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object testmempoolaccept() {
+        // TODO Implementar este metodo
         return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_TEST_MEMPOOL_ACCEPT);
     }
 
@@ -1069,6 +1072,7 @@ public class BtcRpcRawTransactionsMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object utxoupdatepsbt() {
+        // TODO Implementar este metodo
         return callRpcMethod(RpcRawTransactionsMethodsConstants.RAW_TRANSACTIONS_UTXO_UPDATE_PSBT);
     }
 
