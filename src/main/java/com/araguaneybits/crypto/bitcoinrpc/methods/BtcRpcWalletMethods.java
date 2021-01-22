@@ -31,6 +31,7 @@ import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcAddMultiSigAdd
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcBumpFeeResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetAddressInfoResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetAddressesByLabelResponse;
+import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetBalancesResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcGetTransactionResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListReceivedByLabelResponse;
 import com.araguaneybits.crypto.bitcoinrpc.methods.response.BtcRpcListUnspentResponse;
@@ -86,6 +87,7 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object abandonTransaction(String txid) {
+        // TODO implementar
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_ABANDON_TRANSACTION, txid);
     }
 
@@ -426,6 +428,41 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      */
     public BigDecimal getBalance() {
         return (BigDecimal) callRpcMethod(RpcWalletMethodsConstants.WALLET_GET_BALANCE);
+    }
+
+    /**
+     * <pre>
+     *      getbalances
+     *      Returns an object with all balances in BTC.
+     *      
+     *      Result:
+     *      {                               (json object)
+     *      "mine" : {                    (json object) balances from outputs that the wallet can sign
+     *      "trusted" : n,              (numeric) trusted balance (outputs created by the wallet or confirmed outputs)
+     *      "untrusted_pending" : n,    (numeric) untrusted pending balance (outputs created by others that are in the mempool)
+     *      "immature" : n,             (numeric) balance from immature coinbase outputs
+     *      "used" : n                  (numeric) (only present if avoid_reuse is set) balance from coins sent to addresses that were previously spent from (potentially privacy violating)
+     *      },
+     *      "watchonly" : {               (json object) watchonly balances (not present if wallet does not watch anything)
+     *      "trusted" : n,              (numeric) trusted balance (outputs created by the wallet or confirmed outputs)
+     *      "untrusted_pending" : n,    (numeric) untrusted pending balance (outputs created by others that are in the mempool)
+     *      "immature" : n              (numeric) balance from immature coinbase outputs
+     *      }
+     *      }
+     *      
+     *      Examples:
+     *      bitcoin-cli getbalances
+     *      curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getbalances", "params": []}' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+     * </pre>
+     *
+     * @return the balances
+     */
+    public BtcRpcGetBalancesResponse getBalances() {
+        String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_GET_BALANCES);
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<BtcRpcGetBalancesResponse>>() {
+                });
+        return (BtcRpcGetBalancesResponse) rpcOutputMessage.getResult();
     }
 
     /**
@@ -875,6 +912,7 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object importPrunedFunds(String rawtransaction, String txoutproof) {
+        // TODO method not implemented
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_IMPORT_PRUNED_FUNDS, rawtransaction, txoutproof);
     }
 
@@ -915,66 +953,8 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object importPubkey(String pubkey, String label, Boolean rescan) {
+        // TODO method not implemented
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_IMPORT_PUBKEY, pubkey, label, rescan);
-    }
-
-    /**
-     * <p>
-     * Call category: wallet
-     * </p>
-     * <p>
-     * Available since: &lt; 0.10.0
-     * </p>
-     * <p>
-     * The listreceivedbyaddress RPC lists the total number of bitcoins received by each address.
-     * </p>
-     * <p>
-     * List balances by receiving address.
-     * </p>
-     * <p>
-     * Arguments:
-     * </p>
-     * <p>
-     * 1. minconf (numeric, optional, default=1) The minimum number of confirmations before payments are included.
-     * </p>
-     * <p>
-     * 2. include_empty (bool, optional, default=false) Whether to include addresses that haven't received any payments.
-     * </p>
-     * <p>
-     * 3. include_watchonly (bool, optional, default=false) Whether to include watch-only addresses (see 'importaddress').
-     * </p>
-     * <p>
-     * 4. address_filter (string, optional) If present, only return information on this address.
-     * </p>
-     * 
-     * <pre>
-     *       Result:
-     *         [
-     *         {
-     *         "involvesWatchonly" : true,        (bool) Only returned if imported addresses were involved in transaction
-     *         "address" : "receivingaddress",  (string) The receiving address
-     *         "account" : "accountname",       (string) DEPRECATED. Backwards compatible alias for label.
-     *         "amount" : x.xxx,                  (numeric) The total amount in BTC received by the address
-     *         "confirmations" : n,               (numeric) The number of confirmations of the most recent transaction included
-     *         "label" : "label",               (string) The label of the receiving address. The default label is "".
-     *         "txids": [
-     *            "txid",                         (string) The ids of transactions received with the address 
-     *            ...
-     *         ]
-     *         }
-     *         ,...
-     *         ]
-     * </pre>
-     *
-     * @return the list
-     */
-    public List<BtcRpcReceivedByAddressResponse> listReceivedByAddress() {
-        String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_RECEIVED_BY_ADDRESS);
-        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
-                new TypeReference<RpcOutputMessage<ArrayList<BtcRpcReceivedByAddressResponse>>>() {
-                });
-        return (ArrayList<BtcRpcReceivedByAddressResponse>) rpcOutputMessage.getResult();
-
     }
 
     /**
@@ -1066,7 +1046,67 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object listLockUnspent() {
+        // TODO method not implemented
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_LOCK_UNSPENT);
+    }
+
+    /**
+     * <p>
+     * Call category: wallet
+     * </p>
+     * <p>
+     * Available since: &lt; 0.10.0
+     * </p>
+     * <p>
+     * The listreceivedbyaddress RPC lists the total number of bitcoins received by each address.
+     * </p>
+     * <p>
+     * List balances by receiving address.
+     * </p>
+     * <p>
+     * Arguments:
+     * </p>
+     * <p>
+     * 1. minconf (numeric, optional, default=1) The minimum number of confirmations before payments are included.
+     * </p>
+     * <p>
+     * 2. include_empty (bool, optional, default=false) Whether to include addresses that haven't received any payments.
+     * </p>
+     * <p>
+     * 3. include_watchonly (bool, optional, default=false) Whether to include watch-only addresses (see 'importaddress').
+     * </p>
+     * <p>
+     * 4. address_filter (string, optional) If present, only return information on this address.
+     * </p>
+     * 
+     * <pre>
+     *       Result:
+     *         [
+     *         {
+     *         "involvesWatchonly" : true,        (bool) Only returned if imported addresses were involved in transaction
+     *         "address" : "receivingaddress",  (string) The receiving address
+     *         "account" : "accountname",       (string) DEPRECATED. Backwards compatible alias for label.
+     *         "amount" : x.xxx,                  (numeric) The total amount in BTC received by the address
+     *         "confirmations" : n,               (numeric) The number of confirmations of the most recent transaction included
+     *         "label" : "label",               (string) The label of the receiving address. The default label is "".
+     *         "txids": [
+     *            "txid",                         (string) The ids of transactions received with the address 
+     *            ...
+     *         ]
+     *         }
+     *         ,...
+     *         ]
+     * </pre>
+     *
+     * @return the list
+     */
+    public List<BtcRpcReceivedByAddressResponse> listReceivedByAddress() {
+        String json = callSimpleRpcMethod(RpcWalletMethodsConstants.WALLET_LIST_RECEIVED_BY_ADDRESS);
+        RpcOutputMessage<?> rpcOutputMessage = (RpcOutputMessage<?>) TransformBeanUtils.readValue(json,
+                new TypeReference<RpcOutputMessage<ArrayList<BtcRpcReceivedByAddressResponse>>>() {
+                });
+        return (ArrayList<BtcRpcReceivedByAddressResponse>) rpcOutputMessage.getResult();
+
     }
 
     /**
@@ -1362,6 +1402,7 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object removePrunedFunds(String txid) {
+        // TODO method not implemented
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_REMOVE_PRUNED_FUNDS, txid);
     }
 
@@ -1440,8 +1481,8 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      * @param enumEstimateMode the enum estimate mode
      * @return the string
      */
-    public String sendMany(Map amounts, Integer minconf, String comment, String[] subtractFeeFrom, Boolean replaceable, Long confTarget,
-            EnumEstimateMode enumEstimateMode) {
+    public String sendMany(Map<String, String> amounts, Integer minconf, String comment, String[] subtractFeeFrom, Boolean replaceable,
+            Long confTarget, EnumEstimateMode enumEstimateMode) {
         String dummy = "";
         return (String) callRpcMethod(RpcWalletMethodsConstants.WALLET_SEND_MANY, dummy, amounts, minconf, comment, subtractFeeFrom, replaceable,
                 confTarget, enumEstimateMode.getValue());
@@ -1698,6 +1739,7 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      */
     public Object signRawTransactionWithWallet(String hexstring, List<BtcRpcSignRawTransactionWithWalletRequest> prevtxs,
             EnumSighashType sighashtype) {
+        // TODO method not implemented
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_SIGN_RAW_TRANSACTION_WITH_WALLET, hexstring, prevtxs, sighashtype);
     }
 
@@ -1811,6 +1853,7 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object walletcreatefundedpsbt() {
+        // TODO method not implemented
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_WALLET_CREATE_FUNDED_PSBT);
     }
 
@@ -1857,6 +1900,7 @@ public class BtcRpcWalletMethods extends BaseBtcRpcMethods {
      * @return the object
      */
     public Object walletprocesspsbt() {
+        // TODO method not implemented
         return callRpcMethod(RpcWalletMethodsConstants.WALLET_WALLET_PROCESS_PSBT);
     }
 

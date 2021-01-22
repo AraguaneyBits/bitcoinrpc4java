@@ -58,6 +58,9 @@ public final class RpcWalletMethodsConstants {
     /** The Constant WALLET_GET_BALANCE. */
     public static final String WALLET_GET_BALANCE = "getbalance";
 
+    /** The Constant WALLET_GET_BALANCES. */
+    public static final String WALLET_GET_BALANCES = "getbalances";
+
     /** The Constant WALLET_GET_NEW_ADDRESS. */
     public static final String WALLET_GET_NEW_ADDRESS = "getnewaddress";
 
